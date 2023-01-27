@@ -28,3 +28,18 @@
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
+
+-
+  type: gitee
+  icon: 'fab fa-square-git'
+  url:  'https://gitee.com/QMMMS'
+
+-
+  type: weixin
+  icon: 'fab fa-weixin'
+  url: 'https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2NDgyNjY1Ng==&action=getalbum&album_id=2543018248246919170&scene=173&from_msgid=2247484157&from_itemidx=1&count=3&nolastread=1#wechat_redirect'
+
+# -
+#   type: bili
+#   icon: 'fab fa-bilibili'
+#   url:  'https://space.bilibili.com/85470209'
