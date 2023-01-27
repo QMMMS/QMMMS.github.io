@@ -22,7 +22,7 @@ hello👋，QMMMS的博客欢迎你👏
 - [一个微信公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2NDgyNjY1Ng==&action=getalbum&album_id=2543018248246919170&scene=173&from_msgid=2247484157&from_itemidx=1&count=3&nolastread=1#wechat_redirect)
 - [Jekyll与Github Pages建站](/posts/Jekyll与Github-pages建站/)，成果就是你现在看到的这个网页
 - [写点题目](https://www.luogu.com.cn/user/574091#practice)
-- [深度学习理论](https://gitee.com/QMMMS/reading-notes/tree/main/%E5%90%B4%E6%81%A9%E8%BE%BE%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)与[PyTorch实践]()
+- [深度学习理论](https://gitee.com/QMMMS/reading-notes/tree/main/%E5%90%B4%E6%81%A9%E8%BE%BE%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)与[PyTorch实践](https://gitee.com/QMMMS/reading-notes/tree/main/%E6%96%87%E6%A1%A3%20PyTorch)
 - 写过C, C++, Java, Python, Objective-C, C#, NASM, HTML, CSS, JavaScript, SQL ~~然而大部分忘光了~~
 
 诚惶诚恐，才疏学浅，不吝赐教！欢迎你找我来玩！👼
