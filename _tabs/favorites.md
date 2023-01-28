@@ -1,0 +1,46 @@
+---
+title: 收藏
+icon: fas fa-link
+order: 4
+---
+
+> 一些好玩/有用的网站收录
+{: .prompt-info }
+
+## 摸鱼
+------
+
+- [神奇海螺试验场](https://lab.magiconch.com/)
+- [小桑前端作品](http://xiaosang.net/#)
+- [crazygames](https://www.crazygames.com/)
+- [小日子过得很不错](https://aidn.jp/contents/)
+- [人生remake](https://liferestart.syaro.io/public/index.html)
+- [灰机wiki](https://www.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5)
+- 知乎：[有哪些能玩上一天的网站？](https://www.zhihu.com/question/380741546)
+- 知乎：[你都见过什么奇奇怪怪的网站？](https://www.zhihu.com/question/354444082/answer/1974818158)
+
+## 工具
+------
+
+- [在线流程图思维导图ProcessOn](https://www.processon.com/)
+- [全平台云笔记flomo](https://flomoapp.com/)与[个人页](https://v.flomoapp.com/mine)
+- [Markdown编辑器Typora](https://www.typoraio.cn/)
+- [微信公众平台](https://mp.weixin.qq.com/)
+- Jekyll的[Moonwalk主题Demo](https://www.abhinavsaxena.com/moonwalk/)与[Chirpy主题Demo](https://chirpy.cotes.page/)
+- [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
+- [在线格式转换器Aconvert](https://www.aconvert.com/cn/)
+- [字符画生成](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)与[其他工具](http://patorjk.com/blog/software/)
+- [牛图网图床](https://niupic.com/)
+- [基于JavaScript的开源可视化图表库Apache ECharts](https://echarts.apache.org/zh/index.html)
+- [GitHub学生包](https://education.github.com/pack)
+
+## 学习
+------
+
+- [机器学习初学者](http://www.ai-start.com/)
+- [PyTorch中文教程/文档](https://pytorch.apachecn.org/#/)
+- [菜鸟教程](https://www.runoob.com/)
+- [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
+- [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
+- [北大信科CS自学指南](https://csdiy.wiki/)
+

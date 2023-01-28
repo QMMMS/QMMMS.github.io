@@ -633,3 +633,19 @@ TODO list：
   + [x] Step 2
   + [ ] Step 3
 ```
+
+### 添加左侧栏tab
+
+如果新增“友情链接”tab。在`_tabs`目录下新建`links.md`:
+
+```markdown
+---
+title: 友情链接
+icon: fas fa-link
+order: 5
+---
+```
+
+调整order和icon。icon去[Font Awesome Icons](http://www.fontawesome.com.cn/)找。然后修改`_data/locales/en.yml`和`_data/locales/zh-CN.yml`，在`tabs:`下添加`links: Links`和`links: 友链`，以适配中英文。
+
+
