@@ -25,3 +25,8 @@ platforms:
     type: Weibo
     icon: "fab fa-weibo"
     link: "http://service.weibo.com/share/share.php?title=TITLE&url=URL"
+
+  # -
+  #   type: QQZone
+  #   icon: "fab fa-qq"
+  #   link: "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title=TITLE&url=URL"
