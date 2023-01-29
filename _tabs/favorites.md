@@ -22,17 +22,21 @@ order: 4
 ## 工具
 ------
 
+- [Markdown编辑器Typora](https://www.typoraio.cn/)
 - [在线流程图思维导图ProcessOn](https://www.processon.com/)
 - [全平台云笔记flomo](https://flomoapp.com/)与[个人页](https://v.flomoapp.com/mine)
-- [Markdown编辑器Typora](https://www.typoraio.cn/)
-- [微信公众平台](https://mp.weixin.qq.com/)
+- [微信公众平台](https://mp.weixin.qq.com/)与[微信排版markdown编辑器墨滴](https://www.mdnice.com/)
 - Jekyll的[Moonwalk主题Demo](https://www.abhinavsaxena.com/moonwalk/)与[Chirpy主题Demo](https://chirpy.cotes.page/)
-- [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 - [在线格式转换器Aconvert](https://www.aconvert.com/cn/)
 - [字符画生成](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)与[其他工具](http://patorjk.com/blog/software/)
 - [牛图网图床](https://niupic.com/)
 - [基于JavaScript的开源可视化图表库Apache ECharts](https://echarts.apache.org/zh/index.html)
 - [GitHub学生包](https://education.github.com/pack)
+- [抓包工具Wireshark](https://www.wireshark.org/)，[端口扫描工具Nmap](https://nmap.org/)，[路由跟踪工具PingPlotter](https://www.pingplotter.com/)
+- [在线图形计算器Desmos](https://www.desmos.com/calculator?lang=zh-CN)
+- [电脑remake](https://www.jikegou.net/)
+- [云主机供应商DigitalOcean](https://www.digitalocean.com/)
+- [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
 ------
@@ -42,5 +46,6 @@ order: 4
 - [菜鸟教程](https://www.runoob.com/)
 - [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
 - [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
-- [北大信科CS自学指南](https://csdiy.wiki/)
+- [上交生存手册](https://survivesjtu.gitbook.io/survivesjtumanual/)
+- [北大CS自学指南](https://csdiy.wiki/)
 
