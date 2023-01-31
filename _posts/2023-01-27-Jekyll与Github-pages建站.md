@@ -256,7 +256,7 @@ jekyll serve
 
 ### 创建页面
 
-如果你想为你的博客网站添加一个普通页面，而不是博文，应该怎么做？如果你想在`http://127.0.0.1:4000/blog/others/donate`创建一个捐赠页面，直接在`./myblog`文件夹下新建一个文件夹`others`，在里面可以放置一个`donate.md`文件，内容可以是：
+如果你想为你的博客网站添加一个普通页面，而不是博文，应该怎么做？如果你想在`http://127.0.0.1:4000/others/donate`创建一个捐赠页面，直接在`./myblog`文件夹下新建一个文件夹`others`，在里面可以放置一个`donate.md`文件，内容可以是：
 
 ```markdown
 ---
@@ -267,7 +267,7 @@ title: Donate
 please donate me.
 ```
 
-使用命令`jekyll serve`，看看`http://127.0.0.1:4000/blog/others/donate`吧！
+使用命令`jekyll serve`，看看`http://127.0.0.1:4000/others/donate`吧！
 
 你可以感受到这种一一对应的关系，jekyll会自动构建这些普通文件夹和文件，默认情况下，Jekyll 不会构建以下文件或文件夹：
 
