@@ -39,6 +39,7 @@ order: 4
 - [电脑remake](https://www.jikegou.net/)
 - [云主机供应商DigitalOcean](https://www.digitalocean.com/)
 - [在线HTML转MD工具](https://tool.lu/markdown/)与[工具箱](https://tool.lu/)
+- [Chrome插件商店（国内）](https://chrome.zzzmh.cn/#/index)与[Adblock Plus插件](https://chrome.zzzmh.cn/info/cfhdojbkjhnklbpkdaibdccddilifddb)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -48,6 +49,8 @@ order: 4
 - [PyTorch中文教程/文档](https://pytorch.apachecn.org/#/)
 - [菜鸟教程](https://www.runoob.com/)
 - [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
+- [练练盲打](https://www.keybr.com/)
+- [常用LaTeX符号](http://mohu.org/info/symbols/symbols.htm)
 - [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
 - [上交生存手册](https://survivesjtu.gitbook.io/survivesjtumanual/)
 - [北大CS自学指南](https://csdiy.wiki/)
