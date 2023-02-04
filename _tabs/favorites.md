@@ -55,4 +55,4 @@ order: 4
 - [上交生存手册](https://survivesjtu.gitbook.io/survivesjtumanual/)
 - [北大CS自学指南](https://csdiy.wiki/)
 - [免费计算机书籍](https://ebookfoundation.github.io/free-programming-books/)
-- [免费计算机中文书籍](https://github.com/justjavac/free-programming-books-zh_CN)与[本站备份](/assets/pages/free-programming-books-zh_CN/)
+- [免费计算机中文书籍](https://github.com/justjavac/free-programming-books-zh_CN)
