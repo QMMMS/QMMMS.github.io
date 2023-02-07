@@ -568,9 +568,6 @@ tags: [TAG]     # TAG names should always be lowercase
 
 # 以下内容都有默认值，可以不写
 
-author: # 不写默认就是自己
-  name: Full Name
-  link: https://example.com
 
 # 以下默认false
 math: true
@@ -633,6 +630,29 @@ TODO list：
   + [x] Step 2
   + [ ] Step 3
 ```
+
+### 更改作者
+
+如果要更改博客的作者或者添加多个作者，如下操作：
+
+1.   创建文件`_data/authors.yml`，内容格式如下：
+
+     ```yaml
+     <author_id>:
+       name: <full name>
+       twitter: <twitter_of_author>
+       url: <homepage_of_author>
+     ```
+
+2.   在博客头信息加入如下信息：
+
+     ```
+     ---
+     author: <author_id>                     # 一个作者
+     # 或者
+     authors: [<author1_id>, <author2_id>]   # 多个作者
+     ---
+     ```
 
 ### 添加左侧栏tab
 

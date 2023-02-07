@@ -17,6 +17,7 @@ order: 4
 - [人生remake](https://liferestart.syaro.io/public/index.html)
 - [灰机wiki](https://www.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5)
 - 国际象棋[chess.com](https://chess.com/)与[lichess](https://lichess.org/)
+- [电脑博物馆](http://www.compumuseum.com/)
 - [程序员延寿指南](https://github.com/geekan/HowToLiveLonger)
 - 知乎：[有哪些能玩上一天的网站？](https://www.zhihu.com/question/380741546)
 - 知乎：[你都见过什么奇奇怪怪的网站？](https://www.zhihu.com/question/354444082/answer/1974818158)

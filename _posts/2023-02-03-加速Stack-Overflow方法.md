@@ -2,7 +2,7 @@
 title: 加速Stack Overflow方法
 date: 2023-02-03 10:42:00 +0800
 categories: [技术]
-tags: [Stack Overflow]
+tags: [stack overflow]
 ---
 
 [Stack Overflow](https://stackoverflow.com/)是国外一个与程序相关的IT技术问答网站，类似于国内的[segmentfault](https://segmentfault.com/)。然而打开Stack Overflow速度非常慢，如何解决？
