@@ -41,6 +41,8 @@ order: 4
 - [云主机供应商DigitalOcean](https://www.digitalocean.com/)
 - [在线HTML转MD工具](https://tool.lu/markdown/)与[工具箱](https://tool.lu/)
 - [Chrome插件商店（国内）](https://chrome.zzzmh.cn/#/index)与[另一个](https://www.extfans.com/)与[Adblock Plus插件](https://chrome.zzzmh.cn/info/cfhdojbkjhnklbpkdaibdccddilifddb)
+- [小狼毫输入法](https://rime.im/)
+- [图吧工具箱](http://www.tbtool.cn/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
