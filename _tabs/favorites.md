@@ -7,6 +7,14 @@ order: 4
 > 一些好玩/有用的网站收录
 {: .prompt-info }
 
+## 博客
+------
+
+- [大连理工NAOSI成员博客汇总](https://github.com/NAOSI-DLUT/Blogs)
+- [OnpenAI博客](https://openai.com/blog)
+- [G-Lab计算机视觉实验室](http://www.gwylab.com/index.html)
+
+
 ## 摸鱼
 ------
 
@@ -43,6 +51,7 @@ order: 4
 - [Chrome插件商店（国内）](https://chrome.zzzmh.cn/#/index)与[另一个](https://www.extfans.com/)与[Adblock Plus插件](https://chrome.zzzmh.cn/info/cfhdojbkjhnklbpkdaibdccddilifddb)
 - [小狼毫输入法](https://rime.im/)
 - [图吧工具箱](http://www.tbtool.cn/)
+- [CNKI翻译助手](https://dict.cnki.net/index#)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -59,3 +68,4 @@ order: 4
 - [北大CS自学指南](https://csdiy.wiki/)
 - [免费计算机书籍](https://ebookfoundation.github.io/free-programming-books/)
 - [免费计算机中文书籍](https://github.com/justjavac/free-programming-books-zh_CN)与[本站备份](/posts/免费中文编程书籍索引/)
+- [dblp计算机科学论文库](https://dblp.org/)
