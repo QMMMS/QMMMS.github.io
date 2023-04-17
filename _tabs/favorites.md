@@ -69,3 +69,20 @@ order: 4
 - [免费计算机书籍](https://ebookfoundation.github.io/free-programming-books/)
 - [免费计算机中文书籍](https://github.com/justjavac/free-programming-books-zh_CN)与[本站备份](/posts/免费中文编程书籍索引/)
 - [dblp计算机科学论文库](https://dblp.org/)
+
+## 书单
+------
+
+- [x] 《C程序设计快速进阶大学教程》
+- [x] 《C和指针》
+- [x] 《C陷阱和缺陷》
+- [x] 《Think python》
+- [] 《Python网络爬虫权威指南》
+- [x] 《算法图解》
+- [x] 《大话数据结构》
+- [] 《C++ Primer》
+- [x] 《计算机科学导论》
+- [x] 《算法》（红皮书）
+- [x] 《C++语言程序设计教程》
+- [] 《Qt Creator快速入门》
+
