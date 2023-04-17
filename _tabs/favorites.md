@@ -52,6 +52,7 @@ order: 4
 - [小狼毫输入法](https://rime.im/)
 - [图吧工具箱](http://www.tbtool.cn/)
 - [CNKI翻译助手](https://dict.cnki.net/index#)
+- [上网](https://cdn.runba.cyou/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -69,6 +70,10 @@ order: 4
 - [免费计算机书籍](https://ebookfoundation.github.io/free-programming-books/)
 - [免费计算机中文书籍](https://github.com/justjavac/free-programming-books-zh_CN)与[本站备份](/posts/免费中文编程书籍索引/)
 - [dblp计算机科学论文库](https://dblp.org/)
+- [小林coding](https://xiaolincoding.com/)
+- [上交飞跃手册](https://survivesjtu.github.io/SJTU-Application/#/)
+- [川大计软网自救手册](https://scu-cs-runner.github.io/SurviveSCUManual/)
+
 
 ## 书单
 ------
@@ -77,12 +82,26 @@ order: 4
 - [x] 《C和指针》
 - [x] 《C陷阱和缺陷》
 - [x] 《Think python》
-- [] 《Python网络爬虫权威指南》
+- [ ] 《Python网络爬虫权威指南》
 - [x] 《算法图解》
 - [x] 《大话数据结构》
-- [] 《C++ Primer》
+- [ ] 《C++ Primer》
 - [x] 《计算机科学导论》
 - [x] 《算法》（红皮书）
 - [x] 《C++语言程序设计教程》
-- [] 《Qt Creator快速入门》
+- [ ] 《Qt Creator快速入门》
+- [x] 《汇编语言》
+- [x] 《深入理解计算机系统》
+- [x] 《MySQL必知必会》
+- [x] 《计算机组成原理》
+- [x] 《数据结构，算法与应用》
+- [x] 《鸟哥的Linux私房菜》
+- [ ] 《人月神话》
+- [x] 《码农翻身》
+- [ ] 《30天自制操作系统》
+- [x] 《计算机网络自顶向下方法》
+- [x] 《PyTorch深度学习实战》
+- [ ] 《深度学习》
+- [ ] 《机器学习》
+- [ ] 《Java核心技术》
 
