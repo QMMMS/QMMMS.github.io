@@ -13,6 +13,8 @@ order: 4
 - [大连理工NAOSI成员博客汇总](https://github.com/NAOSI-DLUT/Blogs)
 - [OpenAI博客](https://openai.com/blog)
 - [G-Lab计算机视觉实验室](http://www.gwylab.com/index.html)
+- [Y神](https://sch01ar.github.io/)
+- [范神](http://tateishishima.site/)
 
 
 ## 摸鱼
