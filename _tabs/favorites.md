@@ -55,6 +55,7 @@ order: 4
 - [图吧工具箱](http://www.tbtool.cn/)
 - [CNKI翻译助手](https://dict.cnki.net/index#)
 - [上网](https://cdn.runba.cyou/)
+- 开源免费流程图应用Draw.io[软件](https://github.com/jgraph/drawio-desktop/releases)与[网页版](https://app.diagrams.net/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -106,4 +107,7 @@ order: 4
 - [ ] 《深度学习》
 - [ ] 《机器学习》
 - [ ] 《Java核心技术》
+- [ ] 《操作系统概念》
+- [ ] 《数据库系统概念》
+- [ ] 《程序员的自我修养——链接，装载与库》
 
