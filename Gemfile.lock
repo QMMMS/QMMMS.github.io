@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.1)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     colorator (1.1.0)
     concurrent-ruby (1.2.0)
@@ -13,8 +13,7 @@ GEM
     eventmachine (1.2.7)
     ffi (1.15.5)
     forwardable-extended (2.6.0)
-    google-protobuf (3.21.12-x86_64-darwin)
-    google-protobuf (3.21.12-x86_64-linux)
+    google-protobuf (3.21.12)
     html-proofer (3.19.4)
       addressable (~> 2.3)
       mercenary (~> 0.3)
@@ -53,7 +52,7 @@ GEM
       jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-theme-chirpy (5.4.0)
+    jekyll-theme-chirpy (5.6.1)
       jekyll (~> 4.3)
       jekyll-archives (~> 2.2)
       jekyll-paginate (~> 1.1)
@@ -71,11 +70,13 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    nokogiri (1.14.0-x86_64-darwin)
+    nokogiri (1.15.2-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.14.0-x86_64-linux)
+    nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
-    parallel (1.22.1)
+    nokogiri (1.15.2-x86_64-linux)
+      racc (~> 1.4)
+    parallel (1.23.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (5.0.1)
@@ -85,8 +86,10 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.5)
-    rouge (4.0.1)
+    rouge (4.1.2)
     safe_yaml (1.0.5)
+    sass-embedded (1.57.1-x64-mingw-ucrt)
+      google-protobuf (~> 3.21)
     sass-embedded (1.57.1-x86_64-darwin)
       google-protobuf (~> 3.21)
     sass-embedded (1.57.1-x86_64-linux-gnu)
@@ -98,7 +101,7 @@ GEM
       ethon (>= 0.9.0)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2022.7)
+    tzinfo-data (1.2023.3)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.4.2)
     wdm (0.1.1)
@@ -106,6 +109,7 @@ GEM
     yell (2.2.2)
 
 PLATFORMS
+  x64-mingw-ucrt
   x86_64-darwin-21
   x86_64-linux
 

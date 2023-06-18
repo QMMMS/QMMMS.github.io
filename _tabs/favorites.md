@@ -13,6 +13,7 @@ order: 4
 - [大连理工NAOSI成员博客汇总](https://github.com/NAOSI-DLUT/Blogs)
 - [OpenAI博客](https://openai.com/blog)
 - [G-Lab计算机视觉实验室](http://www.gwylab.com/index.html)
+- [咕咕鸽](https://nav.laoda.de/)
 - [Y神](https://sch01ar.github.io/)
 - [范神](http://tateishishima.site/)
 
@@ -56,12 +57,14 @@ order: 4
 - [CNKI翻译助手](https://dict.cnki.net/index#)
 - [上网](https://cdn.runba.cyou/)
 - 开源免费流程图应用Draw.io[软件](https://github.com/jgraph/drawio-desktop/releases)与[网页版](https://app.diagrams.net/)
+- [开源论坛flarum](https://flarum.org/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
 ------
 
 - [机器学习初学者](http://www.ai-start.com/)
+- [计算机保研](https://github.com/CS-BAOYAN)
 - [PyTorch中文教程/文档](https://pytorch.apachecn.org/#/)
 - [菜鸟教程](https://www.runoob.com/)
 - [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
