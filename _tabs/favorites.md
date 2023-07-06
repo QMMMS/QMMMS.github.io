@@ -65,6 +65,7 @@ order: 4
 
 - [机器学习初学者](http://www.ai-start.com/)
 - [计算机保研](https://github.com/CS-BAOYAN)
+- [托福、雅思、GRE](https://jackwire.github.io/)
 - [PyTorch中文教程/文档](https://pytorch.apachecn.org/#/)
 - [菜鸟教程](https://www.runoob.com/)
 - [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
