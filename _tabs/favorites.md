@@ -64,6 +64,7 @@ order: 4
 ------
 
 - [机器学习初学者](http://www.ai-start.com/)
+- [动手学深度学习](https://zh-v2.d2l.ai/chapter_preface/index.html)
 - [计算机保研](https://github.com/CS-BAOYAN)
 - [托福、雅思、GRE](https://jackwire.github.io/)
 - [小站托福模考](https://top.zhan.com/toefl/simulate/listentpo.html)
@@ -114,4 +115,4 @@ order: 4
 - [ ] 《Java核心技术》
 - [x] 《操作系统概念》
 - [ ] 《数据库系统概念》
-- [ ] 《程序员的自我修养——链接，装载与库》
+- [x] 《程序员的自我修养——链接，装载与库》
