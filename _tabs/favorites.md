@@ -49,6 +49,7 @@ order: 4
 - [抓包工具Wireshark](https://www.wireshark.org/)，[端口扫描工具Nmap](https://nmap.org/)，[路由跟踪工具PingPlotter](https://www.pingplotter.com/)
 - [在线图形计算器Desmos](https://www.desmos.com/calculator?lang=zh-CN)
 - [电脑remake](https://www.jikegou.net/)
+- [LISTARY随处搜索](https://www.listarypro.com/)
 - [云主机供应商DigitalOcean](https://www.digitalocean.com/)
 - [在线HTML转MD工具](https://tool.lu/markdown/)与[工具箱](https://tool.lu/)
 - [Chrome插件商店（国内）](https://chrome.zzzmh.cn/#/index)与[另一个](https://www.extfans.com/)与[Adblock Plus插件](https://chrome.zzzmh.cn/info/cfhdojbkjhnklbpkdaibdccddilifddb)
