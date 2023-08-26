@@ -36,14 +36,14 @@ order: 4
 ## 工具
 ------
 
-- [Markdown编辑器Typora](https://www.typoraio.cn/)
+- [Markdown编辑器Typora](https://www.typoraio.cn/)与[主题站](https://theme.typoraio.cn/)
 - [在线流程图思维导图ProcessOn](https://www.processon.com/)
 - [全平台云笔记flomo](https://flomoapp.com/)与[个人页](https://v.flomoapp.com/mine)
 - [微信公众平台](https://mp.weixin.qq.com/)与[微信排版markdown编辑器墨滴](https://www.mdnice.com/)
 - Jekyll的[Moonwalk主题Demo](https://www.abhinavsaxena.com/moonwalk/)与[Chirpy主题Demo](https://chirpy.cotes.page/)
 - [在线格式转换器Aconvert](https://www.aconvert.com/cn/)
 - [字符画生成](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)与[其他工具](http://patorjk.com/blog/software/)
-- [牛图网图床](https://niupic.com/)
+- [牛图网图床](https://niupic.com/)与[PicGo图床](https://www.picgo.net/?lang=zh-CN)
 - [基于JavaScript的开源可视化图表库Apache ECharts](https://echarts.apache.org/zh/index.html)
 - [GitHub学生包](https://education.github.com/pack)
 - [抓包工具Wireshark](https://www.wireshark.org/)，[端口扫描工具Nmap](https://nmap.org/)，[路由跟踪工具PingPlotter](https://www.pingplotter.com/)
