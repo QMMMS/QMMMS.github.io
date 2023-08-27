@@ -77,6 +77,7 @@ order: 4
 - [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
 - [上交生存手册](https://survivesjtu.gitbook.io/survivesjtumanual/)
 - [北大CS自学指南](https://csdiy.wiki/)
+- [清华大学计算机系课程攻略](https://rekcarc-tsc-uht.readthedocs.io/en/latest/index.html)
 - [免费计算机书籍](https://ebookfoundation.github.io/free-programming-books/)
 - [免费计算机中文书籍](https://github.com/justjavac/free-programming-books-zh_CN)与[本站备份](/posts/免费中文编程书籍索引/)
 - [dblp计算机科学论文库](https://dblp.org/)
