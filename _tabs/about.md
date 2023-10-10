@@ -25,7 +25,7 @@ hello👋，QMMMS的博客欢迎你👏
 - [写点题目](https://www.luogu.com.cn/user/574091#practice)
 - [深度学习理论](https://gitee.com/QMMMS/reading-notes/tree/main/%E5%90%B4%E6%81%A9%E8%BE%BE%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)与[PyTorch实践](https://gitee.com/QMMMS/py-torch-practice)
 - [HorizonMind小组成员](https://gitee.com/horizon-mind)
-- 写过C, C++, Java, Python, Objective-C, C#, Assembly, HTML, CSS, JavaScript, SQL ~~然而大部分忘光了~~
+- 写过C, C++, Java, Python, Objective-C, C#, Assembly, HTML, CSS, JavaScript, SQL, R, shell script ~~然而大部分忘光了~~
 
 诚惶诚恐，才疏学浅，不吝赐教！欢迎你找我来玩！👼
 

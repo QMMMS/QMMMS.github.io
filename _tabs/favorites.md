@@ -8,6 +8,7 @@ order: 4
 {: .prompt-info }
 
 ## 博客
+
 ------
 
 - [大连理工NAOSI成员博客汇总](https://github.com/NAOSI-DLUT/Blogs)
@@ -17,8 +18,8 @@ order: 4
 - [Y神](https://sch01ar.github.io/)
 - [范神](http://tateishishima.site/)
 
-
 ## 摸鱼
+
 ------
 
 - [神奇海螺试验场](https://lab.magiconch.com/)
@@ -34,6 +35,7 @@ order: 4
 - 知乎：[你都见过什么奇奇怪怪的网站？](https://www.zhihu.com/question/354444082/answer/1974818158)
 
 ## 工具
+
 ------
 
 - [Markdown编辑器Typora](https://www.typoraio.cn/)与[主题站](https://theme.typoraio.cn/)
@@ -59,9 +61,11 @@ order: 4
 - [上网](https://cdn.runba.cyou/)
 - 开源免费流程图应用Draw.io[软件](https://github.com/jgraph/drawio-desktop/releases)与[网页版](https://app.diagrams.net/)
 - [开源论坛flarum](https://flarum.org/)
+- [音频去人声](https://vocalremover.org/zh/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
+
 ------
 
 - [机器学习初学者](http://www.ai-start.com/)
@@ -85,8 +89,8 @@ order: 4
 - [上交飞跃手册](https://survivesjtu.github.io/SJTU-Application/#/)
 - [川大计软网自救手册](https://scu-cs-runner.github.io/SurviveSCUManual/)
 
-
 ## 书单
+
 ------
 
 - [x] 《C程序设计快速进阶大学教程》
@@ -118,3 +122,17 @@ order: 4
 - [x] 《操作系统概念》
 - [ ] 《数据库系统概念》
 - [x] 《程序员的自我修养——链接，装载与库》
+- [ ] 《统计学习导论——基于R应用》Gareth James 等
+- [ ] 《Java设计模式》
+- [ ] 《编译原理》陈意云 等
+- [ ] 《软件工程》朴勇 等
+- [ ] 《Vue.js设计与实现》霍春阳
+
+## 网课
+
+------
+
+- [ ] [李沐 动手学深度学习 PyTorch版](https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497)
+- [x] [吴恩达深度学习](https://www.bilibili.com/video/BV1FT4y1E74V)
+- [x] [Dr.Strang 线性代数 MIT](https://www.bilibili.com/video/BV1zx411g7gq)
+- [x] [老杜MySQL](https://www.bilibili.com/video/BV1Vy4y1z7EX/)
