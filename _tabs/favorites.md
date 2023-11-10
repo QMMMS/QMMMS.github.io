@@ -62,6 +62,11 @@ order: 4
 - 开源免费流程图应用Draw.io[软件](https://github.com/jgraph/drawio-desktop/releases)与[网页版](https://app.diagrams.net/)
 - [开源论坛flarum](https://flarum.org/)
 - [音频去人声](https://vocalremover.org/zh/)
+- [电脑录屏oCam](https://ocam.en.softonic.com/)
+- [阿里巴巴矢量图标库](https://www.iconfont.cn/)
+- [网站安全检查](https://web-check.xyz/)以及[其github页面](https://github.com/lissy93/web-check)
+- [蔚蓝档案标题生成器](https://tmp.nulla.top/ba-logo/)以及其[github页面](https://github.com/nulla2011/Bluearchive-logo)
+- [Canva可画ppt模板](https://www.canva.cn/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -136,3 +141,15 @@ order: 4
 - [x] [吴恩达深度学习](https://www.bilibili.com/video/BV1FT4y1E74V)
 - [x] [Dr.Strang 线性代数 MIT](https://www.bilibili.com/video/BV1zx411g7gq)
 - [x] [老杜MySQL](https://www.bilibili.com/video/BV1Vy4y1z7EX/)
+
+## 彩蛋
+
+------
+
+- 《葬送的芙莉莲》
+- 《无职转生》
+- 《鬼灭之刃》
+- 《骑马与砍杀：战团》
+- 《多娜多娜一起来干坏事吧》
+- 《赛博朋克：边缘跑者》
+- 《吊带袜天使》
