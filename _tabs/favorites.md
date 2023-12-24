@@ -67,6 +67,8 @@ order: 4
 - [网站安全检查](https://web-check.xyz/)以及[其github页面](https://github.com/lissy93/web-check)
 - [蔚蓝档案标题生成器](https://tmp.nulla.top/ba-logo/)以及其[github页面](https://github.com/nulla2011/Bluearchive-logo)
 - [Canva可画ppt模板](https://www.canva.cn/)
+- [Element Plus, Vue3的网页组件库](https://element-plus.org/zh-CN/#/zh-CN)
+- [玩玩语法树](https://www.antlr.org/)和[实验室](http://lab.antlr.org/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -127,7 +129,7 @@ order: 4
 - [x] 《操作系统概念》
 - [ ] 《数据库系统概念》
 - [x] 《程序员的自我修养——链接，装载与库》
-- [ ] 《统计学习导论——基于R应用》Gareth James 等
+- [x] 《统计学习导论——基于R应用》Gareth James 等
 - [ ] 《Java设计模式》
 - [ ] 《编译原理》陈意云 等
 - [ ] 《软件工程》朴勇 等
@@ -153,3 +155,12 @@ order: 4
 - 《多娜多娜一起来干坏事吧》
 - 《赛博朋克：边缘跑者》
 - 《吊带袜天使》
+- 《卡拉什尼科夫》
+- 《War Thunder》
+- 《上古卷轴5：天际》
+- 《吸血鬼幸存者》
+- 《Noita》
+- 《Celeste》
+- 《空洞骑士》
+- 《白箱》
+- 《冒牌天神》
