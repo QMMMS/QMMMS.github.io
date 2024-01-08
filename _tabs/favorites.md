@@ -30,6 +30,7 @@ order: 4
 - [灰机wiki](https://www.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5)
 - 国际象棋[chess.com](https://chess.com/)与[lichess](https://lichess.org/)
 - [电脑博物馆](http://www.compumuseum.com/)
+- [SCP基金会](http://scp-wiki-cn.wikidot.com/)
 - [程序员延寿指南](https://github.com/geekan/HowToLiveLonger)
 - 知乎：[有哪些能玩上一天的网站？](https://www.zhihu.com/question/380741546)
 - 知乎：[你都见过什么奇奇怪怪的网站？](https://www.zhihu.com/question/354444082/answer/1974818158)
@@ -69,6 +70,7 @@ order: 4
 - [Canva可画ppt模板](https://www.canva.cn/)
 - [Element Plus, Vue3的网页组件库](https://element-plus.org/zh-CN/#/zh-CN)
 - [玩玩语法树](https://www.antlr.org/)和[实验室](http://lab.antlr.org/)
+- [下载 bilibili 视频唧唧Down](http://client.jijidown.com/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -152,7 +154,7 @@ order: 4
 - 《葬送的芙莉莲》
 - 《无职转生》
 - 《鬼灭之刃》
-- 《骑马与砍杀：战团》
+- 《骑马与砍杀：战团》与[魔球](https://bbs.mountblade.com.cn/thread-1912155-1-1.html)
 - 《多娜多娜一起来干坏事吧》
 - 《赛博朋克：边缘跑者》
 - 《吊带袜天使》
