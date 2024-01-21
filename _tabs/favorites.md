@@ -71,6 +71,7 @@ order: 4
 - [Element Plus, Vue3的网页组件库](https://element-plus.org/zh-CN/#/zh-CN)
 - [玩玩语法树](https://www.antlr.org/)和[实验室](http://lab.antlr.org/)
 - [下载 bilibili 视频唧唧Down](http://client.jijidown.com/)
+- [DuckDuckGo](https://duckduckgo.com/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
