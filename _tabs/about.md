@@ -24,6 +24,11 @@ hello👋，QMMMS的博客欢迎你👏
 - [Jekyll与Github Pages建站](/posts/Jekyll与Github-pages建站/)，成果就是你现在看到的这个网页
 - [写点题目](https://www.luogu.com.cn/user/574091#practice)
 - [深度学习理论](https://gitee.com/QMMMS/reading-notes/tree/main/%E5%90%B4%E6%81%A9%E8%BE%BE%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)与[PyTorch实践](https://gitee.com/QMMMS/py-torch-practice)
+- 视听交互作用下的声景观审美偏好实验系统（DUT建艺学院合作项目，闭源）
+- 道路交通噪声感知下城市街道步行空间多环境场景的声舒适性评估系统（DUT建艺学院合作项目，闭源）
+- 多声源多场景综合感知下临道路商业步行街声景的舒适性评估系统（DUT建艺学院合作项目，闭源）
+- 基于多感官健康舒适性能的高校图书馆使用后评估及建筑环境综合分析系统（DUT建艺学院合作项目，闭源）
+- [微智护——基于WiFi感知的家庭看护/保障系统](https://github.com/saurlax/WiGuard)与[前端项目](https://github.com/saurlax/WiGuardWeb)
 - [HorizonMind小组成员](https://gitee.com/horizon-mind)
 - 写过C, C++, Java, Python, Objective-C, C#, Assembly, HTML, CSS, JavaScript, SQL, R, shell script ~~然而大部分忘光了~~
 
