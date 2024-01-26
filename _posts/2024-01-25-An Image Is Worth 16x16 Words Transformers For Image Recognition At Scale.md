@@ -1,5 +1,5 @@
 ---
-title: An Image Is Worth 16x16 Words Transformers For Image Recognition At Scale
+title: An Image Is Worth 16x16 Words： Transformers For Image Recognition At Scale
 date: 2024-01-25 8:21:00 +0800
 
 img_path: "/assets/img/posts/2024-01-25-An Image Is Worth 16x16 Words Transformers For Image Recognition At Scale"
