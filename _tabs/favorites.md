@@ -163,6 +163,7 @@ order: 4
 - 《卡拉什尼科夫》
 - 《莉可丽丝》
 - 《雨世界》
+- [Fireship](https://www.youtube.com/@Fireship)与[B站](https://search.bilibili.com/all?keyword=Fireship)
 - 《迷宫饭》
 - 《恶魔的崛起》
 - 《War Thunder》

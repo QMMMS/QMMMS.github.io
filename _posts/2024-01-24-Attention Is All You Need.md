@@ -42,6 +42,17 @@ encoder 和 decoder 的区别：encoder 一次性可以看全整个句子。i.e.
 
 decoder在做预测的时候 是没有输入的。Shifted right 指的是 decoder 在之前时刻的一些输出，作为此时的输入。一个一个往右移。
 
+**在做预测时，步骤如下：**
+
+1. 给 decoder 输入 encoder 对整个句子 embedding 的结果 和一个特殊的开始符号 </s>。decoder 将产生预测，在我们的例子中应该是 ”为”。
+2. 给 decoder 输入 encoder 的 embedding 结果和 “</s>为”，在这一步 decoder 应该产生预测 “什”。
+3. 给 decoder 输入 encoder 的 embedding 结果和 “</s>为什”，在这一步 decoder 应该产生预测 “么”。
+4. 给 decoder 输入 encoder 的 embedding 结果和 “</s>为什么”，在这一步 decoder 应该产生预测 “要”
+5. 给 decoder 输入 encoder 的 embedding 结果和 “</s>为什么要”，在这一步 decoder 应该产生预测 “工”。
+6. 给 decoder 输入 encoder 的 embedding 结果和 “</s>为什么要工”，在这一步 decoder 应该产生预测 “作”。
+7. 给 decoder 输入 encoder 的 embedding 结果和 “</s>为什么要工作”, decoder应该生成句子结尾的标记，decoder 应该输出 ”</eos>”。
+8. 然后 decoder 生成了 </eos>，翻译完成。
+
 ### 0.2、Encoder 的核心架构
 
 Nx：N个 Transformer 的 block 叠在一起。
@@ -276,9 +287,15 @@ $$
 
 ### 1.3、Masked Attention
 
-Masked 意思是遮盖，指避免在 t 时刻看到 t 时刻以后的输入。 具体指在计算权重的时候，t 时刻只用了 $v_1, ..., v_{t-1}$ 的结果，不要用到 t 时刻以后的内容。 
+Masked 意思是遮盖，指避免在 t 时刻看到 t 时刻以后的输入。 Mask只在Decoder端进行,目的是为了使得decoder不能看见未来的信息。具体指在计算权重的时候，t 时刻只用了 $v_1, ..., v_{t-1}$ 的结果，不要用到 t 时刻以后的内容。
 
-实现方法是把 t 时刻以后 $Q_t$ 和 $K_t$ 的值换成一个很大的负数，进入 softmax 后，权重为0。 再和 V 矩阵做矩阵乘法时，没看到 t 时刻以后的内容，只看 t 时刻之前的 key-value 对。
+Mask 非常简单，首先生成一个下三角全 0，上三角全为负无穷的矩阵（ t 时刻以后 $Q_t$ 和 $K_t$ 的值换成一个很大的负数），然后将其与 Scaled Scores 相加即可：
+
+![](smask.png)
+
+之后再做 softmax，就能将 - inf 变为 0，得到的这个矩阵即为每个字之间的权重。
+
+![](mask2.png)
 
 ### 1.4、Multi-head attention
 
@@ -401,7 +418,9 @@ key-value 来自 encoder 的输出。 query 是来自 decoder 里 masked multi-h
 
 ### 2.3、为什么是LayerNorm？
 
-时序数据中 样本长度可能不一样。BatchNorm需要补0，LayerNorm不需要， LayerNorm 更稳定，不管样本长还是短，均值和方差是在每个样本内计算。 
+时序数据中 样本长度可能不一样。BatchNorm需要补0，LayerNorm不需要， LayerNorm 更稳定，不管样本长还是短，均值和方差是在每个样本内计算。
+
+![](bln.png)
 
 层归一化的代码如下：
 
@@ -457,6 +476,7 @@ class FeedForward(nn.Module):
 需要加入时序信息。 如果使用RNN，把上一时刻的输出 作为下一个时刻的输入，来传递时序信息。 attention 在输入里面加入时序信息，叫做 positional encoding。
 
 如果一个词在嵌入层是一个长度为512的向量，那么使用一个长为512的向量来表示一个位置的数字，公式为：
+
 $$
 PE_{(pos,2i)} = sin(pos/10000^{2i/d_{model}})
 $$
@@ -466,6 +486,16 @@ PE_{(pos,2i+1)} = cos(pos/10000^{2i/d_{model}})
 $$
 
 将这个东西与词向量相加，就得到了含有时序信息的向量。
+
+相对位置即关注一个token与另一个token距离差几个token。比如：位置1和位置2的距离比位置3和位置10的距离更近，位置1和位置2与位置3和位置4都只相差1。这个公式为什么可以表示相对距离？
+
+可以证明：
+
+$$
+PE_{pos} \cdot PE_{pos+k} = \sum_{i=0}^{\frac{d}{2}-1}cos(\frac{k}{10000^{2\times i /d}})
+$$
+
+相乘后的结果为一个余弦的加和。这里影响值的因素就是k。如果两个token的距离越大，也就是k越大，根据余弦函数的性质可以知道，两个位置向量的相乘结果越小。这样的关系可以得到，如果两个token距离越远则乘积的结果越小。
 
 看一下嵌入表示层的代码示例：
 
