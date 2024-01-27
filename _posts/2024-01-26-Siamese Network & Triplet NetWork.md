@@ -63,7 +63,7 @@ class ContrastiveLoss(torch.nn.Module):
 
 对于伪孪生网络来说，两边可以是**不同的神经网络**（如一个是 lstm，一个是 cnn），并且如果是相同的神经网络，是**不共享参数**的。
 
-![](psn.jpg)
+![](PSN.jpg)
 
 孪生网络和伪孪生网络分别适用的场景：
 
