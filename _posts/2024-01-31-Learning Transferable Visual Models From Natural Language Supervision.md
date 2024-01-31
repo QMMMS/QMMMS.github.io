@@ -8,6 +8,8 @@ tags: [读论文]
 math: true
 ---
 
+> 读论文时间！
+>
 >多模态模型：**CLIP**
 >
 >参考：
@@ -17,6 +19,7 @@ math: true
 >- [【论文&模型讲解】CLIP](https://blog.csdn.net/Friedrichor/article/details/127272167)
 >- [CLIP 模型解读](https://zhuanlan.zhihu.com/p/646790176)
 >- [深度学习系列37：CLIP模型](https://blog.csdn.net/kittyzc/article/details/125167223)
+{: .prompt-info }
 
 ## 介绍
 
