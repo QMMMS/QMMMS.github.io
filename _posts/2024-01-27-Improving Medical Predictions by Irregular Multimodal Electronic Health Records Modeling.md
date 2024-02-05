@@ -4,7 +4,7 @@ date: 2024-01-27 18:21:00 +0800
 
 img_path: "/assets/img/posts/2024-01-27-Improving Medical Predictions by Irregular Multimodal Electronic Health Records Modeling"
 categories: [深度学习]
-tags: [读论文]
+tags: [读论文,医疗任务]
 math: true
 ---
 
