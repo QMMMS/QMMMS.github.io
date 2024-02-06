@@ -152,27 +152,24 @@ order: 4
 ------
 
 - 《狼与香辛料》
-- 《葬送的芙莉莲》
-- 《无职转生》
-- 《鬼灭之刃》
 - 《骑马与砍杀：战团》与[魔球](https://bbs.mountblade.com.cn/thread-1912155-1-1.html)
 - 《多娜多娜一起来干坏事吧》
-- 《憧憬成为魔法少女》
 - 《赛博朋克：边缘跑者》
 - 《吊带袜天使》
 - 《卡拉什尼科夫》
-- 《莉可丽丝》
 - 《雨世界》
 - [Fireship](https://www.youtube.com/@Fireship)与[B站](https://search.bilibili.com/all?keyword=Fireship)
-- 《迷宫饭》
 - 《恶魔的崛起》
 - 《War Thunder》
+- 《葬送的芙莉莲》
+- 《紫罗兰永恒花园》
+- 《A Dance of Fire and Ice》
+- [《RogueViz》](https://zenorogue.itch.io/rogueviz)
 - 《上古卷轴5：天际》
 - 《吸血鬼幸存者》
 - 《Noita》
 - 《Celeste》
 - 《空洞骑士》
 - 《白箱》
-- 《冒牌天神》
 - 《画中世界》
 - 《星际拓荒》
