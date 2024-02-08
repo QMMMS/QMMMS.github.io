@@ -4,7 +4,7 @@ date: 2024-01-16 08:21:00 +0800
 
 img_path: "/assets/img/posts/2024-01-16-SSDUT企业行：优刻得UCloud"
 categories: [经验与总结]
-tags: [dut, 总结, 经验, 企业行]
+tags: [dut, 经验, 企业行]
 ---
 
 ![](1.jpg)

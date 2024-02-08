@@ -2,7 +2,7 @@
 title: Jekyll与Github Pages建站
 date: 2023-01-27 14:50:00 +0800
 categories: [技术]
-tags: [github, jekyll]
+tags: [github]
 
 mermaid: true
 ---

@@ -2,7 +2,7 @@
 title: TensorBoard简单使用
 date: 2023-02-10 10:06:00 +0800
 categories: [深度学习]
-tags: [深度学习, pytorch, tensorboard]
+tags: [深度学习]
 
 img_path: "/assets/img/posts/2023-02-10-TensorBoard简单使用"
 math: true

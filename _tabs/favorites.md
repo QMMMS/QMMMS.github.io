@@ -72,6 +72,7 @@ order: 4
 - [玩玩语法树](https://www.antlr.org/)和[实验室](http://lab.antlr.org/)
 - [下载 bilibili 视频唧唧Down](http://client.jijidown.com/)
 - [DuckDuckGo](https://duckduckgo.com/)
+- [加速GitHub和Steam：Watt Toolkit](https://github.com/BeyondDimension/SteamTools)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -146,6 +147,8 @@ order: 4
 - [x] [吴恩达深度学习](https://www.bilibili.com/video/BV1FT4y1E74V)
 - [x] [Dr.Strang 线性代数 MIT](https://www.bilibili.com/video/BV1zx411g7gq)
 - [x] [老杜MySQL](https://www.bilibili.com/video/BV1Vy4y1z7EX/)
+- [x] [黑马Python](https://www.bilibili.com/video/BV1ex411x7Em)
+- [x] [小土堆Pytorch](https://www.bilibili.com/video/BV1hE411t7RN/)
 
 ## 彩蛋
 
