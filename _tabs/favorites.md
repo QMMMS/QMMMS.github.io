@@ -24,16 +24,8 @@ order: 4
 
 - [神奇海螺试验场](https://lab.magiconch.com/)
 - [小桑前端作品](http://xiaosang.net/#)
-- [crazygames](https://www.crazygames.com/)
-- [小日子过得很不错](https://aidn.jp/contents/)
-- [人生remake](https://liferestart.syaro.io/public/index.html)
-- [灰机wiki](https://www.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5)
 - 国际象棋[chess.com](https://chess.com/)与[lichess](https://lichess.org/)
 - [电脑博物馆](http://www.compumuseum.com/)
-- [SCP基金会](http://scp-wiki-cn.wikidot.com/)
-- [程序员延寿指南](https://github.com/geekan/HowToLiveLonger)
-- 知乎：[有哪些能玩上一天的网站？](https://www.zhihu.com/question/380741546)
-- 知乎：[你都见过什么奇奇怪怪的网站？](https://www.zhihu.com/question/354444082/answer/1974818158)
 
 ## 工具
 
@@ -149,6 +141,7 @@ order: 4
 - [x] [老杜MySQL](https://www.bilibili.com/video/BV1Vy4y1z7EX/)
 - [x] [黑马Python](https://www.bilibili.com/video/BV1ex411x7Em)
 - [x] [小土堆Pytorch](https://www.bilibili.com/video/BV1hE411t7RN/)
+- [x] [HuggingFace简明教程](https://www.bilibili.com/video/BV1a44y1H7Jc)
 
 ## 彩蛋
 
