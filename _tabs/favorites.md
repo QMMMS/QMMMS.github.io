@@ -125,11 +125,12 @@ order: 4
 - [x] 《操作系统概念》
 - [ ] 《数据库系统概念》
 - [x] 《程序员的自我修养——链接，装载与库》
-- [x] 《统计学习导论——基于R应用》Gareth James 等
+- [x] 《统计学习导论——基于R应用》*Gareth James 等*
 - [ ] 《Java设计模式》
-- [ ] 《编译原理》陈意云 等
-- [x] 《软件工程》朴勇 等
-- [ ] 《Vue.js设计与实现》霍春阳
+- [ ] 《编译原理》*陈意云 等*
+- [x] 《软件工程》*朴勇 等*
+- [ ] 《Vue.js设计与实现》*霍春阳*
+- [ ] 《大规模语言模型从理论到实践》*张奇 等*
 
 ## 网课
 
@@ -142,6 +143,7 @@ order: 4
 - [x] [黑马Python](https://www.bilibili.com/video/BV1ex411x7Em)
 - [x] [小土堆Pytorch](https://www.bilibili.com/video/BV1hE411t7RN/)
 - [x] [HuggingFace简明教程](https://www.bilibili.com/video/BV1a44y1H7Jc)
+- [ ] HuggingFace官方课程：[NLP](https://huggingface.co/learn/nlp-course/zh-CN/chapter1/1)
 
 ## 彩蛋
 
