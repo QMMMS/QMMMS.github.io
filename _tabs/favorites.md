@@ -143,7 +143,7 @@ order: 4
 - [x] [黑马Python](https://www.bilibili.com/video/BV1ex411x7Em)
 - [x] [小土堆Pytorch](https://www.bilibili.com/video/BV1hE411t7RN/)
 - [x] [HuggingFace简明教程](https://www.bilibili.com/video/BV1a44y1H7Jc)
-- [ ] HuggingFace官方课程：[NLP](https://huggingface.co/learn/nlp-course/zh-CN/chapter1/1)
+- [ ] HuggingFace官方课程：[NLP](https://huggingface.co/learn/nlp-course/zh-CN/chapter1/1)与[强化学习](https://huggingface.co/learn/deep-rl-course/unit0/introduction)
 
 ## 彩蛋
 
