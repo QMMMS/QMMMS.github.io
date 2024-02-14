@@ -4,7 +4,6 @@ date: 2024-01-26 20:21:00 +0800
 
 img_path: "/assets/img/posts/2024-01-26-Siamese Network & Triplet NetWork"
 categories: [深度学习]
-tags: [深度学习]
 math: true
 ---
 
