@@ -1,5 +1,5 @@
 ---
-title: 基于 LangChain 🦜️🔗 的知识增强生成
+title: LangChain 🦜️🔗 与知识增强生成
 date: 2024-02-20 16:21:00 +0800
 
 img_path: "/assets/img/posts/2024-02-20-LangChainDoc"
