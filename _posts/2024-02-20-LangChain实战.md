@@ -7,7 +7,7 @@ categories: [深度学习]
 tags: [实验]
 ---
 
-> 查看 [jupyter nootbook](https://gitee.com/horizon-mind/qmmms-py-torch-practice/blob/master/%E7%AC%94%E8%AE%B0/qms_23_LangChain%E5%AE%9E%E6%88%98.ipynb)
+> 查看 [jupyter notebook](https://gitee.com/horizon-mind/qmmms-py-torch-practice/blob/master/%E7%AC%94%E8%AE%B0/qms_23_LangChain%E5%AE%9E%E6%88%98.ipynb)
 {: .prompt-info }
 
 通常情况下，广泛使用的大模型是在大量公开可用的数据上进行预训练的，而构建在LLM之上的应用程序通常需要使用私有或领域特定的数据来增强这些模型。因此， LangChain的出现旨在为开发这类应用程序提供一个框架和支持。这个框架的目标是协助开 发者更容易地构建应用程序，利用LLM技术与自然语言进行交互。
