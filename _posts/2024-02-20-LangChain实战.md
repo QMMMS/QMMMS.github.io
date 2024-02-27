@@ -4,7 +4,7 @@ date: 2024-02-20 12:21:00 +0800
 
 img_path: "/assets/img/posts/2024-02-20-LangChain实战"
 categories: [深度学习]
-tags: [实验]
+tags: [实验,LLM]
 ---
 
 > 查看 [jupyter notebook](https://gitee.com/horizon-mind/qmmms-py-torch-practice/blob/master/%E7%AC%94%E8%AE%B0/qms_23_LangChain%E5%AE%9E%E6%88%98.ipynb)

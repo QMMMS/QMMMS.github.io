@@ -12,7 +12,6 @@ order: 4
 ------
 
 - [大连理工NAOSI成员博客汇总](https://github.com/NAOSI-DLUT/Blogs)
-- [咕咕鸽](https://nav.laoda.de/)
 - [Y神](https://sch01ar.github.io/)
 - [范神](http://tateishishima.site/)
 
@@ -30,25 +29,20 @@ order: 4
 ------
 
 - [Markdown编辑器Typora](https://www.typoraio.cn/)与[主题站](https://theme.typoraio.cn/)
-- [在线流程图思维导图ProcessOn](https://www.processon.com/)
 - [全平台云笔记flomo](https://flomoapp.com/)与[个人页](https://v.flomoapp.com/mine)
 - [微信公众平台](https://mp.weixin.qq.com/)与[微信排版markdown编辑器墨滴](https://www.mdnice.com/)
 - Jekyll的[Moonwalk主题Demo](https://www.abhinavsaxena.com/moonwalk/)与[Chirpy主题Demo](https://chirpy.cotes.page/)
 - [在线格式转换器Aconvert](https://www.aconvert.com/cn/)
 - [字符画生成](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)与[其他工具](http://patorjk.com/blog/software/)
 - [牛图网图床](https://niupic.com/)与[PicGo图床](https://www.picgo.net/?lang=zh-CN)
-- [基于JavaScript的开源可视化图表库Apache ECharts](https://echarts.apache.org/zh/index.html)
 - [GitHub学生包](https://education.github.com/pack)
 - [抓包工具Wireshark](https://www.wireshark.org/)，[端口扫描工具Nmap](https://nmap.org/)，[路由跟踪工具PingPlotter](https://www.pingplotter.com/)
 - [在线图形计算器Desmos](https://www.desmos.com/calculator?lang=zh-CN)
 - [电脑remake](https://www.jikegou.net/)
 - [LISTARY随处搜索](https://www.listarypro.com/)
-- [云主机供应商DigitalOcean](https://www.digitalocean.com/)
 - [在线HTML转MD工具](https://tool.lu/markdown/)与[工具箱](https://tool.lu/)
 - [Chrome插件商店（国内）](https://chrome.zzzmh.cn/#/index)与[另一个](https://www.extfans.com/)与[Adblock Plus插件](https://chrome.zzzmh.cn/info/cfhdojbkjhnklbpkdaibdccddilifddb)
-- [小狼毫输入法](https://rime.im/)
 - [图吧工具箱](http://www.tbtool.cn/)
-- [CNKI翻译助手](https://dict.cnki.net/index#)
 - [上网](https://cdn.runba.cyou/)
 - 开源免费流程图应用Draw.io[软件](https://github.com/jgraph/drawio-desktop/releases)与[网页版](https://app.diagrams.net/)
 - [开源论坛flarum](https://flarum.org/)
@@ -63,6 +57,7 @@ order: 4
 - [下载 bilibili 视频唧唧Down](http://client.jijidown.com/)
 - [DuckDuckGo](https://duckduckgo.com/)
 - [加速GitHub和Steam：Watt Toolkit](https://github.com/BeyondDimension/SteamTools)
+- [在线配音工具ttsmaker](https://ttsmaker.cn/)
 - [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
 
 ## 学习
@@ -72,7 +67,6 @@ order: 4
 - [机器学习初学者](http://www.ai-start.com/)
 - [动手学深度学习](https://zh-v2.d2l.ai/chapter_preface/index.html)
 - [计算机保研](https://github.com/CS-BAOYAN)
-- [托福、雅思、GRE](https://jackwire.github.io/)
 - [小站托福模考](https://top.zhan.com/toefl/simulate/listentpo.html)
 - [PyTorch中文教程/文档](https://pytorch.apachecn.org/#/)
 - [菜鸟教程](https://www.runoob.com/)
