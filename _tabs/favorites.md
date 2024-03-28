@@ -23,6 +23,7 @@ order: 4
 - [小桑前端作品](http://xiaosang.net/#)
 - 国际象棋[chess.com](https://chess.com/)与[lichess](https://lichess.org/)
 - [电脑博物馆](http://www.compumuseum.com/)
+- [前端Demo](https://gcat.cc/demo)
 
 ## 工具
 
@@ -79,6 +80,7 @@ order: 4
 - [清华大学计算机系课程攻略](https://rekcarc-tsc-uht.readthedocs.io/en/latest/index.html)
 - [免费计算机书籍](https://ebookfoundation.github.io/free-programming-books/)
 - [免费计算机中文书籍](https://github.com/justjavac/free-programming-books-zh_CN)与[本站备份](/posts/免费中文编程书籍索引/)
+- [PAT甲级思路](https://www.xjx100.cn/news/1135957.html)
 - [dblp计算机科学论文库](https://dblp.org/)
 - [小林coding](https://xiaolincoding.com/)
 - [上交飞跃手册](https://survivesjtu.github.io/SJTU-Application/#/)
