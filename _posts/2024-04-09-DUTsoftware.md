@@ -503,7 +503,7 @@ QPushButton:hover{color:white}
 
 **盒子模型**：使用样式表时，每个部件被看作拥有4个同心矩形的盒子，四个矩形的内容分别为内容(content)、填衬(padding)、边框(border)、边距(margin）。边距、边框宽度和填衬等属性的默认值都是0，这样四个矩形正好重叠。
 
-![](./img/qbox.png)
+![](qbox.png)
 
 **案例：单独设置某条边框的样式**
 
