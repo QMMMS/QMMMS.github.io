@@ -16,10 +16,10 @@ hello👋，QMMMS的博客欢迎你👏
 - [LangChain 🦜️🔗 与 知识库问答实践](https://qmmms.github.io/posts/langchain3/)
 - [算能杯——面向Stable Diffusion的图像提示语优化专项赛](https://qmmms.github.io/posts/%E7%AE%97%E8%83%BD%E6%9D%AF%E5%A4%8D%E7%9B%98/)
 - [HorizonMind小组成员](https://gitee.com/horizon-mind)
-- 视听交互作用下的声景观审美偏好实验系统（DUT建艺学院合作项目，闭源）
-- 道路交通噪声感知下城市街道步行空间多环境场景的声舒适性评估系统（DUT建艺学院合作项目，闭源）
-- 多声源多场景综合感知下临道路商业步行街声景的舒适性评估系统（DUT建艺学院合作项目，闭源）
-- 基于多感官健康舒适性能的高校图书馆使用后评估及建筑环境综合分析系统（DUT建艺学院合作项目，闭源）
+- [视听交互作用下的声景观审美偏好实验系统（DUT建艺学院合作项目，闭源）](https://qmmms.github.io/posts/DUTsoftware/)
+- [道路交通噪声感知下城市街道步行空间多环境场景的声舒适性评估系统（DUT建艺学院合作项目，闭源）](https://qmmms.github.io/posts/DUTsoftware/)
+- [多声源多场景综合感知下临道路商业步行街声景的舒适性评估系统（DUT建艺学院合作项目，闭源）](https://qmmms.github.io/posts/DUTsoftware/)
+- [基于多感官健康舒适性能的高校图书馆使用后评估及建筑环境综合分析系统（DUT建艺学院合作项目，闭源）](https://qmmms.github.io/posts/DUTsoftware/)
 - [微智护——基于WiFi感知的家庭看护/保障系统](https://github.com/saurlax/WiGuard)与[前端项目](https://github.com/saurlax/WiGuardWeb)
 - [基于Spring与Vue的学生大创管理系统](https://gitee.com/QMMMS/ipmsfcsv3)
 - [使用Unity引擎编写的Ruby's Adventure](https://gitee.com/QMMMS/ruby-adventure)
