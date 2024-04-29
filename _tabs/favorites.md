@@ -130,6 +130,7 @@ order: 4
 
 ------
 
+- [x] [线性代数的本质](https://www.bilibili.com/video/BV1ys411472E/)
 - [ ] [李沐 动手学深度学习 PyTorch版](https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497)
 - [x] [吴恩达深度学习](https://www.bilibili.com/video/BV1FT4y1E74V)
 - [x] [Dr.Strang 线性代数 MIT](https://www.bilibili.com/video/BV1zx411g7gq)
