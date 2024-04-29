@@ -7,7 +7,7 @@ categories: [技术]
 math: true
 ---
 
-> 整理自：[【官方双语/合集】线性代数的本质 - 系列合集](https://www.bilibili.com/video/BV1ys411472E/)
+> 整理自：[【官方双语/合集】线性代数的本质 - 系列合集](https://www.bilibili.com/video/BV1ys411472E?p=1)
 
 ## 向量
 

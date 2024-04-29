@@ -33,6 +33,7 @@ order: 4
 - [全平台云笔记flomo](https://flomoapp.com/)与[个人页](https://v.flomoapp.com/mine)
 - [微信公众平台](https://mp.weixin.qq.com/)与[微信排版markdown编辑器墨滴](https://www.mdnice.com/)
 - Jekyll的[Moonwalk主题Demo](https://www.abhinavsaxena.com/moonwalk/)与[Chirpy主题Demo](https://chirpy.cotes.page/)
+- [research rabbit](https://www.researchrabbitapp.com/home)
 - [在线格式转换器Aconvert](https://www.aconvert.com/cn/)
 - [字符画生成](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)与[其他工具](http://patorjk.com/blog/software/)
 - [牛图网图床](https://niupic.com/)与[PicGo图床](https://www.picgo.net/?lang=zh-CN)
@@ -130,7 +131,7 @@ order: 4
 
 ------
 
-- [x] [线性代数的本质](https://www.bilibili.com/video/BV1ys411472E/)
+- [x] [线性代数的本质](https://www.bilibili.com/video/BV1ys411472E?p=1)
 - [ ] [李沐 动手学深度学习 PyTorch版](https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497)
 - [x] [吴恩达深度学习](https://www.bilibili.com/video/BV1FT4y1E74V)
 - [x] [Dr.Strang 线性代数 MIT](https://www.bilibili.com/video/BV1zx411g7gq)
@@ -139,3 +140,4 @@ order: 4
 - [x] [小土堆Pytorch](https://www.bilibili.com/video/BV1hE411t7RN/)
 - [x] [HuggingFace简明教程](https://www.bilibili.com/video/BV1a44y1H7Jc)
 - [ ] HuggingFace官方课程：[NLP](https://huggingface.co/learn/nlp-course/zh-CN/chapter1/1)与[强化学习](https://huggingface.co/learn/deep-rl-course/unit0/introduction)
+- [ ] [CS231N计算机视觉](https://www.bilibili.com/video/BV1nJ411z7fe?p=1)
