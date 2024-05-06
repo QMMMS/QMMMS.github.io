@@ -20,6 +20,8 @@ math: true
 > - https://blog.csdn.net/qq_37541097/article/details/117691873
 > - https://b23.tv/gucpvt
 > - 《大规模语言模型从理论到实践》
+>
+> 在学习完之后，推荐参考[llm可视化](https://bbycroft.net/llm)的例子看看是否真正了解了每一步的计算过程。
 {: .prompt-info }
 
 由于RNN将前一个节点的输出作为下一个阶段输入，所以每次只能处理一个，不能并行处理所有节点。
