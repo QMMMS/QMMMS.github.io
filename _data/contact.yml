@@ -7,9 +7,9 @@
 #   type: twitter
 #   icon: 'fab fa-twitter'
 -
-  type: email
-  icon: 'fas fa-envelope'
-  noblank: true            # open link in current tab
+  type: gitbook
+  icon: 'fas fa-book'
+  url: 'https://qmmms.gitbook.io/note/'
 # -
 #   type: rss
 #   icon: 'fas fa-rss'
