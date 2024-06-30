@@ -53,22 +53,8 @@ order: 4
 - [玩玩语法树](http://lab.antlr.org/)
 - [下载 bilibili 视频唧唧Down](http://client.jijidown.com/)
 - [在线配音工具ttsmaker](https://ttsmaker.cn/)
-
-## 学习
-
-------
-
-- [机器学习初学者](http://www.ai-start.com/)
-- [动手学深度学习](https://zh-v2.d2l.ai/chapter_preface/index.html)
-- [小站托福模考](https://top.zhan.com/toefl/simulate/listentpo.html)
-- [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
-- [练练盲打](https://www.keybr.com/)
-- [常用LaTeX符号](http://mohu.org/info/symbols/symbols.htm)
-- [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
-- [PAT甲级思路](https://www.xjx100.cn/news/1135957.html)
 - [dblp计算机科学论文库](https://dblp.org/)
-- [小林coding](https://xiaolincoding.com/)
-- 计算机专业学习指南与思考：[1](https://survivesjtu.gitbook.io/survivesjtumanual/)、[2](https://scu-cs-runner.github.io/SurviveSCUManual/)、[3](https://rekcarc-tsc-uht.readthedocs.io/en/latest/index.html)、[4](https://csdiy.wiki/)
+
 
 ## 书单
 
@@ -110,12 +96,12 @@ order: 4
 - [ ] 《Vue.js设计与实现》*霍春阳*
 - [x] 《大规模语言模型从理论到实践》*张奇 等*
 
-## 网课
+## 网课与学习
 
 ------
 
 - [x] [线性代数的本质](https://www.bilibili.com/video/BV1ys411472E?p=1)
-- [ ] [李沐 动手学深度学习 PyTorch版](https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497)
+- [ ] [李沐 动手学深度学习 PyTorch版](https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497)与[文档](https://zh-v2.d2l.ai/chapter_preface/index.html)
 - [x] [吴恩达深度学习](https://www.bilibili.com/video/BV1FT4y1E74V)
 - [x] [Dr.Strang 线性代数 MIT](https://www.bilibili.com/video/BV1zx411g7gq)
 - [x] [老杜MySQL](https://www.bilibili.com/video/BV1Vy4y1z7EX/)
@@ -124,3 +110,14 @@ order: 4
 - [x] [HuggingFace简明教程](https://www.bilibili.com/video/BV1a44y1H7Jc)
 - [ ] HuggingFace官方课程：[NLP](https://huggingface.co/learn/nlp-course/zh-CN/chapter1/1)与[强化学习](https://huggingface.co/learn/deep-rl-course/unit0/introduction)
 - [x] [CS231N计算机视觉](https://www.bilibili.com/video/BV1nJ411z7fe?p=1)
+- [x] [机器学习初学者](http://www.ai-start.com/)
+- [x] [小站托福模考](https://top.zhan.com/toefl/simulate/listentpo.html)
+- [x] [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
+- [ ] [练练盲打](https://www.keybr.com/)
+- [ ] [常用LaTeX符号](http://mohu.org/info/symbols/symbols.htm)
+- [ ] [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
+- [x] [PAT甲级思路](https://www.xjx100.cn/news/1135957.html)
+- [ ] [小林coding](https://xiaolincoding.com/)
+- [ ] [二哥的Java进阶之路](https://www.javabetter.cn/)
+- [x] 计算机专业学习指南与思考：[1](https://survivesjtu.gitbook.io/survivesjtumanual/)、[2](https://scu-cs-runner.github.io/SurviveSCUManual/)、[3](https://rekcarc-tsc-uht.readthedocs.io/en/latest/index.html)、[4](https://csdiy.wiki/)
+
