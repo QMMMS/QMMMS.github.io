@@ -13,7 +13,6 @@ hello👋，QMMMS的博客欢迎你👏
 
 - [智库慧询：通过与微调大模型对话完成数据库分析](https://qmmms.github.io/posts/llm_database/)
 - [大创：基于深度学习的视频问答模型MSVQA](https://qmmms.github.io/posts/%E8%AE%AD%E7%BB%83MSVQA/)
-- [基于MIMIC-Ⅲ数据库进行多模态的医疗任务的研究](https://gitee.com/horizon-mind/ehr-mimic-iii)
 - [LangChain 🦜️🔗 与 知识库问答实践](https://qmmms.github.io/posts/langchain3/)
 - [算能杯——面向Stable Diffusion的图像提示语优化专项赛](https://qmmms.github.io/posts/%E7%AE%97%E8%83%BD%E6%9D%AF%E5%A4%8D%E7%9B%98/)
 - [HorizonMind小组成员](https://gitee.com/horizon-mind)

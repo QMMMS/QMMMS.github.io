@@ -35,7 +35,7 @@ order: 4
 - Jekyll的[Moonwalk主题Demo](https://www.abhinavsaxena.com/moonwalk/)与[Chirpy主题Demo](https://chirpy.cotes.page/)
 - [在线格式转换器Aconvert](https://www.aconvert.com/cn/)
 - [字符画生成](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
-- [GitHub学生包](https://education.github.com/pack)
+- [GitHub学生包](https://education.github.com/pack/offers)
 - [抓包工具Wireshark](https://www.wireshark.org/)，[端口扫描工具Nmap](https://nmap.org/)，[路由跟踪工具PingPlotter](https://www.pingplotter.com/)
 - [在线图形计算器Desmos](https://www.desmos.com/calculator?lang=zh-CN)
 - [电脑remake](https://www.jikegou.net/)
@@ -54,6 +54,7 @@ order: 4
 - [下载 bilibili 视频唧唧Down](http://client.jijidown.com/)
 - [在线配音工具ttsmaker](https://ttsmaker.cn/)
 - [dblp计算机科学论文库](https://dblp.org/)
+- [常用LaTeX符号](http://mohu.org/info/symbols/symbols.htm)
 
 
 ## 书单
@@ -114,7 +115,7 @@ order: 4
 - [x] [小站托福模考](https://top.zhan.com/toefl/simulate/listentpo.html)
 - [x] [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
 - [ ] [练练盲打](https://www.keybr.com/)
-- [ ] [常用LaTeX符号](http://mohu.org/info/symbols/symbols.htm)
+- [x] [SpringBoot+Vue速通](https://www.bilibili.com/video/BV1nV4y1s7ZN)
 - [ ] [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
 - [x] [PAT甲级思路](https://www.xjx100.cn/news/1135957.html)
 - [ ] [小林coding](https://xiaolincoding.com/)
