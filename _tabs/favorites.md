@@ -110,6 +110,8 @@ order: 4
 - [x] [小土堆Pytorch](https://www.bilibili.com/video/BV1hE411t7RN/)
 - [x] [HuggingFace简明教程](https://www.bilibili.com/video/BV1a44y1H7Jc)
 - [ ] HuggingFace官方课程：[NLP](https://huggingface.co/learn/nlp-course/zh-CN/chapter1/1)与[强化学习](https://huggingface.co/learn/deep-rl-course/unit0/introduction)
+- [x] [尚硅谷Spring](https://www.bilibili.com/video/BV1kR4y1b7Qc)
+- [x] [狂神docker](https://www.bilibili.com/video/BV1og4y1q7M4/)
 - [x] [CS231N计算机视觉](https://www.bilibili.com/video/BV1nJ411z7fe?p=1)
 - [x] [机器学习初学者](http://www.ai-start.com/)
 - [x] [小站托福模考](https://top.zhan.com/toefl/simulate/listentpo.html)

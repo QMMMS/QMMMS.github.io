@@ -291,6 +291,8 @@ public int updateTotCred(int totCred, String ID);
         @Result(column = "name",property = "name"),
         @Result(column = "dept_name",property = "deptName"),
         @Result(column = "tot_cred",property = "totCred"),
+        // 对于学生的 takes 属性，使用 ID 字段的值作为参数，调用 selectByStudentId 方法，执行关联查询，
+        // 获取学生的选课信息，并将结果映射到 takes 属性（类型为 List）。
         @Result(column = "ID",property = "takes",javaType = List.class,
                 many = @Many(select = "com.example.demo.mapper.TakeMapper.selectByStudentId"))
     }
@@ -935,7 +937,7 @@ export default {
 4. 用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。
 5. 服务器收到 session_id，找到前期保存的数据，由此得知用户的身份。
 
-如果是服务器集群，或者是跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session，针对此种问题一般有两种方案：
+客户端请求服务端，服务端会为这次请求开辟一块内存空间，这个对象就是session。但如果是服务器集群，或者是跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session，针对此种问题一般有两种方案：
 
 1. 一种解决方案是session 数据持久化，写入数据库或别的持久层。各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。
 2. 一种方案是服务器不再保存 session 数据，所有数据都保存在客户端，每次请求都发回服务器。Token认证就是这种方案的一个代表。
