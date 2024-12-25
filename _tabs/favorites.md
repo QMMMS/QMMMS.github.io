@@ -101,11 +101,12 @@ order: 4
 
 ------
 
-- [x] [线性代数的本质](https://www.bilibili.com/video/BV1ys411472E?p=1)
+- [x] [线性代数的本质](https://www.bilibili.com/video/BV1rs411k7ru)
 - [ ] [李沐 动手学深度学习 PyTorch版](https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497)与[文档](https://zh-v2.d2l.ai/chapter_preface/index.html)
 - [x] [吴恩达深度学习](https://www.bilibili.com/video/BV1FT4y1E74V)
 - [x] [Dr.Strang 线性代数 MIT](https://www.bilibili.com/video/BV1zx411g7gq)
 - [x] [老杜MySQL](https://www.bilibili.com/video/BV1Vy4y1z7EX/)
+- [x] [Vue3从入门到精通](https://www.bilibili.com/video/BV1Rs4y127j8)
 - [x] [黑马Python](https://www.bilibili.com/video/BV1ex411x7Em)
 - [x] [小土堆Pytorch](https://www.bilibili.com/video/BV1hE411t7RN/)
 - [x] [HuggingFace简明教程](https://www.bilibili.com/video/BV1a44y1H7Jc)
