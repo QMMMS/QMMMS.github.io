@@ -9,6 +9,21 @@ _也许我们能聊聊这些_
 
 hello👋，QMMMS的博客欢迎你👏
 
+![百度](/assets/img/about/baidu.png){: width="300" .right} 
+
+我大四期间实习于百度搜索质量效能组，工作包括：
+
+- 搜索AI大模型全流程自动化交付-效果评估测试服务
+- 搜索LGUI智能交付-基于codebert深度学习模型的代码分类
+- 搜索架构&策略监控系统优化的早期设计方案
+
+<br />
+<br />
+<br />
+<br />
+
+------
+
 ![大工软院](/assets/img/about/school.png){: width="300" .right} 
 
 我本科就读于大连理工大学软件学院，鼓捣过这些玩意：
