@@ -13,16 +13,16 @@ order: 4
 
 - [大连理工NAOSI成员博客汇总](https://github.com/NAOSI-DLUT/Blogs)
 - [Y神](https://sch01ar.github.io/)
-- [范神](http://tateishishima.site/)
+- [范神](https://tateishishima.site/)
 
 ## 摸鱼
 
 ------
 
 - [神奇海螺试验场](https://lab.magiconch.com/)
-- [小桑前端作品](http://xiaosang.net/#)
+- [小桑前端作品](https://xiaosang.net/#)
 - 国际象棋[chess.com](https://chess.com/)与[lichess](https://lichess.org/)
-- [电脑博物馆](http://www.compumuseum.com/)
+- [电脑博物馆](https://www.compumuseum.com/)
 - [前端Demo](https://gcat.cc/demo)
 
 ## 工具
@@ -34,14 +34,14 @@ order: 4
 - [微信公众平台](https://mp.weixin.qq.com/)与[微信排版markdown编辑器墨滴](https://www.mdnice.com/)
 - Jekyll的[Moonwalk主题Demo](https://www.abhinavsaxena.com/moonwalk/)与[Chirpy主题Demo](https://chirpy.cotes.page/)
 - [在线格式转换器Aconvert](https://www.aconvert.com/cn/)
-- [字符画生成](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+- [字符画生成](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
 - [GitHub学生包](https://education.github.com/pack/offers)
 - [抓包工具Wireshark](https://www.wireshark.org/)，[端口扫描工具Nmap](https://nmap.org/)，[路由跟踪工具PingPlotter](https://www.pingplotter.com/)
 - [在线图形计算器Desmos](https://www.desmos.com/calculator?lang=zh-CN)
 - [电脑remake](https://www.jikegou.net/)
 - [LISTARY随处搜索](https://www.listarypro.com/)
 - [在线HTML转MD工具](https://tool.lu/markdown/)与[工具箱](https://tool.lu/)
-- [图吧工具箱](http://www.tbtool.cn/)
+- [图吧工具箱](https://www.tbtool.cn/)
 - [上网](https://cdn.runba.cyou/)与[DuckDuckGo](https://duckduckgo.com/)
 - 开源免费流程图应用Draw.io[软件](https://github.com/jgraph/drawio-desktop/releases)与[网页版](https://app.diagrams.net/)
 - [音频去人声](https://vocalremover.org/zh/)
@@ -50,11 +50,11 @@ order: 4
 - [网站安全检查](https://web-check.xyz/)
 - [蔚蓝档案标题生成器](https://tmp.nulla.top/ba-logo/)与[福音戰士標題生成器](https://lab.magiconch.com/eva-title/) 
 - [Canva可画ppt模板](https://www.canva.cn/)
-- [玩玩语法树](http://lab.antlr.org/)
-- [下载 bilibili 视频唧唧Down](http://client.jijidown.com/)
+- [玩玩语法树](https://www.antlr.org/)
+- [下载 bilibili 视频唧唧Down](https://client.jijidown.com/)
 - [在线配音工具ttsmaker](https://ttsmaker.cn/)
 - [dblp计算机科学论文库](https://dblp.org/)
-- [常用LaTeX符号](http://mohu.org/info/symbols/symbols.htm)
+- [常用LaTeX符号](https://mohu.org/info/symbols/symbols.htm)
 
 
 ## 书单
@@ -114,10 +114,10 @@ order: 4
 - [x] [尚硅谷Spring](https://www.bilibili.com/video/BV1kR4y1b7Qc)
 - [x] [狂神docker](https://www.bilibili.com/video/BV1og4y1q7M4/)
 - [x] [CS231N计算机视觉](https://www.bilibili.com/video/BV1nJ411z7fe?p=1)
-- [x] [机器学习初学者](http://www.ai-start.com/)
+- [x] 机器学习初学者ai-start.com
 - [x] [小站托福模考](https://top.zhan.com/toefl/simulate/listentpo.html)
 - [x] [Git分支互动网页](https://learngitbranching.js.org/?locale=zh_CN)
-- [ ] [练练盲打](https://www.keybr.com/)
+- [x] [练练盲打](https://www.keybr.com/)
 - [x] [SpringBoot+Vue速通](https://www.bilibili.com/video/BV1nV4y1s7ZN)
 - [ ] [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
 - [x] [PAT甲级思路](https://www.xjx100.cn/news/1135957.html)
