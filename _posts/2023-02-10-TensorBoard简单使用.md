@@ -4,7 +4,7 @@ date: 2023-02-10 10:06:00 +0800
 categories: [深度学习]
 tags: [实验]
 
-img_path: "/assets/img/posts/2023-02-10-TensorBoard简单使用"
+media_subpath: "/assets/img/posts/2023-02-10-TensorBoard简单使用"
 math: true
 ---
 

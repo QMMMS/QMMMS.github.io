@@ -2,7 +2,7 @@
 title: 线性代数的本质
 date: 2024-04-29 12:21:00 +0800
 
-img_path: "/assets/img/posts/2024-04-29-Linear Algebra"
+media_subpath: "/assets/img/posts/2024-04-29-Linear Algebra"
 categories: [技术]
 math: true
 ---

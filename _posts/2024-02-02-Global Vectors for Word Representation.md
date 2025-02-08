@@ -2,7 +2,7 @@
 title: GloVe：Global Vectors for Word Representation
 date: 2024-02-02 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-02-Global Vectors for Word Representation"
+media_subpath: "/assets/img/posts/2024-02-02-Global Vectors for Word Representation"
 categories: [深度学习]
 tags: [读论文]
 math: true

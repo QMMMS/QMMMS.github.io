@@ -2,7 +2,7 @@
 title: Human Activity Recognition based on Wi-Fi CSI Data-A Deep Neural Network Approach
 date: 2024-04-23 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-04-23-HAR with CSI"
+media_subpath: "/assets/img/posts/2024-04-23-HAR with CSI"
 categories: [深度学习]
 tags: [读论文]
 math: true

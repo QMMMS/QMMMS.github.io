@@ -2,7 +2,7 @@
 title: Deep Residual Learning for Image Recognition
 date: 2024-01-31 12:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-31-Deep Residual Learning for Image Recognition"
+media_subpath: "/assets/img/posts/2024-01-31-Deep Residual Learning for Image Recognition"
 categories: [深度学习]
 tags: [读论文]
 math: true

@@ -2,7 +2,7 @@
 title: Generative Adversarial Nets
 date: 2024-02-02 15:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-02-Generative Adversarial Nets"
+media_subpath: "/assets/img/posts/2024-02-02-Generative Adversarial Nets"
 categories: [深度学习]
 tags: [读论文]
 math: true

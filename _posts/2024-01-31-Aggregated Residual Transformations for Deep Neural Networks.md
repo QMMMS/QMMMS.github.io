@@ -2,7 +2,7 @@
 title: Aggregated Residual Transformations for Deep Neural Networks
 date: 2024-01-31 16:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-31-Aggregated Residual Transformations for Deep Neural Networks"
+media_subpath: "/assets/img/posts/2024-01-31-Aggregated Residual Transformations for Deep Neural Networks"
 categories: [深度学习]
 tags: [读论文]
 math: true

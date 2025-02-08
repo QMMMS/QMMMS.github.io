@@ -6,7 +6,7 @@ author: qrsdz
 
 categories: [经验与总结]
 tags: [转载, 经验]
-img_path: "/assets/img/posts/2023-08-26-GCC、CMake、CMakelist、Make、Makefile、Ninja啥关系？一图讲透！"
+media_subpath: "/assets/img/posts/2023-08-26-GCC、CMake、CMakelist、Make、Makefile、Ninja啥关系？一图讲透！"
 ---
 
 > 转自微信，[原文链接](https://mp.weixin.qq.com/s/LqBjfLGtYUxW0ljwG_w4NA)

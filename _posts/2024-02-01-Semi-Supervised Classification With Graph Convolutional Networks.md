@@ -2,7 +2,7 @@
 title: Semi-Supervised Classification With Graph Convolutional Networks
 date: 2024-02-01 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-01-Semi-Supervised Classification With Graph Convolutional Networks"
+media_subpath: "/assets/img/posts/2024-02-01-Semi-Supervised Classification With Graph Convolutional Networks"
 categories: [深度学习]
 tags: [读论文]
 math: true

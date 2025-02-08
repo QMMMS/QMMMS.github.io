@@ -2,7 +2,7 @@
 title: Video Graph Transformer for Video Question AnsweringLarge Language Models
 date: 2024-02-23 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-23-Video Graph Transfomer"
+media_subpath: "/assets/img/posts/2024-02-23-Video Graph Transfomer"
 categories: [深度学习]
 tags: [读论文, 视频问答]
 math: true

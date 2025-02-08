@@ -2,7 +2,7 @@
 title: An Image Is Worth 16x16 Words： Transformers For Image Recognition At Scale
 date: 2024-01-25 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-25-An Image Is Worth 16x16 Words Transformers For Image Recognition At Scale"
+media_subpath: "/assets/img/posts/2024-01-25-An Image Is Worth 16x16 Words Transformers For Image Recognition At Scale"
 categories: [深度学习]
 tags: [读论文]
 math: true

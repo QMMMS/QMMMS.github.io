@@ -1,45 +1,53 @@
 #  The contact options.
 
--
-  type: github
-  icon: 'fab fa-github'
-# -
-#   type: twitter
-#   icon: 'fab fa-twitter'
--
-  type: gitbook
+- type: github
+  icon: "fab fa-github"
+
+# - type: twitter
+#   icon: "fa-brands fa-x-twitter"
+
+# - type: email
+#   icon: "fas fa-envelope"
+#   noblank: true # open link in current tab
+
+- type: gitbook
   icon: 'fas fa-book'
   url: 'https://qmmms.gitbook.io/note/'
-# -
-#   type: rss
-#   icon: 'fas fa-rss'
-#   noblank: true
 
-# Uncomment and complete the url below to enable more contact options
-# -
-#   type: mastodon
-#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
-# -
-#   type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
-# -
-#   type: stack-overflow
-#   icon: 'fab fa-stack-overflow'
-#   url:  ''                  # Fill with your stackoverflow homepage
-
--
-  type: gitee
+- type: gitee
   icon: 'fab fa-square-git'
   url:  'https://gitee.com/QMMMS'
 
--
-  type: weixin
+- type: weixin
   icon: 'fab fa-weixin'
   url: 'https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2NDgyNjY1Ng==&action=getalbum&album_id=2543018248246919170&scene=173&from_msgid=2247484157&from_itemidx=1&count=3&nolastread=1#wechat_redirect'
 
-# -
-#   type: bili
-#   icon: 'fab fa-bilibili'
-#   url:  'https://space.bilibili.com/85470209'
+
+# - type: rss
+#   icon: "fas fa-rss"
+#   noblank: true
+# Uncomment and complete the url below to enable more contact options
+#
+# - type: mastodon
+#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
+#   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
+#
+# - type: linkedin
+#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+#   url:  ''                  # Fill with your Linkedin homepage
+#
+# - type: stack-overflow
+#   icon: 'fab fa-stack-overflow'
+#   url:  ''                  # Fill with your stackoverflow homepage
+#
+# - type: bluesky
+#   icon: 'fa-brands fa-bluesky'
+#   url: ''                   # Fill with your Bluesky profile link
+#
+# - type: reddit
+#   icon: 'fa-brands fa-reddit'
+#   url: ''                   # Fill with your Reddit profile link
+#
+# - type: threads
+#   icon: 'fa-brands fa-threads'
+#   url: ''                   # Fill with your Threads profile link

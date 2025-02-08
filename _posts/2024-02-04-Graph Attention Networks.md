@@ -2,7 +2,7 @@
 title: Graph Attention Networks
 date: 2024-02-04 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-04-Graph Attention Networks"
+media_subpath: "/assets/img/posts/2024-02-04-Graph Attention Networks"
 categories: [深度学习]
 tags: [读论文]
 math: true

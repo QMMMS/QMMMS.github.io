@@ -2,7 +2,7 @@
 title: DUT软院与建艺学院合作项目回顾：软著申请与Qt技术
 date: 2024-04-09 12:21:00 +0800
 
-img_path: "/assets/img/posts/2024-04-09-DUTsoftware"
+media_subpath: "/assets/img/posts/2024-04-09-DUTsoftware"
 categories: [经验与总结]
 tags: [dut, 经验]
 ---

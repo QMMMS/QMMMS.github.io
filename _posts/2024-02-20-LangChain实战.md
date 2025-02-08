@@ -2,7 +2,7 @@
 title: LangChain 🦜️🔗 基础概念与实战
 date: 2024-02-20 12:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-20-LangChain实战"
+media_subpath: "/assets/img/posts/2024-02-20-LangChain实战"
 categories: [深度学习]
 tags: [实验,LLM]
 ---

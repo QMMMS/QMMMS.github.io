@@ -2,7 +2,7 @@
 title: Sentence-BERT： Sentence Embeddings using Siamese BERT-Networks
 date: 2024-01-27 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-27-Sentence-BERT Sentence Embeddings using Siamese BERT-Networks"
+media_subpath: "/assets/img/posts/2024-01-27-Sentence-BERT Sentence Embeddings using Siamese BERT-Networks"
 categories: [深度学习]
 tags: [读论文]
 math: true

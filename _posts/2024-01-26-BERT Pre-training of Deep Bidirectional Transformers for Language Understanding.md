@@ -2,7 +2,7 @@
 title: BERT： Pre-training of Deep Bidirectional Transformers for Language Understanding
 date: 2024-01-26 18:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-26-BERT Pre-training of Deep Bidirectional Transformers for Language Understanding"
+media_subpath: "/assets/img/posts/2024-01-26-BERT Pre-training of Deep Bidirectional Transformers for Language Understanding"
 categories: [深度学习]
 tags: [读论文]
 math: true

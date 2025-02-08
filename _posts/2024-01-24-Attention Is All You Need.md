@@ -2,7 +2,7 @@
 title: Attention Is All You Need
 date: 2024-01-24 18:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-24-Attention Is All You Need"
+media_subpath: "/assets/img/posts/2024-01-24-Attention Is All You Need"
 categories: [深度学习]
 tags: [读论文]
 math: true

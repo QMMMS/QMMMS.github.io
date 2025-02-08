@@ -2,7 +2,7 @@
 title: Multitask learning and benchmarking with clinical time series data
 date: 2024-01-23 18:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-23-Multitask learning and benchmarking with clinical time series data"
+media_subpath: "/assets/img/posts/2024-01-23-Multitask learning and benchmarking with clinical time series data"
 categories: [深度学习]
 tags: [读论文,医疗任务]
 math: true

@@ -2,7 +2,7 @@
 title: A Gentle Introduction to Graph Neural Networks
 date: 2024-01-31 18:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-31-A Brief Introduction to Graph Neural Networks"
+media_subpath: "/assets/img/posts/2024-01-31-A Brief Introduction to Graph Neural Networks"
 categories: [深度学习]
 tags: [读论文]
 math: true

@@ -2,7 +2,7 @@
 title: LangChain 🦜️🔗 与知识增强生成
 date: 2024-02-20 16:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-20-LangChainDoc"
+media_subpath: "/assets/img/posts/2024-02-20-LangChainDoc"
 categories: [深度学习]
 tags: [实验,LLM]
 ---

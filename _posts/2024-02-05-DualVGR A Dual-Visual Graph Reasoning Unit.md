@@ -2,7 +2,7 @@
 title: DualVGR： A Dual-Visual Graph Reasoning Unit
 date: 2024-02-05 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-02-05-DualVGR A Dual-Visual Graph Reasoning Unit"
+media_subpath: "/assets/img/posts/2024-02-05-DualVGR A Dual-Visual Graph Reasoning Unit"
 categories: [深度学习]
 tags: [读论文,视频问答]
 math: true

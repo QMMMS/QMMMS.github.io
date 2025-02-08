@@ -2,7 +2,7 @@
 title: How to Leverage Multimodal EHR Data for Better Medical Predictions?
 date: 2024-01-29 18:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-29-How to Leverage Multimodal EHR Data for Better Medical Predictions？"
+media_subpath: "/assets/img/posts/2024-01-29-How to Leverage Multimodal EHR Data for Better Medical Predictions？"
 categories: [深度学习]
 tags: [读论文,医疗任务]
 math: true

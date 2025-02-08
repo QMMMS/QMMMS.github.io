@@ -2,7 +2,7 @@
 title: Learning Transferable Visual Models From Natural Language Supervision
 date: 2024-01-31 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-31-Learning Transferable Visual Models From Natural Language Supervision"
+media_subpath: "/assets/img/posts/2024-01-31-Learning Transferable Visual Models From Natural Language Supervision"
 categories: [深度学习]
 tags: [读论文]
 math: true

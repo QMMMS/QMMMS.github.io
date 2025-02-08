@@ -2,7 +2,7 @@
 title: 如何使用Cheat Engine在经济学原理课的沙盘作业中刷分
 date: 2024-01-23 8:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-23-如何使用Cheat Engine在经济学原理课中的沙盘作业刷分"
+media_subpath: "/assets/img/posts/2024-01-23-如何使用Cheat Engine在经济学原理课中的沙盘作业刷分"
 categories: [技术]
 tags: [dut]
 ---

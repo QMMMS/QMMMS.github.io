@@ -2,7 +2,7 @@
 title: Siamese Network & Triplet NetWork
 date: 2024-01-26 20:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-26-Siamese Network & Triplet NetWork"
+media_subpath: "/assets/img/posts/2024-01-26-Siamese Network & Triplet NetWork"
 categories: [深度学习]
 math: true
 ---

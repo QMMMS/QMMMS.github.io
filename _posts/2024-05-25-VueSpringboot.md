@@ -2,7 +2,7 @@
 title: Vue+SpringBoot实现大创管理系统
 date: 2024-05-25 12:21:00 +0800
 
-img_path: "/assets/img/posts/2024-05-25-VueSpringboot"
+media_subpath: "/assets/img/posts/2024-05-25-VueSpringboot"
 categories: [经验与总结]
 tags: [经验]
 ---

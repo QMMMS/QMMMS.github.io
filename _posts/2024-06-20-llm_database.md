@@ -2,7 +2,7 @@
 title: 智库慧询：通过与微调大模型对话完成数据库分析
 date: 2024-06-20 12:21:00 +0800
 
-img_path: "/assets/img/posts/2024-06-20-llm_database"
+media_subpath: "/assets/img/posts/2024-06-20-llm_database"
 categories: [经验与总结]
 tags: [经验, LLM]
 ---

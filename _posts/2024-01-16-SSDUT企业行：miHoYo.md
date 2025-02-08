@@ -2,7 +2,7 @@
 title: SSDUT企业行：米哈游miHoYo
 date: 2024-01-16 20:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-16-SSDUT企业行：miHoYo"
+media_subpath: "/assets/img/posts/2024-01-16-SSDUT企业行：miHoYo"
 categories: [经验与总结]
 tags: [dut, 经验, 企业行]
 ---

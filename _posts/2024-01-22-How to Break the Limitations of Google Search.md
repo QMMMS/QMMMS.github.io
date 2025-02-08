@@ -2,7 +2,7 @@
 title: How to Break the Limitations of Google Search？
 date: 2024-01-22 11:21:00 +0800
 
-img_path: "/assets/img/posts/2024-01-22-2024-01-22-How to Break the Limitations of Google Search"
+media_subpath: "/assets/img/posts/2024-01-22-2024-01-22-How to Break the Limitations of Google Search"
 categories: [计算机网络]
 tags: []
 ---

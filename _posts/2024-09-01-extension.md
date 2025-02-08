@@ -2,7 +2,7 @@
 title: Big Picture of Flarum Extensions
 date: 2024-09-01 12:21:00 +0800
 
-img_path: "/assets/img/posts/2024-09-01-extension"
+media_subpath: "/assets/img/posts/2024-09-01-extension"
 categories: [经验与总结]
 tags: [经验, LLM]
 ---
