@@ -240,7 +240,7 @@ ResNet(
 
 可视化版本：
 
-<img src="Feb26_19-23-09_WIN-2PPMTKONCVS.png" style="zoom:50%;" />
+![](Feb26_19-23-09_WIN-2PPMTKONCVS.png)
 
 其中，一个基本模块：
 

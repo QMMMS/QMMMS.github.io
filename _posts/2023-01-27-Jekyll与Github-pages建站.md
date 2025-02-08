@@ -666,6 +666,6 @@ order: 5
 ---
 ```
 
-调整order和icon。icon去[Font Awesome Icons](http://www.fontawesome.com.cn/)找。然后修改`_data/locales/en.yml`和`_data/locales/zh-CN.yml`，在`tabs:`下添加`links: Links`和`links: 友链`，以适配中英文。
+调整order和icon。icon去[Font Awesome Icons](https://www.fontawesome.com.cn/)找。然后修改`_data/locales/en.yml`和`_data/locales/zh-CN.yml`，在`tabs:`下添加`links: Links`和`links: 友链`，以适配中英文。
 
 
