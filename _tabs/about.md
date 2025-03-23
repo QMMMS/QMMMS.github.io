@@ -53,4 +53,3 @@ hello👋，QMMMS的博客欢迎你👏
 
 - [gitee主页🏠](https://gitee.com/QMMMS)
 - [github主页🏠](https://github.com/QMMMS)
-- QQ邮箱📮：1595168717@qq.com
