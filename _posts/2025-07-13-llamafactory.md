@@ -272,7 +272,7 @@ Loading checkpoint shards: 100%|██████████| 5/5 [00:04<00:00
 - **模型收敛性**: 训练集最终损失（`train_loss`）为0.0185，这是一个极低的值，表明模型在训练数据上已充分收敛。
 - **泛化能力**: 验证集损失（`eval_loss`）为0.0914。较高于`train_loss`，不过尚处于正常现象
 
-训练后，默认在`saves`文件夹下，会保存训练的`checkpoint`，以及训练结果等文件。注意我们保存的只是 adapter 权重，并不包括大模型原本的权重，后续推理时需要同时加载原本大模型和我们训练的 adapter。
+训练后，默认在`saves`文件夹下，会保存训练的`checkpoint`，以及训练结果等文件。注意我们保存的只是 adapter 权重，并不包括大模型原本的权重（对于一个7B VLM，典型体积为14GB，对应的LoRA适配器通常为几十到几百MB），后续推理时需要同时加载原本大模型和我们训练的 adapter。
 
 在`tensorboard`中，我们可以随时追踪训练参数，如下
 
@@ -308,4 +308,140 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 python -u /data/LLaMA-Factory/scripts/vllm_infer.py
     --save_name pred.json
 ```
 
-命令比较简单，使用 LLaMA-Factory 提供的示例脚本 `vllm_infer.py`，利用4个GPU（`tensor_parallel_size: 4`）对测试集`my_test`进行推理。输出的文件 `pred.json` 中，每一行都是 json 格式的完整回答过程。后续可通过编写简单的Python脚本，解析输出文件并计算准确率（Precision）、召回率（Recall）等业务指标，从而对模型性能进行量化评估。
+命令比较简单，使用 LLaMA-Factory 提供的示例脚本 `vllm_infer.py`，利用4个GPU（`tensor_parallel_size: 4`）对测试集`my_test`进行推理。输出的文件 `pred.json` 中，每一行都是 json 格式的完整回答过程。
+
+通过观察日志，我们可以看到推理过程中的关键信息：
+
+```
+INFO 07-09 12:57:00 [__init__.py:239] Automatically detected platform cuda.
+[INFO|tokenization_utils_base.py:2058] 2025-07-09 12:57:01,654 >> loading file vocab.json......
+[INFO|tokenization_utils_base.py:2323] 2025-07-09 12:57:01,951 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[INFO|image_processing_base.py:379] 2025-07-09 12:57:01,952 >> loading configuration file /data/modelscope/Qwen2___5-VL-7B-Instruct/preprocessor_config.json
+[INFO|image_processing_base.py:434] 2025-07-09 12:57:01,954 >> Image processor Qwen2VLImageProcessor {...
+[INFO|processing_utils.py:876] 2025-07-09 12:57:02,670 >> Processor Qwen2_5_VLProcessor:...
+tokenizer: Qwen2TokenizerFast(name_or_path='/root/linminmin/modelscope/Qwen2___5-VL-7B-Instruct', vocab_size=151643, model_max_length=131072...
+[INFO|2025-07-09 12:57:02] llamafactory.data.loader:143 >> Loading dataset my_test...
+
+training example:
+<|im_start|>system
+你是一个视觉分类任务专家。请根据以下要求判断图片是否满足要求。<|im_end|>
+<|im_start|>user
+<|vision_start|><|image_pad|><|vision_end|>判断以上图片是否满足要求：
+1. 只存在正方体、圆柱、立体圆环、五星徽章、台灯状立体，不能出现其他物体
+2. 正方体与圆柱位于前方，横向排列，面积大于1m*1m
+3. 五星徽章需放在立体圆环里面
+4. 左上角水印，展示每个物体数量，需要和图片中物体对应
+5. 左下角水印，展示台灯状立体在图片中的位置，需要和图片中物
+6. 右上角水印，为正方体与圆柱的数量加和，需要和图片中物体对应
+7. 右下角水印，为五星徽章和立体圆环的数量乘积，需要和图片中物体对应
+请只输出如下格式："满足要求", 或 "不满足要求"。不需要额外解释。请严格按照格式输出，否则判为无效答案。<|im_end|>
+<|im_start|>assistant
+
+labels:
+符合要求<|im_end|>
+```
+
+- **环境与组件加载**：日志确认了CUDA环境，并成功加载了Qwen2.5-VL模型所需的`Tokenizer`（文本分词器）和`Image Processor`（图像处理器）用于多模态任务。
+- **数据格式验证**：日志中的`training example`展示了一个经过模板化处理的样本，其输入结构复杂，包含了多轮对话上下文以及`<|vision_start|><|image_pad|><|vision_end|>`等用于表征图像信息的特殊Token。与训练不同的是没有给出 assistant 的具体内容
+
+下一个阶段展示了vLLM的启动过程
+
+```
+INFO 07-09 12:57:15 [config.py:1519] Defaulting to use mp for distributed inference
+INFO 07-09 12:57:15 [llm_engine.py:241] Initializing a V0 LLM engine (v0.8.2) with config:...
+[1;36m(VllmWorkerProcess pid=103728)[0;0m INFO 07-09 12:57:20 [multiproc_worker_utils.py:225] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=103728)[0;0m INFO 07-09 12:57:21 [cuda.py:291] Using Flash Attention backend.
+[1;36m(VllmWorkerProcess pid=103728)[0;0m INFO 07-09 12:57:22 [pynccl.py:69] vLLM is using nccl==2.21.5
+INFO 07-09 12:57:22 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /root/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+INFO 07-09 12:57:22 [shm_broadcast.py:259] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], ...
+```
+
+- `mp` 指的是Python的**多进程（`multiprocessing`）**模块，用于进行单机多卡（Single-Node, Multi-GPU）的分布式推理
+- `Using Flash Attention backend`表明引擎已启用Flash Attention，一种I/O感知的注意力算法，可显著降低显存占用并加速计算。同时，`vLLM is using nccl`表明底层的多GPU通信依赖于高性能的NVIDIA NCCL库。
+- `GPU P2P` 指的是**GPU间的点对点通信（Peer-to-Peer Communication）**。这是一种允许一个GPU直接读写同一台服务器上另一个GPU显存的技术。**核心作用是极大地提升GPU之间数据交换的速度和效率**。在张量并行（Tensor Parallelism）等需要频繁进行跨GPU数据同步的场景中（例如，All-Reduce操作），P2P通信至关重要。它避免了传统通信方式中数据需要先从GPU显存（VRAM）拷贝到CPU内存（RAM），再从CPU内存拷贝到目标GPU显存的低效路径。主要是通过**NVIDIA的NVLink**这种高速互联总线，或在较低速情况下通过PCIe总线。vLLM在首次启动时会检测系统中GPU之间的P2P拓扑关系（哪些GPU对之间可以进行P2P通信），并将这个结果缓存下来。后续启动时直接读取缓存，可以跳过耗时的检测过程，加快初始化速度。
+- `vLLM message queue communication` 基于**消息队列**在主进程和多个工人进程之间传递指令和数据
+
+```
+[1;36m(VllmWorkerProcess pid=103728)[0;0m INFO 07-09 12:57:22 [parallel_state.py:954] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1
+INFO 07-09 12:57:22 [model_runner.py:1110] Starting to load model /data/modelscope/Qwen2___5-VL-7B-Instruct...
+[1;36m(VllmWorkerProcess pid=103728)[0;0m INFO 07-09 12:57:22 [config.py:3243] cudagraph sizes specified by model runner...
+
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:00<00:00,  5.40it/s]
+
+WARNING 07-09 12:57:23 [models.py:478] Regarding multimodal models, vLLM currently only supports adding LoRA to language model, visual.patch_embed.proj will be ignored.
+[1;36m(VllmWorkerProcess pid=103728)[0;0m INFO 07-09 12:57:23 [punica_selector.py:18] Using PunicaWrapperGPU.
+INFO 07-09 12:57:24 [model_runner.py:1146] Model loading took 4.0323 GB and 1.217729 seconds
+```
+
+- **`world size` (全局大小)**: 指参与本次分布式任务的总进程数，在深度学习中通常等同于总GPU数量。此日志中 `world size 4` 表明任务正在使用4个GPU。
+- **`DP` (Data Parallelism, 数据并行)**: 在每个GPU上保留一份完整的模型副本，并将输入数据的批次（Batch）切分给不同的GPU。这是最常见的并行方式，旨在提升训练和推理的吞吐量。`DP rank 0` 表示所有4个GPU同属于一个数据并行组。
+- **`PP` (Pipeline Parallelism, 流水线并行)**: 将模型的不同**层（Layers）**分布在不同的GPU上，形成一个计算流水线。适用于模型巨大、单卡无法容纳其所有层的情况。`PP rank 0` 表示没有启用流水线并行。
+- **`TP` (Tensor Parallelism, 张量并行)**: 将模型内部的巨大权重矩阵（如Transformer中的自注意力或MLP层）**沿特定维度切分**到不同的GPU上。各GPU协同完成一次矩阵运算。这是处理超大模型的关键技术。`TP rank 1` 表示当前这个工人进程（`rank 1`）在张量并行维度上的索引是1。
+- 该日志明确指出，本次推理采用了**纯张量并行**策略，将一个模型分布在4个GPU上执行（`TP=4, DP=1, PP=1`）后续可以看到，模型权重分配之后，每个GPU只需加载4GB左右
+- `CUDA Graph` 是NVIDIA提供的一项性能优化技术，旨在减少重复计算任务中的CPU开销。**原理**: 在典型的GPU计算中，CPU需要不断地向GPU提交一个个独立的计算任务（Kernel Launch）。当任务流固定但需要大量重复执行时，这种CPU到GPU的提交开销会成为瓶颈。CUDA Graph允许我们将一整串的GPU操作**捕获（Capture）**成一个静态的计算图。之后，CPU只需发送一个“执行此图”的命令，GPU便能以极低的CPU开销连续执行整个操作序列。日志表示表示vLLM正在为一系列预设的输入序列长度（`sizes`）创建并缓存CUDA Graph。当后续遇到与这些长度匹配的推理请求时，vLLM可以直接调用对应的、预编译好的计算图，从而大幅提升执行效率，这对于提升LLM服务的吞吐量至关重要。
+- vLLM提示其当前的LoRA实现无法作用于视觉模块的某些特定层（`visual.patch_embed.proj`）。
+- `Punica` 是vLLM中用于**高效服务多个LoRA适配器**的专用计算内核。它能将使用不同LoRA适配器的请求智能地组合在一个批次中，并在GPU上高效地执行，避免了朴素实现中因权重切换带来的巨大开销。
+
+```
+INFO 07-09 12:57:45 [worker.py:267] Memory profiling takes 20.40 seconds
+INFO 07-09 12:57:45 [worker.py:267] the current vLLM instance can use total_gpu_memory (79.33GiB) x gpu_memory_utilization (0.90) = 71.39GiB
+INFO 07-09 12:57:45 [worker.py:267] model weights take 4.03GiB; non_torch_memory takes 1.39GiB; PyTorch activation peak memory takes 0.32GiB; the rest of the memory reserved for KV Cache is 65.65GiB.
+INFO 07-09 12:57:45 [executor_base.py:111] # cuda blocks: 307335, # CPU blocks: 18724
+INFO 07-09 12:57:45 [executor_base.py:116] Maximum concurrency for 3072 tokens per request: 1600.70x
+```
+
+- `KV Cache` 是 **Key-Value Cache** 的缩写，即“键值缓存”。核心作用是**避免重复计算，从而极大地加速文本生成过程**。
+- 在Transformer的自注意力机制中，为了生成下一个Token，模型需要计算当前Token与**所有**前面已生成Token之间的关系。这个计算依赖于每个Token的Key(K)和Value(V)向量。如果没有KV缓存，每生成一个新Token，都需要重新计算前面所有Token的K和V向量，这将带来巨大的计算浪费。 
+- KV缓存机制会将已经计算过的Token的K和V向量**存储（缓存）在GPU显存中**。在生成下一个新Token时，模型只需计算这个新Token的K、V向量，并将其追加到缓存中，然后利用全部缓存的K、V向量进行注意力计算即可。这使得每一步生成的计算复杂度从`O(n^2)`降低到了`O(n)`。
+- KV缓存的大小与 `批处理大小 × 序列长度 × 模型隐藏层维度 × 层数` 成正比。对于长序列、大批量的推理任务，KV缓存所占用的显存甚至会超过模型权重本身。
+- `cuda blocks` 和 `CPU blocks`是vLLM独创的内存管理系统——**PagedAttention**——中的基本内存分配单元。PagedAttention借鉴了操作系统中虚拟内存和分页的思想，将GPU显存划分为许多个固定大小的、非连续的物理块（blocks）。
+- `cuda blocks: 307335`: 指vLLM在预留的65.65GiB的GPU显存中，成功**划分出了307,335个物理内存块**。这些块将用于存储正在被GPU积极计算的请求的KV缓存。当一个请求到来时，vLLM会按需为其分配若干个不一定连续的block来存储其KV缓存数据。
+- `CPU blocks: 18724`: 指vLLM在CPU主存（RAM）中预留的、用于**交换（Swapping）**的内存块池。当GPU显存占满时，vLLM可以将一些被挂起或优先级较低的请求的KV缓存从GPU块中“换出”到CPU块中。当该请求需要再次被处理时，再将其“换入”回GPU块。这个机制使得vLLM能够支持远超物理显存容量的并发请求数，极大地提升了系统的总吞吐量。
+- 在当前配置下，如果所有进入系统的请求**其输入加输出的总长度恰好都是3072个Token**，那么系统所拥有的KV缓存（65.65GiB）理论上最多可以同时支持约**1600个**这样的并发请求。即`总可用Token容量 / 单个请求所需Token容量`
+- **总可用Token容量**: 等于 `总CUDA块数 × 每个块能容纳的Token数`。vLLM中每个block的大小是固定的（例如，可以容纳16个Token）。 `总容量 ≈ 307,335 blocks × 16 tokens/block ≈ 4,917,360 tokens`
+- **单个请求所需Token容量**: 日志中给出的场景是 `3072 tokens per request`。
+- **计算并发数**: `4,917,360 / 3072 ≈ 1600.70`
+
+```
+Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:25<00:00,  1.35it/s]
+INFO 07-09 12:58:14 [custom_all_reduce.py:229] Registering 1995 cuda graph addresses
+INFO 07-09 12:58:20 [model_runner.py:1570] Graph capturing finished in 32 secs, took 2.74 GiB
+INFO 07-09 12:58:20 [llm_engine.py:447] init engine (profile, create kv cache, warmup model) took 55.88 seconds
+
+Processed prompts: 100%|██████████| 380/380 [01:44<00:00,  3.63it/s, est. speed input: 6859.72 toks/s, output: 10.88 toks/s]
+INFO 07-09 13:01:17 [multiproc_worker_utils.py:137] Terminating local vLLM worker processes
+```
+
+- 在CUDA Graph捕获中，“shape”可以理解为一种特定形态的推理请求批次，主要由批次内的请求数量和各个请求的序列长度等因素决定。日志中的`35/35`表明vLLM正在为35种预设的、有代表性的“shape”进行计算图录制。其核心作用是**最大程度地减少CPU到GPU的调度开销，从而提升推理速度和吞吐量**。
+- 在常规的GPU计算中，CPU需要逐一向GPU发出成千上万个独立的计算指令（Kernel Launch）。对于LLM推理这样计算模式相对固定的任务，这种重复的指令分发会成为性能瓶颈。 CUDA Graph技术允许将这一整串的GPU操作序列（从数据拷贝到矩阵运算再到通信）一次性地“录制”下来，形成一个静态的、完整的计算图。在实际推理时，当遇到与已录制“shape”相匹配的请求批次，CPU只需发送一个“执行XX号计算图”的单一指令，GPU即可在内部高效地完成整个复杂流程，极大地降低了CPU的负担和调度延迟。
+- 多卡通信地址注册是CUDA Graph在**多GPU张量并行（Tensor Parallelism）**环境下正常工作的一个必要的底层步骤。它正在为GPU间的通信操作（如`All-Reduce`）所涉及的内存地址进行“注册”。确保在静态的计算图中，多GPU之间的通信能够正确、高效地发生。
+- 由于CUDA Graph是一个被“录制”好的静态流程，图中所有操作涉及的内存地址都必须是预先确定的。在张量并行中，一个计算步骤（如MLP层）的完成需要多个GPU交换各自的计算结果。这个`Registering ... addresses`的过程，就是告诉CUDA运行时系统和通信库（NCCL）：“当执行这些预录制好的计算图时，请在GPU-A的地址X和GPU-B的地址Y之间进行数据交换”。 日志中的`1995`代表了在所有35个被捕获的计算图中，需要为跨GPU通信而锁定的内存地址总数。这是确保vLLM的`custom_all_reduce`（自定义高效通信算子）能够在CUDA Graph模式下无误运行的关键。
+
+后续可通过编写简单的Python脚本，解析输出文件并计算准确率（Precision）、召回率（Recall）等业务指标，从而对模型性能进行量化评估。
+
+## 关于图像
+
+在推理时，如果放入过多图像，日志中会产生如下 warning
+
+```
+WARNING 07-09 12:57:25 [model_runner.py:1296] Computed max_num_seqs (min(256, 5120 // 278528)) to be less than 1. Setting it to the minimum value of 1.
+[1;36m(VllmWorkerProcess pid=103737)[0;0m Token indices sequence length is longer than the specified maximum sequence length for this model (278528 > 131072). Running this sequence through the model will result in indexing errors
+[1;36m(VllmWorkerProcess pid=103728)[0;0m WARNING 07-09 12:57:42 [profiling.py:222] The sequence length used for profiling (max_num_batched_tokens / max_num_seqs = 5120) is too short to hold the multi-modal embeddings in the worst case (278528 tokens in total, out of which {'image': 245760, 'video': 32768} are reserved for multi-modal embeddings). This may cause certain multi-modal inputs to fail during inference, even when the input text is short. To avoid this, you should increase `max_model_len`, reduce `max_num_seqs`, and/or reduce `mm_counts`.
+```
+
+- 来自数据集的某个样本，在经过预处理后，其最终的输入序列长度达到了 **278,528个Token**，而Qwen2.5-VL模型架构支持的最大序列长度（`max_position_embeddings`）仅为 **131,072个Token**。
+- `max_num_seqs` 指vLLM引擎估算其在当前硬件和配置下，能够**同时处理（并发）的最大请求数量**。这里解释一下 (min(256, 5120 // 278528))。
+- `5120`: 这个值对应日志中的`max_num_batched_tokens`，代表vLLM在一个批次（batch）中能处理的**最大Token总数**。这是控制KV Cache显存占用的核心参数。
+- 表达式 `5120 // 278528` 计算的是，在最大Token批次限制下，能容纳多少个“最坏情况”的请求。由于单个请求所需（278,528）远大于批次总容量（5,120），整数除法的结果为`0`。
+- `256`: 这是一个**硬性上限**，通常是vLLM配置中的默认最大并发数（`engine_args.max_num_seqs`），用以防止系统因处理过多并发请求而资源耗尽。`min(256, 0)` 的结果是`0`。因为并发数不能小于1，vLLM发出警告并强制将其设为最小值`1`。这本身就是一个危险信号，表明单个请求的尺寸预估存在严重问题。
+- `{'image': 245760, 'video': 32768}`解释了为什么输入序列**可能**会变得如此之长——因为视觉部分有潜力占据巨量的Token。
+- `The sequence length used for profiling` 是vLLM为进行性能优化（如捕获CUDA Graph）而选用的一个**代表性的序列长度**。它的计算方式是 `max_num_batched_tokens / max_num_seqs`，即 `5120 / 1 = 5120`。vLLM会假设后续请求的长度大致都在这个范围内，并据此优化计算图。警告表明用于性能优化的序列长度（5,120）与数据集中实际存在的“最坏情况”的序列长度（278,528）相差悬殊。因此，基于短序列的性能优化对于处理那个超长序列是**无效的**。
+
+
+
+
+
+
+
+
+
