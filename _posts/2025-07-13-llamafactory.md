@@ -7,15 +7,16 @@ tags: [经验, LLM]
 media_subpath: "/assets/img/posts/2025-07-13-llamafactory"
 ---
 
-本文旨在完整记录一次利用开源框架LLaMA-Factory对Qwen2.5-VL-7B-Instruct模型进行参数高效微调（Parameter-Efficient Fine-tuning, PEFT）的全过程。内容涵盖环境配置、任务定义、数据准备、训练策略、过程监控、推理验证与结果分析。
+本文旨在完整记录一次利用开源框架LLaMA-Factory对Qwen2.5-VL-7B-Instruct模型进行参数高效微调（Parameter-Efficient Fine-tuning, PEFT）的全过程。内容涵盖环境配置、任务定义、数据准备、训练策略、过程监控、推理验证、结果分析与部署。
 
 ## 环境准备
 
 使用了如下软硬件及模型资源：
 
 - **硬件环境**: 本次实践基于8张NVIDIA A800（80GB显存）GPU服务器。
-- **微调框架**: LLaMA-Factory，一个集成了多种微调方法的用户友好型开源框架。具体部署方式请遵循其官方GitHub仓库指南：https://github.com/hiyouga/LLaMA-Factory
+- **微调框架**: LLaMA-Factory，一个集成了多种微调方法的用户友好型开源框架。具体安装方式请遵循其官方GitHub仓库指南：https://github.com/hiyouga/LLaMA-Factory
 - **基础模型**: Qwen2.5-VL-7B-Instruct，由阿里巴巴通义千问团队开源的70亿参数视觉语言模型。模型权重（约16GB）可通过ModelScope进行下载：https://modelscope.cn/models/Qwen/Qwen2.5-VL-7B-Instruct
+- **推理与部署**：vllm
 
 ## 任务定义
 
@@ -150,17 +151,20 @@ eval_steps: 50
 
 核心目标：在一个强大且预训练好的视觉语言模型（**Qwen2.5-VL-7B-Instruct**）的基础上，使用 **LoRA** 的高效微调技术，来训练它适应我们的任务。整个过程属于**监督微调 (SFT)** 阶段。**LoRA**技术冻结模型主体，只训练新增的、极少量的“适配器”参数，从而大大提升训练效率。
 
-一些配置的解释
+重要配置解释：
 
-- **`trust_remote_code: true`**: 一个安全设置，对于像Qwen这样包含自定义代码的模型，必须设为 `true` 才能正确加载其独特的模型结构。
 - **`stage: sft`**: 指定训练阶段为**监督微调 (Supervised Fine-Tuning)**，即模型从“输入-输出”样本对中学习。
-- **`lora_rank: 8`**: LoRA方法的关键超参数，定义了“适配器”的规模。`8` 是一个在效果和资源消耗上都很平衡的常用值。
+- **`lora_rank: 8`**: LoRA方法的关键超参数，定义了“适配器”的规模。`8` 是一个在效果和资源消耗上都很平衡的常用值。对于复杂任务，可以考虑增大 `lora_rank` ，从16 开始，再尝试 32、64…… 当然要观察验证集损失防止过拟合，例如考虑将学习率减半
 - **`lora_target: all`**: Llama Factory 的一个便捷设置，它会自动找出模型中所有适合应用LoRA的层（如注意力层）并进行适配。
 - **`template: qwen2_vl`**: 指定了将数据格式化成 Qwen2-VL 模型能理解的特定提示（Prompt）格式。
-- **`preprocessing_num_workers` / `dataloader_num_workers`**: 分别是数据预处理和加载时使用的并行进程数，用于加速数据准备。
 - **`per_device_train_batch_size: 1`**: 每个GPU设备一次处理1个样本。
 - **`gradient_accumulation_steps: 8`**: 梯度累积8步之后再更新一次模型参数。这会形成 `1 * 8 = 8` 的**有效批大小 (Effective Batch Size)**，可以在不增加显存消耗的情况下，达到使用更大批次训练的稳定效果。
 - **`lr_scheduler_type: cosine`**: 学习率调度策略。`cosine` 指学习率会按照余弦曲线平滑下降，有助于模型在训练后期更好地收敛。
+
+其他配置解释
+
+- **`trust_remote_code: true`**: 一个安全设置，对于像Qwen这样包含自定义代码的模型，必须设为 `true` 才能正确加载其独特的模型结构。
+- **`preprocessing_num_workers` / `dataloader_num_workers`**: 分别是数据预处理和加载时使用的并行进程数，用于加速数据准备。
 - **`warmup_ratio: 0.1`**: 预热比例。在总训练步数的的前10%里，学习率会从0线性增长到设定的 `1.0e-4`，这有助于训练初期的稳定。
 - **`bf16: true`**: 使用 BF16 混合精度进行训练，可以在支持的硬件上大幅提升训练速度并节省显存。
 - **`eval_steps: 50`**: 每训练50步，就在验证集上进行一次评估。这可以帮助你密切监控模型是否出现过拟合。记录损失数据
@@ -421,7 +425,7 @@ INFO 07-09 13:01:17 [multiproc_worker_utils.py:137] Terminating local vLLM worke
 
 ## 关于图像
 
-在推理时，如果放入过多图像，日志中会产生如下 warning
+在推理时，如果加入了图像，日志中可能会产生如下 warning
 
 ```
 WARNING 07-09 12:57:25 [model_runner.py:1296] Computed max_num_seqs (min(256, 5120 // 278528)) to be less than 1. Setting it to the minimum value of 1.
@@ -438,6 +442,12 @@ WARNING 07-09 12:57:25 [model_runner.py:1296] Computed max_num_seqs (min(256, 51
 - `The sequence length used for profiling` 是vLLM为进行性能优化（如捕获CUDA Graph）而选用的一个**代表性的序列长度**。它的计算方式是 `max_num_batched_tokens / max_num_seqs`，即 `5120 / 1 = 5120`。vLLM会假设后续请求的长度大致都在这个范围内，并据此优化计算图。警告表明用于性能优化的序列长度（5,120）与数据集中实际存在的“最坏情况”的序列长度（278,528）相差悬殊。因此，基于短序列的性能优化对于处理那个超长序列是**无效的**。
 
 > 对于 qwen2.5 vl，通过技术报告可以得知，是将图像裁剪为 28x28 的小块并通过 vit 来变成一个 token，这样就可以自己计算图像所占的 token 数目了。
+
+但是实际上不用担心，如果序列长度真的超过了模型所能处理的极限，会直接触发 Error 而停止，而不是 warning，此外，vllm 设置的最大上下文长度 `max_model_len` 是一个比较小的默认值（比如3072），而不是模型支持的真实的最大上下文长度，可以考虑传递额外参数给 vllm：
+
+```
+--vllm_config '{"tensor_parallel_size": 4, "limit_mm_per_prompt": {"image": 16}, "max_model_len": 8192}' 
+```
 
 ## 关于思维链
 
@@ -528,3 +538,207 @@ labels:
 - **自动化规则过滤**：例如，检查生成的思维链是否提及了所有关键检查点，长度是否在合理范围内等。
 - **人工抽样审查（Human-in-the-Loop）**：定期抽取一部分生成的数据进行人工检查，确保“教师模型”没有出现系统性的错误。
 - **迭代优化**：先生成一小批数据，训练7B模型，评估效果。根据评估结果，回头去优化对“教师模型”的Prompt，然后再进行下一轮更大规模的数据生成。
+
+## 部署
+
+### vllm 方式
+
+> [参考](https://docs.vllm.com.cn/en/latest/getting_started/quickstart.html#openai-compatible-server)
+
+vLLM 可以部署为实现 OpenAI API 协议的服务器。这使得 vLLM 可以作为使用 OpenAI API 的应用程序的即插即用替代品。以下命令默认在 `https://:8000` 启动服务器。
+
+```bash
+vllm serve /data/modelscope/Qwen2___5-VL-7B-Instruct
+```
+
+该服务器可以与 OpenAI API 相同的格式进行查询。例如，列出模型：
+
+```bash
+curl hhttp://localhost:8000/v1/models
+```
+
+```json
+{
+    "object": "list",
+    "data": [{
+        "id": "/data/modelscope/Qwen2___5-VL-7B-Instruct",
+    }]
+}
+// 删去了其他信息
+```
+
+然后我们可以使用 Chat Completions API
+
+```bash
+curl http://localhost:8000/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "/data/modelscope/Qwen2___5-VL-7B-Instruct",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Who won the world series in 2020?"}
+        ]
+    }'
+```
+
+或者使用 `openai` Python 包：
+
+```python
+from openai import OpenAI
+# Set OpenAI's API key and API base to use vLLM's API server.
+openai_api_key = "EMPTY"
+openai_api_base = "http://localhost:8000/v1"
+
+client = OpenAI(
+    api_key=openai_api_key,
+    base_url=openai_api_base,
+)
+
+chat_response = client.chat.completions.create(
+    model="/data/modelscope/Qwen2___5-VL-7B-Instruct",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me a joke."},
+    ]
+)
+print("Chat response:", chat_response)
+```
+
+对于部署带 LoRA 的模型，使用以下命令
+
+```bash
+vllm serve /data/modelscope/Qwen2___5-VL-7B-Instruct \
+    --enable-lora \
+    --lora-modules my-lora=/output/my_task/
+```
+
+当我们使用列出模型的 api ，可以看到已经部署上了 `my-lora` 模型
+
+```json
+{
+    "object": "list",
+    "data": [
+        {"id": "/data/modelscope/Qwen2___5-VL-7B-Instruct",}
+        {"id": "my-lora",}
+    ]
+}
+// 删去了其他信息
+```
+
+之后只需要在请求中把 `model` 换成 `my-lora` 就可以调用我们进行训练的模型
+
+对于多模态的输入，请求修改为如下，更多参考包括：[代码参考](https://github.com/vllm-project/vllm/blob/main/examples/online_serving/openai_chat_completion_client_for_multimodal.py)、[文档参考](https://docs.vllm.com.cn/en/latest/features/multimodal_inputs.html#image-inputs_1)
+
+```python
+def encode_image(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
+base64_image = encode_image(image_url_tiger)
+
+chat_response = client.chat.completions.create(
+    model="microsoft/Phi-3.5-vision-instruct",
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "text", "text": "What are the animals in these images?"},
+            {"type": "image_url", "image_url": {"url": image_url_duck}},
+            {"type": "image_url", "image_url": {"url": image_url_lion}},
+            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image}"}},
+        ],
+    }],
+)
+```
+
+### LLaMA-Factory 方式
+
+命令：
+
+```bash
+API_PORT=8000 llamafactory-cli api data/inference/qwen2_5vl.yaml infer_backend=vllm vllm_enforce_eager=true
+```
+
+随后，可以使用上方相同的命令来请求微调好的大模型
+
+### 对齐 vllm_infer
+
+事实上，使用如上简单的部署命令，往往会造成离线批量推理与线上请求API结果不一致的情况，问题出在我们使用的 [vllm_infer.py](https://github.com/hiyouga/LLaMA-Factory/blob/main/scripts/vllm_infer.py) 离线推理脚本拥有很多 LLaMA-Factory 后添加的参数，这些参数往往与 vllm 部署和请求的默认参数不同，当我们想要让线上推理与离线推理保持尽可能一致的效果的时候，需要考虑如下几个方面
+
+vllm_infer.py 脚本的默认配置，转化为 vllm serve 命令后，需要添加如下参数
+
+```bash
+vllm serve /data/modelscope/Qwen2___5-VL-7B-Instruct \
+    --max-model-len 4096 \
+    --trust-remote-code \
+    --dtype auto \
+    --enable-lora \
+    --lora-modules my-lora=/output/my_task/ \
+    --tensor-parallel-size 1 \
+    --pipeline-parallel-size 1 \
+    --disable-log-stats \
+    --limit-mm-per-prompt '{"image": 8}'
+```
+
+> tensor-parallel-size 可以设置大于1的数，以调用多个 GPU
+>
+> [更多参考](https://docs.vllm.com.cn/en/latest/cli/index.html#serve)
+
+对于带多张图片的复杂 prompt 请求，如下请求方式往往是错误的
+
+```python
+messages=[
+    {"role": "system", "content": "你是一个视觉分类任务专家。请根据以下要求判断图片是否满足要求。"},
+    {
+        "role": "user", 
+        "content": [
+            {"type": "text", "text": "判断以上图片是否满足要求：\n1. 只存在正方体、圆柱。。。。"},
+            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image[0]}"}},
+            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image[1]}"}},
+            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image[2]}"}},
+        ],
+    },
+],
+```
+
+这样会导致所有图像token集中在prompt末尾，而不是训练和离线批量推理的图文交错数据
+
+正确方式是，对于数据集文件给定的带 `<image> `占位符的 prompt 和图像列表，在处理为提供给模型的 message 时，需要在 `<image>` 占位符截断，处理为图文交错数据
+
+```python
+messages=[
+    {"role": "system", "content": "你是一个视觉分类任务专家。请根据以下要求判断图片是否满足要求。"},
+    {
+        "role": "user", 
+        "content": [
+            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image[0]}"}},
+            {"type": "text", "text": "判断以上图片是否满足要求：\n1. 只存在正方体、圆柱。。。。"},
+            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image[1]}"}},
+            {"type": "text", "text": "还需要出现以下物品"},
+            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image[2]}"}},
+            {"type": "text", "text": "根据上述要求，判断。。。。。"},
+        ],
+    },
+],
+```
+
+最后，在将 message 交由模型处理时，需要带上vllm_infer.py 脚本的默认参数，[更多参考](https://docs.vllm.com.cn/en/latest/serving/openai_compatible_server.html#chat-api_1)
+
+```python
+chat_response = client.chat.completions.create(
+    model="my-lora",
+    messages = [
+        {"role": "system", "content": "你是一个视觉分类任务专家。请根据以下要求判断图片是否满足要求。"},
+        {"role": "user", "content": interleaved_content},
+    ],
+    extra_body={
+        'repetition_penalty': 1.0,
+        'temperature': 0.95,
+        'top_p': 0.7,
+        'top_k': 50,
+        'max_tokens': 1024,
+        "skip_special_tokens": True,
+        "stop_token_ids": [151645],  # 从原始 vllm_infer.py 脚本获取
+    }
+)
+```
+
+通过明确推理参数，我们的API请求效果将接近于原始的线下批量推理效果
