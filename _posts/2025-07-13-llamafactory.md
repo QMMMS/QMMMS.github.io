@@ -843,22 +843,81 @@ DPO 会接收到各种各样混乱的“坏”例子。这种学习的效率比�
 
 ![](dpo1.png)
 
-- `train/grad_norm` 为梯度范数，即模型更新的幅度，训练初期整体变化比较平稳，后期不太稳定
+- `train/grad_norm` 为梯度范数，即模型更新的幅度，在经历跨度较大的更新后收敛
 - `train/learning_rate` 学习率很好地体现了训练配置中的 warpup 阶段和 `cosine` 类型的 lr_scheduler
-- 训练损失前期平稳下降，后期有波动
+- 训练损失前期平稳下降，后期有波动，最后收敛
 
 ![](dpo2.png)
 
 - `train/logits/chosen` 指代被选择答案的 Logits。Logits 是模型在输出最终概率前的原始得分。logits/chosen 代表模型为“正确答案”（chosen response）给出的平均原始分数。DPO 的目标之一就是提升这个分数。训练初期，指标稳步上升，说明 DPO 正在起作用，模型在学习如何识别和偏爱正确的答案；但是后期开始波动并呈下降趋势，它表明模型在训练的后半段，反而对正确答案变得“不那么自信”了，是过拟合的一种表现
 - `train/logits/rejected` 为错误答案的 Logits，我们期望这个指标持续下降或保持在低位，但是从趋势看它与 `train/logits/chosen` 一致！这是一个不愿意看到的结果，我们的二分类回答没有很好地区分开来，这需要寻找细节原因（例如问题是否太难了）或者调整参数（学习率和loss计算方法）
-- `train/logps/chosen`  指代被选择答案的对数概率，对数概率是负数，越接近 0 代表概率越高。DPO 的目标是提升模型对正确答案的偏好，因此这个值理应上升（向 0 靠近）。类似 `train/logits/chosen`，在训练后期反而对正确答案变得“不那么自信”了，而且有波动
+- `train/logps/chosen`  指代被选择答案的对数概率，对数概率是负数，越接近 0 代表概率越高。DPO 的目标是提升模型对正确答案的偏好，因此这个值理应上升（向 0 靠近）。经历了初始下降、剧烈波动并上升、以及收敛于零的三个阶段，展现了它一开始对正确答案的判断都出现了暂时的信心丧失，而后续又在训练集上过拟合了——它记住了所有训练样本
 - `train/logps/rejected` 指代被拒绝答案的对数概率，这个值理应下降（向负无穷靠近）可以看到它的趋势是正确且健康的，非常平滑、稳定、持续的下降
 
-这样看，这次实验中 DPO 损失的降低主要来源于 `logps/rejected` 的优化，尽管连带地损害了自己对正确答案的生成能力，导致对正确答案的信心也丧失了，总体上看 Loss 是降低的。
+这样看，这次实验中 DPO 损失的降低一开始来源于 `logps/rejected` 的优化，尽管连带地损害了自己对正确答案的生成能力，导致对正确答案的信心也丧失了，总体上看 Loss 是降低的。后续经历了过拟合过程记住了所有样本
 
 ![](dpo3.png)
 
-- `train/rewards/accuracies` 衡量在一个批次中，有多少样本的“正确答案” (`chosen`) 的对数概率**高于**“错误答案” (`rejected`) 的对数概率。它直接反映了模型区分好坏答案的能力。100% 的准确率意味着模型始终认为正确答案比错误答案更好。可以看到本次训练不太稳定，指标在波动
-- `train/rewards/chosen` 代表DPO 框架内部计算出的对“正确答案” (chosen) 的奖励分数。其计算公式约等于 $$\beta \times \log( P_\text{policy}(chosen) / P_\text{reference}(chosen) )$$。衡量相比于训练开始前的 SFT 模型，当前模型对正确答案的偏好提升了多少。理想情况下，这个值应该是正数，并且稳定或持续上升。可以看到本次训练这个指标下降了，对于原本的正确答案反而失去了信心
+- `train/rewards/accuracies` 衡量在一个批次中，有多少样本的“正确答案” (`chosen`) 的对数概率**高于**“错误答案” (`rejected`) 的对数概率。它直接反映了模型区分好坏答案的能力。100% 的准确率意味着模型始终认为正确答案比错误答案更好。可以看到先是波动，然后过拟合
+- `train/rewards/chosen` 代表DPO 框架内部计算出的对“正确答案” (chosen) 的奖励分数。其计算公式约等于 $$\beta \times \log( P_\text{policy}(chosen) / P_\text{reference}(chosen) )$$。衡量相比于训练开始前的 SFT 模型，当前模型对正确答案的偏好提升了多少。理想情况下，这个值应该是正数，并且稳定或持续上升。可以看到先是波动，然后过拟合
 - `train/rewards/margins` ，Margin (边际) 是 DPO 优化的**核心目标**。它等于 `rewards/chosen`和 `rewards/rejected`之间的差值 (`Margin = rewards/chosen - rewards/rejected`)。DPO 的全部目的，就是要让这个 Margin 越大越好。整个训练过程中，它非常平滑、稳定、持续地增长，单看这个图，趋势是完全健康的。
 - `train/rewards/rejected` 代表对“错误答案” (rejected) 的奖励分数。理想情况下，这个值应该是负数，并且持续下降，表示模型越来越“讨厌”错误的答案。整个训练过程中，呈现出平滑、稳定、持续的下降，趋势本身是完全健康的
+
+![](dpo4.png)
+
+从验证集的趋势看，也能看出是先降低了错误答案的选择概率，随后过拟合
+
+在训练完成之后，使用与 SFT 训练的模型相同的评估方式对测试集进行评估，在业务关心的指标上，DPO 确实提升了大约 5 个点左右
+
+### GRPO
+
+如果想自定义奖励函数，可以尝试 GRPO 方案，例如基于 VLM-R1 框架进行视觉模型的 GRPO 训练，可以自定义奖励函数以及数据集，其论文的 finding 包括
+
+- 在一些任务上，未训练的 3B 大模型性能不如专门的 grounding-dino 模型
+- 直接使用 GRPO 训练比 SFT 的泛化性更好
+
+VLM-R1 框架的示例任务为 Referring Expression Comprehension (REC)，即给定图像和文字描述，需要大模型在图像中标出方框（输出坐标值），奖励分为两个部分，最终奖励为两个奖励的加和
+
+- 格式奖励，如果满足 `<think>......</think> <answer> ....(方框坐标).... </answer> `的格式，reward 为 1，不满足为 0 
+- IoU 奖励，reward 范围 [0,1] 
+
+从复现的 reward 曲线来看比较稳定，作者取 500 step 的 checkpoint 就能达到较好效果，即使 loss 没有收敛
+
+![](dpo5.png)
+
+对于自定义数据集，在 VLM-R1 框架中我们使用的数据集格式为
+
+```json
+{
+    "id": 1,
+    "image": [ 
+    	"/data/img_01.jpg"
+	],
+    "conversations": [
+        {
+            "from": "system",
+            "value": "你是一个视觉分类任务专家......."
+        },
+        {
+            "from": "human",
+            "value": "<image>判断以上图片是否满足要求......"
+        },
+        {
+            "from": "gpt",
+            "value": "满足要求"
+        },
+    ],
+}
+```
+
+需要注意的是，对于 VLM-R1 框架，训练和评估时会自动在 prompt 后加上：`First output the thinking process in <think> </think> tags and then output the final answer in <answer> </answer> tags."` 这个后添加的内容可以在 `qwen_module.py`的 `get_question_template` 函数中针对任务进行修改
+
+对于自定义奖励函数，仿照示例任务，分为格式奖励和准确度奖励
+
+- 格式奖励：如果满足 `<think>.....</think> <answer> 满足要求 或者 不满足要求 </answer>` 的格式，reward 为1，不满足为0
+- 准确度奖励：与 groundtruth 一致，reward 为1，不满足为0
+
+对于一个正负样本均衡的数据集，如果模型只回答正确或者错误，期望的准确度奖励为 0.5，但是对一个高度不均衡的数据集，例如正样本比负样本为 9:1，如果模型只回答正确，期望准确度奖励也能达到 0.9，如果需要尽可能减少 FP 的数量，可以考虑将 FP 的 reweard 设置为一个大负数
+
+关于奖励函数的具体实现，需要修改 `qwen_module.py` 文件，仿照 REC 示例任务新增两个reward函数，然后在同文件的 `select_reward_func` 函数中注册，在训练时，可以通过 log 文件判断 reward 函数是否处理正确
+
