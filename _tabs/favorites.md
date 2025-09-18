@@ -53,6 +53,7 @@ order: 4
 - [玩玩语法树](https://www.antlr.org/)
 - [下载 bilibili 视频唧唧Down](https://client.jijidown.com/)
 - [在线配音工具ttsmaker](https://ttsmaker.cn/)
+- [FL studio](https://archive.org/details/fl-3713-installer)
 - [dblp计算机科学论文库](https://dblp.org/)
 - [常用LaTeX符号](https://mohu.org/info/symbols/symbols.htm)
 
