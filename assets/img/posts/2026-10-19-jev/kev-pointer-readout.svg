@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1750" viewBox="0 0 900 1750" role="img" aria-labelledby="title description">
+<title id="title">Kev 的候选位置指针读出</title>
+<desc id="description">单个问题：骨干输出全部 token 隐藏表示，从两个选项结束标记和最后决策标记位置取出三行。两个候选向量经过同一个 K 投影，决策向量经过 Q 投影，缩放点积产生选项 logits，随后 softmax。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker>
+  <style>
+    text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; text-anchor: middle; dominant-baseline: middle; }
+    .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="900" height="1750" fill="#ffffff"/>
+<rect x="35" y="35" width="110" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="90.0" y="66.0" font-size="21">状态 s</text>
+<rect x="145" y="35" width="110" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="200.0" y="66.0" font-size="21">问题</text>
+<rect x="255" y="35" width="110" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="310.0" y="66.0" font-size="21">选项 A</text>
+<rect x="365" y="35" width="100" height="62" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="415.0" y="66.0" font-size="21">&lt;/opt&gt;</text>
+<rect x="465" y="35" width="110" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="520.0" y="66.0" font-size="21">选项 B</text>
+<rect x="575" y="35" width="100" height="62" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="625.0" y="66.0" font-size="21">&lt;/opt&gt;</text>
+<rect x="675" y="35" width="190" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="770.0" y="66.0" font-size="21">&lt;decide&gt;</text>
+<path class="flow" d="M 450 97 V 150"/>
+<rect x="240" y="150" width="420" height="58" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="450.0" y="179.0" font-size="24">Token embedding</text>
+<path class="flow" d="M 450 208 V 260"/>
+<rect x="170" y="260" width="560" height="90" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="450.0" y="305.0" font-size="27">预训练 Qwen 骨干</text>
+<path class="flow" d="M 450 350 V 420"/>
+<rect x="190" y="420" width="520" height="310" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="450" y="450" font-size="23">H ∈ ℝᴸˣᵈ：各 token 的隐藏向量</text>
+<text x="450" y="483" font-size="26">⋮</text>
+<rect x="215" y="500" width="470" height="40" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="315" y="520" font-size="20">&lt;/opt&gt; · m₁</text>
+<rect x="435" y="509" width="31" height="22" rx="3" fill="white" stroke="#79b9bc" stroke-width="1.2"/>
+<rect x="482" y="509" width="31" height="22" rx="3" fill="white" stroke="#79b9bc" stroke-width="1.2"/>
+<rect x="529" y="509" width="31" height="22" rx="3" fill="white" stroke="#79b9bc" stroke-width="1.2"/>
+<rect x="576" y="509" width="31" height="22" rx="3" fill="white" stroke="#79b9bc" stroke-width="1.2"/>
+<text x="651" y="520" font-size="22">…</text>
+<rect x="215" y="570" width="470" height="40" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="315" y="590" font-size="20">&lt;/opt&gt; · m₂</text>
+<rect x="435" y="579" width="31" height="22" rx="3" fill="white" stroke="#b5a1d6" stroke-width="1.2"/>
+<rect x="482" y="579" width="31" height="22" rx="3" fill="white" stroke="#b5a1d6" stroke-width="1.2"/>
+<rect x="529" y="579" width="31" height="22" rx="3" fill="white" stroke="#b5a1d6" stroke-width="1.2"/>
+<rect x="576" y="579" width="31" height="22" rx="3" fill="white" stroke="#b5a1d6" stroke-width="1.2"/>
+<text x="651" y="590" font-size="22">…</text>
+<rect x="215" y="640" width="470" height="40" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="315" y="660" font-size="20">&lt;decide&gt; · m_d</text>
+<rect x="435" y="649" width="31" height="22" rx="3" fill="white" stroke="#ddcda9" stroke-width="1.2"/>
+<rect x="482" y="649" width="31" height="22" rx="3" fill="white" stroke="#ddcda9" stroke-width="1.2"/>
+<rect x="529" y="649" width="31" height="22" rx="3" fill="white" stroke="#ddcda9" stroke-width="1.2"/>
+<rect x="576" y="649" width="31" height="22" rx="3" fill="white" stroke="#ddcda9" stroke-width="1.2"/>
+<text x="651" y="660" font-size="22">…</text>
+<path d="M 210 497 H 202 V 688 H 210 M 690 497 H 698 V 688 H 690" fill="none" stroke="#65748a" stroke-width="2"/>
+<path d="M 215 520 H 95 V 775 H 220 V 825" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 215 590 H 140 V 750 H 450 V 825" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 685 660 H 810 V 780 H 730 V 825" fill="none" stroke="#a17b35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="120" y="825" width="200" height="58" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="220.0" y="854.0" font-size="20">hopt,1 = H[m₁, :]</text>
+<rect x="350" y="825" width="200" height="58" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="450.0" y="854.0" font-size="20">hopt,2 = H[m₂, :]</text>
+<rect x="630" y="825" width="200" height="58" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="730.0" y="854.0" font-size="19">hdecide = H[m_d, :]</text>
+<rect x="65" y="910" width="800" height="520" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="590" y="933" font-size="24">指针评分头</text>
+<rect x="100" y="955" width="470" height="125" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="335" y="982" font-size="24">共享 K 投影</text>
+<path d="M 220 883 V 1130" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 450 883 V 1130" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="125" y="1010" width="420" height="50" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="335.0" y="1035.0" font-size="22">Linear d → dₚ   ·   Wₖ, bₖ</text>
+<rect x="630" y="955" width="200" height="125" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="730" y="981" font-size="24">Q 投影</text>
+<text x="730" y="1020" font-size="21">Linear d → dₚ</text>
+<text x="730" y="1050" font-size="21">Wq, bq</text>
+<path class="flow" d="M 730 883 V 955"/>
+<path class="flow" d="M 730 1080 V 1130"/>
+<rect x="130" y="1130" width="180" height="55" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="220.0" y="1157.5" font-size="27">k₁</text>
+<path class="flow" d="M 220 1185 V 1260"/>
+<rect x="360" y="1130" width="180" height="55" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="450.0" y="1157.5" font-size="27">k₂</text>
+<path class="flow" d="M 450 1185 V 1260"/>
+<rect x="640" y="1130" width="180" height="55" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="730.0" y="1157.5" font-size="27">q</text>
+<path class="flow" d="M 730 1185 V 1260"/>
+<rect x="100" y="1260" width="730" height="140" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="465" y="1293" font-size="25">点积并缩放</text>
+<text x="290" y="1350" font-size="26">ℓ₁ = qᵀk₁ / √dₚ</text>
+<text x="610" y="1350" font-size="26">ℓ₂ = qᵀk₂ / √dₚ</text>
+<path class="flow" d="M 290 1400 V 1460"/>
+<rect x="200" y="1460" width="180" height="55" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="290.0" y="1487.5" font-size="27">ℓ₁</text>
+<path d="M 290 1515 V 1540 H 450" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="flow" d="M 610 1400 V 1460"/>
+<rect x="520" y="1460" width="180" height="55" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="610.0" y="1487.5" font-size="27">ℓ₂</text>
+<path d="M 610 1515 V 1540 H 450" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="flow" d="M 450 1540 V 1575"/>
+<rect x="260" y="1575" width="380" height="55" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="450.0" y="1602.5" font-size="25">Softmax</text>
+<path class="flow" d="M 450 1630 V 1670"/>
+<rect x="210" y="1670" width="480" height="60" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="450.0" y="1700.0" font-size="25">A: 0.8       B: 0.2</text>
+</svg>

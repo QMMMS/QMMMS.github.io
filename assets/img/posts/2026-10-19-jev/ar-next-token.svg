@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1620" viewBox="0 0 900 1620" role="img" aria-labelledby="title description">
+  <title id="title">自回归语言模型：预测并追加下一个 token</title>
+  <desc id="description">上下文从顶部进入 token embedding，与位置信息相加，经过 N 个 pre-LN Transformer 块、最终归一化、线性层和 softmax，得到下一个 token 的分布。底部采样或取最大项，选中的 token 经右侧回环箭头追加到顶部上下文。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/>
+    </marker>
+    <marker id="residual-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8995a5"/>
+    </marker>
+    <marker id="loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#23858a"/>
+    </marker>
+    <style>
+      text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; }
+      .title { font-size: 28px; font-weight: 650; }
+      .subtitle { font-size: 15px; fill: #718095; }
+      .label { font-size: 16px; fill: #65748a; }
+      .block-label { font-size: 20px; text-anchor: middle; dominant-baseline: middle; }
+      .small { font-size: 14px; fill: #7c899b; }
+      .token { font-family: Georgia, "Times New Roman", serif; font-size: 28px; text-anchor: middle; }
+      .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .residual { fill: none; stroke: #8995a5; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#residual-arrow); }
+      .module { stroke-width: 1.6; rx: 10; }
+      .plus { fill: white; stroke: #7c899b; stroke-width: 2; }
+      .plus-mark { stroke: #7c899b; stroke-width: 1.8; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect id="background" width="900" height="1620" fill="#ffffff"/>
+  <g id="heading">
+    <text class="title" x="75" y="57">自回归语言模型</text>
+    <text class="subtitle" x="75" y="86">上下文 → 下一个 token 的分布 → 选中 token → 追加到上下文</text>
+  </g>
+
+  <g id="input-context">
+    <text class="label" x="210" y="124">当前上下文 sₜ</text>
+    <rect x="210" y="143" width="110" height="47" rx="6" fill="#d9ccef"/>
+    <rect x="321" y="143" width="69" height="47" rx="6" fill="#ceead7"/>
+    <rect x="391" y="143" width="139" height="47" rx="6" fill="#f3dfb9"/>
+    <text class="token" x="265" y="176">How</text>
+    <text class="token" x="355" y="176">to</text>
+    <text class="token" x="460" y="176">predict</text>
+    <text class="small" x="265" y="213" text-anchor="middle">2437</text>
+    <text class="small" x="355" y="213" text-anchor="middle">284</text>
+    <text class="small" x="460" y="213" text-anchor="middle">4331</text>
+    <path d="M 210 224 L 218 236 L 522 236 L 530 224" fill="none" stroke="#4b596b" stroke-width="2.2" stroke-linejoin="round"/>
+    <path class="flow" d="M 390 236 L 390 295"/>
+  </g>
+
+  <g id="appended-token">
+    <text x="597" y="124" font-size="14" fill="#23858a" text-anchor="middle">下一轮追加</text>
+    <rect x="545" y="143" width="105" height="47" rx="7" fill="#e8f6f4" stroke="#23858a" stroke-width="1.8" stroke-dasharray="6 5"/>
+    <text class="token" x="597" y="176" style="fill:#23858a">text</text>
+  </g>
+
+  <g id="language-model">
+    <rect id="model-frame" x="120" y="260" width="560" height="1020" rx="17" fill="#fafbfe" stroke="#cdd5df" stroke-width="1.5" stroke-dasharray="5 6"/>
+    <text x="141" y="288" class="label" font-weight="600">LLM</text>
+    <path class="flow" d="M 390 260 L 390 295"/>
+
+    <g id="token-embedding">
+      <rect class="module" x="265" y="295" width="250" height="56" fill="#ead5f3" stroke="#d5b9e1"/>
+      <text class="block-label" x="390" y="323">Token embedding</text>
+      <path class="flow" d="M 390 351 L 390 367"/>
+    </g>
+
+    <g id="position-information">
+      <text class="label" x="172" y="385">Position embedding</text>
+      <path class="flow" d="M 335 380 L 376 380"/>
+      <circle class="plus" cx="390" cy="380" r="13"/>
+      <path class="plus-mark" d="M 383 380 H 397 M 390 373 V 387"/>
+      <path class="flow" d="M 390 393 L 390 448"/>
+    </g>
+
+    <g id="transformer-block">
+      <rect x="165" y="420" width="450" height="570" rx="13" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.7"/>
+      <text x="185" y="450" font-size="17" font-weight="600" fill="#59687d">Transformer block</text>
+      <text x="646" y="704" font-size="29" font-weight="600" text-anchor="middle">× N</text>
+      <text x="646" y="728" font-size="12" fill="#7c899b" text-anchor="middle">blocks</text>
+
+      <path class="flow" d="M 390 420 L 390 492"/>
+      <circle cx="390" cy="474" r="3.3" fill="#8995a5"/>
+      <path class="residual" d="M 390 474 H 575 V 665 H 404"/>
+      <rect class="module" x="285" y="492" width="210" height="46" fill="#e7edc7" stroke="#d0d9ab"/>
+      <text class="block-label" x="390" y="515">Layer norm</text>
+      <path class="flow" d="M 390 538 L 390 570"/>
+
+      <rect class="module" x="235" y="570" width="310" height="76" fill="#f1e1bf" stroke="#ddcda9"/>
+      <text class="block-label" x="390" y="597">Multi-head causal</text>
+      <text class="block-label" x="390" y="624">self-attention</text>
+      <path d="M 390 646 L 390 652" fill="none" stroke="#4b596b" stroke-width="2.5"/>
+      <circle class="plus" cx="390" cy="665" r="13"/>
+      <path class="plus-mark" d="M 383 665 H 397 M 390 658 V 672"/>
+      <path class="flow" d="M 390 678 L 390 730"/>
+
+      <circle cx="390" cy="703" r="3.3" fill="#8995a5"/>
+      <path class="residual" d="M 390 703 H 575 V 924 H 404"/>
+      <rect class="module" x="285" y="730" width="210" height="46" fill="#e7edc7" stroke="#d0d9ab"/>
+      <text class="block-label" x="390" y="753">Layer norm</text>
+      <path class="flow" d="M 390 776 L 390 815"/>
+
+      <rect class="module" x="265" y="815" width="250" height="70" fill="#ccebed" stroke="#afd7d9"/>
+      <text class="block-label" x="390" y="850">Feed-forward / MLP</text>
+      <path class="flow" d="M 390 885 L 390 911"/>
+      <circle class="plus" cx="390" cy="924" r="13"/>
+      <path class="plus-mark" d="M 383 924 H 397 M 390 917 V 931"/>
+      <path class="flow" d="M 390 937 L 390 1030"/>
+    </g>
+
+    <g id="final-normalization">
+      <rect class="module" x="285" y="1030" width="210" height="46" fill="#e7edc7" stroke="#d0d9ab"/>
+      <text class="block-label" x="390" y="1053">Layer norm</text>
+      <path class="flow" d="M 390 1076 L 390 1113"/>
+    </g>
+
+    <g id="vocabulary-projection">
+      <rect class="module" x="265" y="1113" width="250" height="50" fill="#d6e1f7" stroke="#bbcce9"/>
+      <text class="block-label" x="390" y="1138">Linear → logits</text>
+      <path class="flow" d="M 390 1163 L 390 1200"/>
+    </g>
+
+    <g id="softmax">
+      <rect class="module" x="285" y="1200" width="210" height="46" fill="#d4efda" stroke="#b9ddc1"/>
+      <text class="block-label" x="390" y="1223">Softmax</text>
+      <path class="flow" d="M 390 1246 L 390 1316"/>
+    </g>
+  </g>
+
+  <g id="next-token-distribution">
+    <text class="label" x="205" y="1303">下一个 token 分布</text>
+    <rect x="205" y="1316" width="370" height="122" rx="12" fill="#fff8f4" stroke="#ead8cd" stroke-width="1.5"/>
+    <g font-size="18">
+      <text x="230" y="1347">text</text>
+      <rect x="315" y="1331" width="165" height="20" rx="4" fill="#e9acac"/>
+      <text x="548" y="1347" text-anchor="end">0.55</text>
+      <text x="230" y="1380">tokens</text>
+      <rect x="315" y="1364" width="84" height="20" rx="4" fill="#efc7b1"/>
+      <text x="548" y="1380" text-anchor="end">0.28</text>
+      <text x="230" y="1413">words</text>
+      <rect x="315" y="1397" width="33" height="20" rx="4" fill="#f2dcc0"/>
+      <text x="548" y="1413" text-anchor="end">0.11</text>
+    </g>
+    <text class="small" x="590" y="1381">…</text>
+    <path class="flow" d="M 390 1438 L 390 1490"/>
+    <text class="label" x="410" y="1470">采样 / argmax</text>
+  </g>
+
+  <g id="selected-token">
+    <text class="label" x="205" y="1523">选中 token</text>
+    <rect x="300" y="1490" width="180" height="54" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.8"/>
+    <text class="token" x="390" y="1526">text</text>
+  </g>
+
+  <g id="autoregressive-feedback">
+    <path d="M 480 1517 H 783 Q 805 1517 805 1495 V 188 Q 805 166 783 166 H 651" fill="none" stroke="#23858a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loop-arrow)"/>
+    <text x="840" y="845" font-size="18" fill="#23858a" text-anchor="middle" transform="rotate(-90 840 845)">追加选中 token，再预测下一步</text>
+  </g>
+
+  <text class="small" x="75" y="1590">简化示意：采用 pre-LN Transformer 与加性位置编码；分布只展示部分候选。</text>
+</svg>

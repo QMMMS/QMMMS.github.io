@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="790" viewBox="0 0 900 790" role="img" aria-labelledby="title description">
+<title id="title">Jev 式决策器的概念架构</title>
+<desc id="description">一种假设实现：状态、问题与候选项进入共享 Transformer，读出各问题的 logits，经各自 softmax 得到 Choice、Score 与 Noul 分布。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker>
+  <style>
+    text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; text-anchor: middle; dominant-baseline: middle; }
+    .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="900" height="790" fill="#ffffff"/>
+<rect x="55" y="40" width="230" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="170.0" y="71.0" font-size="23">状态 s</text>
+<rect x="335" y="40" width="230" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="450.0" y="71.0" font-size="23">问题集合</text>
+<rect x="615" y="40" width="230" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="730.0" y="71.0" font-size="23">候选项集合</text>
+<path class="flow" d="M 170 102 V 130 H 450 V 160"/>
+<path class="flow" d="M 450 102 V 160"/>
+<path class="flow" d="M 730 102 V 130 H 450 V 160"/>
+<rect x="240" y="160" width="420" height="58" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="450.0" y="189.0" font-size="23">Token embedding</text>
+<path class="flow" d="M 450 218 V 275"/>
+<rect x="195" y="275" width="510" height="100" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="450.0" y="325.0" font-size="27">Transformer × N</text>
+<path class="flow" d="M 450 375 V 410 H 170 V 445"/>
+<path class="flow" d="M 450 375 V 410 H 450 V 445"/>
+<path class="flow" d="M 450 375 V 410 H 730 V 445"/>
+<rect x="55" y="445" width="230" height="65" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="170.0" y="477.5" font-size="23">Choice 读出</text>
+<rect x="335" y="445" width="230" height="65" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450.0" y="477.5" font-size="23">Score 读出</text>
+<rect x="615" y="445" width="230" height="65" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="730.0" y="477.5" font-size="23">Noul 读出</text>
+<path class="flow" d="M 170 510 V 560"/>
+<rect x="55" y="560" width="230" height="52" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="170.0" y="586.0" font-size="23">Softmax</text>
+<path class="flow" d="M 170 612 V 665"/>
+<rect x="55" y="665" width="230" height="80" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<path class="flow" d="M 450 510 V 560"/>
+<rect x="335" y="560" width="230" height="52" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="450.0" y="586.0" font-size="23">Softmax</text>
+<path class="flow" d="M 450 612 V 665"/>
+<rect x="335" y="665" width="230" height="80" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<path class="flow" d="M 730 510 V 560"/>
+<rect x="615" y="560" width="230" height="52" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="730.0" y="586.0" font-size="23">Softmax</text>
+<path class="flow" d="M 730 612 V 665"/>
+<rect x="615" y="665" width="230" height="80" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="170" y="705" font-size="21">A: 0.8   B: 0.2</text>
+<text x="450" y="692" font-size="20">1: 0.2   2: 0.5</text>
+<text x="450" y="721" font-size="20">3: 0.3</text>
+<text x="730" y="692" font-size="21">false: 0.1</text>
+<text x="730" y="721" font-size="21">true: 0.9</text>
+</svg>

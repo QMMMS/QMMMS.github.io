@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="2090" viewBox="0 0 900 2090" role="img" aria-labelledby="title description">
+<title id="title">Von 的标记读出与可选独立候选注意力</title>
+<desc id="description">输入经 ModernBERT。展示全局注意力层的默认可见关系和 independent_options 掩码，两者为可选模式。独立模式重置候选位置编号。从同一个隐藏矩阵取各 MASK 行，经同一组 MLP 参数得到选项 logits。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker>
+  <style>
+    text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; text-anchor: middle; dominant-baseline: middle; }
+    .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="900" height="2090" fill="#ffffff"/>
+<rect x="40" y="30" width="260" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="170.0" y="61.0" font-size="21">问题 + 状态</text>
+<rect x="300" y="30" width="95" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="347.5" y="61.0" font-size="21">[SEP]</text>
+<rect x="395" y="30" width="100" height="62" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="445.0" y="61.0" font-size="21">[MASK]</text>
+<rect x="495" y="30" width="130" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="560.0" y="61.0" font-size="21">选项 A</text>
+<rect x="625" y="30" width="100" height="62" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="675.0" y="61.0" font-size="21">[MASK]</text>
+<rect x="725" y="30" width="135" height="62" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="792.5" y="61.0" font-size="21">选项 B</text>
+<path class="flow" d="M 450 92 V 140"/>
+<rect x="240" y="140" width="420" height="58" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="450.0" y="169.0" font-size="24">Token embedding</text>
+<path class="flow" d="M 450 198 V 245"/>
+<rect x="60" y="245" width="780" height="510" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="450" y="277" font-size="27">ModernBERT Transformer × N</text>
+<text x="450" y="315" font-size="23">注意力掩码（两种可选模式）</text>
+<text x="250" y="357" font-size="24">默认模式</text>
+<text x="190" y="400" font-size="20">前缀</text>
+<text x="262" y="400" font-size="20">A</text>
+<text x="334" y="400" font-size="20">B</text>
+<text x="123" y="445" font-size="20">前缀</text>
+<rect x="159" y="420" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="190.0" y="445.0" font-size="25">✓</text>
+<rect x="231" y="420" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="262.0" y="445.0" font-size="25">✓</text>
+<rect x="303" y="420" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="334.0" y="445.0" font-size="25">✓</text>
+<text x="123" y="507" font-size="20">A</text>
+<rect x="159" y="482" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="190.0" y="507.0" font-size="25">✓</text>
+<rect x="231" y="482" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="262.0" y="507.0" font-size="25">✓</text>
+<rect x="303" y="482" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="334.0" y="507.0" font-size="25">✓</text>
+<text x="123" y="569" font-size="20">B</text>
+<rect x="159" y="544" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="190.0" y="569.0" font-size="25">✓</text>
+<rect x="231" y="544" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="262.0" y="569.0" font-size="25">✓</text>
+<rect x="303" y="544" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="334.0" y="569.0" font-size="25">✓</text>
+<text x="650" y="357" font-size="24">独立候选模式</text>
+<text x="590" y="400" font-size="20">前缀</text>
+<text x="662" y="400" font-size="20">A</text>
+<text x="734" y="400" font-size="20">B</text>
+<text x="523" y="445" font-size="20">前缀</text>
+<rect x="559" y="420" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="590.0" y="445.0" font-size="25">✓</text>
+<rect x="631" y="420" width="62" height="50" rx="10" fill="#ffffff" stroke="#dce1e8" stroke-width="1.6"/>
+<text x="662.0" y="445.0" font-size="25">×</text>
+<rect x="703" y="420" width="62" height="50" rx="10" fill="#ffffff" stroke="#dce1e8" stroke-width="1.6"/>
+<text x="734.0" y="445.0" font-size="25">×</text>
+<text x="523" y="507" font-size="20">A</text>
+<rect x="559" y="482" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="590.0" y="507.0" font-size="25">✓</text>
+<rect x="631" y="482" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="662.0" y="507.0" font-size="25">✓</text>
+<rect x="703" y="482" width="62" height="50" rx="10" fill="#ffffff" stroke="#dce1e8" stroke-width="1.6"/>
+<text x="734.0" y="507.0" font-size="25">×</text>
+<text x="523" y="569" font-size="20">B</text>
+<rect x="559" y="544" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="590.0" y="569.0" font-size="25">✓</text>
+<rect x="631" y="544" width="62" height="50" rx="10" fill="#ffffff" stroke="#dce1e8" stroke-width="1.6"/>
+<text x="662.0" y="569.0" font-size="25">×</text>
+<rect x="703" y="544" width="62" height="50" rx="10" fill="#d4efda" stroke="#9bbfa4" stroke-width="1.6"/>
+<text x="734.0" y="569.0" font-size="25">✓</text>
+<text x="450" y="623" font-size="21">行：发起查询的位置    列：被读取的位置</text>
+<text x="250" y="650" font-size="21">位置编号（示例）</text>
+<text x="165" y="679" font-size="20">前缀</text>
+<rect x="220" y="667" width="36" height="24" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="238.0" y="679.0" font-size="19">0</text>
+<rect x="262" y="667" width="36" height="24" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="280.0" y="679.0" font-size="19">1</text>
+<rect x="304" y="667" width="36" height="24" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="322.0" y="679.0" font-size="19">2</text>
+<text x="165" y="707" font-size="20">A</text>
+<rect x="220" y="695" width="36" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="238.0" y="707.0" font-size="19">3</text>
+<rect x="262" y="695" width="36" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="280.0" y="707.0" font-size="19">4</text>
+<text x="165" y="735" font-size="20">B</text>
+<rect x="220" y="723" width="36" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="238.0" y="735.0" font-size="19">5</text>
+<rect x="262" y="723" width="36" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="280.0" y="735.0" font-size="19">6</text>
+<text x="650" y="650" font-size="21">位置编号（示例）</text>
+<text x="565" y="679" font-size="20">前缀</text>
+<rect x="620" y="667" width="36" height="24" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="638.0" y="679.0" font-size="19">0</text>
+<rect x="662" y="667" width="36" height="24" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="680.0" y="679.0" font-size="19">1</text>
+<rect x="704" y="667" width="36" height="24" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="722.0" y="679.0" font-size="19">2</text>
+<text x="565" y="707" font-size="20">A</text>
+<rect x="620" y="695" width="36" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="638.0" y="707.0" font-size="19">3</text>
+<rect x="662" y="695" width="36" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="680.0" y="707.0" font-size="19">4</text>
+<text x="565" y="735" font-size="20">B</text>
+<rect x="620" y="723" width="36" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="638.0" y="735.0" font-size="19">3</text>
+<rect x="662" y="723" width="36" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="680.0" y="735.0" font-size="19">4</text>
+<path class="flow" d="M 450 755 V 815"/>
+<rect x="165" y="815" width="570" height="270" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="450" y="846" font-size="26">H ∈ ℝᴸˣᵈ</text>
+<text x="450" y="884" font-size="26">⋮</text>
+<rect x="190" y="899" width="520" height="58" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="323" y="923" font-size="22">h₁ = H[m₁, :]</text>
+<rect x="460" y="912" width="32" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="508" y="912" width="32" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="556" y="912" width="32" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="604" y="912" width="32" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="190" y="979" width="520" height="58" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="323" y="1003" font-size="22">h₂ = H[m₂, :]</text>
+<rect x="460" y="992" width="32" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="508" y="992" width="32" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="556" y="992" width="32" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="604" y="992" width="32" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="450" y="1063" font-size="25">⋮</text>
+<rect x="150" y="1140" width="600" height="500" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450" y="1172" font-size="26">共享评分器</text>
+<path d="M 190 923 H 105 V 1110 H 300 V 1710" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 710 1003 H 795 V 1110 H 600 V 1710" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="225" y="1210" width="450" height="48" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450.0" y="1234.0" font-size="24">LayerNorm  d</text>
+<rect x="225" y="1278" width="450" height="48" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450.0" y="1302.0" font-size="24">Linear  d → d/2</text>
+<rect x="225" y="1346" width="450" height="48" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450.0" y="1370.0" font-size="24">GELU</text>
+<rect x="225" y="1414" width="450" height="48" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450.0" y="1438.0" font-size="24">LayerNorm  d/2</text>
+<rect x="225" y="1482" width="450" height="48" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450.0" y="1506.0" font-size="24">Dropout</text>
+<rect x="225" y="1550" width="450" height="48" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="450.0" y="1574.0" font-size="24">Linear  d/2 → 1</text>
+<rect x="210" y="1710" width="180" height="55" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="300.0" y="1737.5" font-size="27">ℓ₁</text>
+<path d="M 300 1765 V 1810 H 450" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="510" y="1710" width="180" height="55" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="600.0" y="1737.5" font-size="27">ℓ₂</text>
+<path d="M 600 1765 V 1810 H 450" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linejoin="round"/>
+<path class="flow" d="M 450 1810 V 1860"/>
+<rect x="260" y="1860" width="380" height="58" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="450.0" y="1889.0" font-size="26">Softmax</text>
+<path class="flow" d="M 450 1918 V 1970"/>
+<rect x="210" y="1970" width="480" height="65" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="450.0" y="2002.5" font-size="26">A: 0.8       B: 0.2</text>
+</svg>

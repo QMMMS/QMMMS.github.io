@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="2560" viewBox="0 0 1250 2560" role="img" aria-labelledby="title description">
+<title id="title">Simple Jev 的两阶段计算与矩阵读出</title>
+<desc id="description">左侧阶段一公共前缀调用唯一模型，完成后各层缓存就绪，再启动阶段二的问题后缀 batch。本层前缀 KV 用金色格子、后缀 KV 用紫色格子表示，拼接后的 K/V 数组含两种颜色。两个后缀输出矩阵的最后有效行被取出，通过同一个 LM head 生成两行词表 logits，再取 A/B 两列并逐行 softmax。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker>
+  <style>
+    text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; text-anchor: middle; dominant-baseline: middle; }
+    .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="1250" height="2560" fill="#ffffff"/>
+<rect x="350" y="300" width="600" height="900" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="650" y="327" font-size="26">原生 LLM Transformer block × N</text>
+<rect x="45" y="50" width="210" height="90" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<text x="150" y="76" font-size="25">① 公共前缀</text>
+<text x="150" y="112" font-size="22">说明 + 状态 s</text>
+<path d="M 255 95 H 310 V 190 H 400" fill="none" stroke="#a17b35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="335" y="166" font-size="24">①</text>
+<rect x="45" y="385" width="210" height="80" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="150" y="410" font-size="25">① 完成</text>
+<text x="150" y="442" font-size="22">各层缓存就绪</text>
+<path d="M 650 1200 V 1230 H 20 V 425 H 45" fill="none" stroke="#a17b35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" stroke-dasharray="7 6"/>
+<text x="52" y="1175" font-size="24">①</text>
+<path d="M 150 465 V 535" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="45" y="535" width="210" height="145" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="150" y="562" font-size="24">② 后缀 batch</text>
+<rect x="65" y="589" width="170" height="30" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="150.0" y="604.0" font-size="21">问题 1 + 选项</text>
+<rect x="65" y="635" width="170" height="30" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="150.0" y="650.0" font-size="21">问题 2 + 选项</text>
+<path d="M 255 606 H 285 V 220 H 400" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="314" y="246" font-size="24">②</text>
+<rect x="400" y="165" width="500" height="75" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="650.0" y="202.5" font-size="25">Token embedding</text>
+<path d="M 650 240 V 300" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 650 350 V 365" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="450" y="365" width="400" height="50" rx="10" fill="#e7edc7" stroke="#d0d9ab" stroke-width="1.6"/>
+<text x="650.0" y="390.0" font-size="24">LayerNorm</text>
+<path d="M 650 415 V 460" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="410" y="460" width="480" height="95" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="650" y="484" font-size="24">Q / K / V 投影</text>
+<rect x="430" y="505" width="100" height="36" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="480.0" y="523.0" font-size="24">Q</text>
+<rect x="645" y="505" width="210" height="36" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="750.0" y="523.0" font-size="24">K, V</text>
+<rect x="1000" y="450" width="210" height="205" rx="10" fill="#ccebed" stroke="#afd7d9" stroke-width="1.6"/>
+<text x="1105" y="480" font-size="22">本层前缀缓存</text>
+<text x="1020" y="525" font-size="23">K</text>
+<rect x="1040" y="512" width="42" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="1087" y="512" width="42" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="1134" y="512" width="42" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<text x="1020" y="600" font-size="23">V</text>
+<rect x="1040" y="587" width="42" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="1087" y="587" width="42" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="1134" y="587" width="42" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<path d="M 855 523 H 1000" fill="none" stroke="#a17b35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="943" y="496" font-size="22">① 写入</text>
+<path d="M 480 541 V 900" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 750 541 V 610" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="650" y="610" width="240" height="90" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="675" y="635" font-size="23">K</text>
+<rect x="710" y="623" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="758" y="623" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="675" y="680" font-size="23">V</text>
+<rect x="710" y="668" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="758" y="668" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="875" y="593" font-size="24">②</text>
+<path d="M 765 700 V 745" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="580" y="745" width="350" height="105" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="600" y="770" font-size="23">K</text>
+<rect x="625" y="758" width="43" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="673" y="758" width="43" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="721" y="758" width="43" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="783" y="758" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="831" y="758" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<path d="M 774 753 V 787" stroke="#65748a" stroke-width="1.5"/>
+<text x="600" y="820" font-size="23">V</text>
+<rect x="625" y="808" width="43" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="673" y="808" width="43" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="721" y="808" width="43" height="24" rx="10" fill="#f3dfb9" stroke="#c59b53" stroke-width="1.6"/>
+<rect x="783" y="808" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="831" y="808" width="43" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<path d="M 774 803 V 837" stroke="#65748a" stroke-width="1.5"/>
+<path d="M 1000 600 H 969 V 795 H 930" fill="none" stroke="#a17b35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="982" y="710" font-size="24">②</text>
+<path d="M 765 850 V 900" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 645 523 H 562 V 880 H 620 V 900" fill="none" stroke="#a17b35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="542" y="695" font-size="24">①</text>
+<rect x="420" y="900" width="480" height="85" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="660" y="925" font-size="25">因果自注意力</text>
+<text x="660" y="960" font-size="23">softmax(QKᵀ / √dₖ + mask) V</text>
+<path d="M 650 985 V 1020" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="440" y="1020" width="420" height="50" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="650.0" y="1045.0" font-size="23">输出投影 + 残差</text>
+<path d="M 650 1070 V 1105" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="415" y="1105" width="470" height="55" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="650.0" y="1132.5" font-size="23">LayerNorm + MLP + 残差</text>
+<path d="M 650 1160 V 1200" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 650 1200 V 1260 H 625 V 1300" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="684" y="1240" font-size="24">②</text>
+<rect x="100" y="1300" width="1050" height="360" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="625" y="1326" font-size="27">ℋ：2 × Lmax × d</text>
+<rect x="135" y="1360" width="460" height="280" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="365" y="1388" font-size="23">H₁ = ℋ[0, :, :]</text>
+<text x="365" y="1420" font-size="22">Lmax × d</text>
+<text x="181" y="1456" font-size="21">0</text>
+<rect x="245" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="281" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="317" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="353" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="389" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="425" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="365" y="1490" font-size="26">⋮</text>
+<rect x="655" y="1360" width="460" height="280" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="885" y="1388" font-size="23">H₂ = ℋ[1, :, :]</text>
+<text x="885" y="1420" font-size="22">Lmax × d</text>
+<text x="701" y="1456" font-size="21">0</text>
+<rect x="765" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="801" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="837" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="873" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="909" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="945" y="1444" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="885" y="1490" font-size="26">⋮</text>
+<text x="181" y="1536" font-size="21">L₁−2</text>
+<rect x="245" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="281" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="317" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="353" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="389" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="425" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="155" y="1560" width="420" height="65" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="365" y="1579" font-size="22">h₁ = H₁[L₁−1, :]  ∈ ℝᵈ</text>
+<rect x="245" y="1593" width="31" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="281" y="1593" width="31" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="317" y="1593" width="31" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="353" y="1593" width="31" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="389" y="1593" width="31" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="425" y="1593" width="31" height="24" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="701" y="1536" font-size="21">L₂−2</text>
+<rect x="765" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="801" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="837" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="873" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="909" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="945" y="1524" width="31" height="24" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="675" y="1560" width="420" height="65" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="885" y="1579" font-size="22">h₂ = H₂[L₂−1, :]  ∈ ℝᵈ</text>
+<rect x="765" y="1593" width="31" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="801" y="1593" width="31" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="837" y="1593" width="31" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="873" y="1593" width="31" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="909" y="1593" width="31" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="945" y="1593" width="31" height="24" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="625" y="1720" font-size="24">h_batch：2 × d</text>
+<rect x="140" y="1790" width="960" height="95" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="620" y="1815" font-size="25">原生 LM head</text>
+<path d="M 155 1591 H 110 V 1740 H 365 V 1910" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1095 1591 H 1145 V 1740 H 885 V 1910" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="205" y="1840" width="830" height="40" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="620.0" y="1860.0" font-size="24">Linear  d → |V|</text>
+<path d="M 365 1910 V 1935 H 60 V 2095 H 90" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 885 1910 V 1935 H 1190 V 2145 H 1160" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="90" y="1970" width="1070" height="220" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="625" y="1996" font-size="26">词表 logits Z：2 × |V|</text>
+<rect x="440" y="2025" width="120" height="150" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="690" y="2025" width="120" height="150" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="280" y="2050" font-size="22">v₀</text>
+<text x="380" y="2050" font-size="22">…</text>
+<text x="500" y="2050" font-size="22">A</text>
+<text x="625" y="2050" font-size="22">…</text>
+<text x="750" y="2050" font-size="22">B</text>
+<text x="880" y="2050" font-size="22">…</text>
+<text x="1030" y="2050" font-size="22">v<tspan baseline-shift="sub" font-size="16">|V|−1</tspan></text>
+<text x="160" y="2095" font-size="21">问题 1</text>
+<text x="280" y="2095" font-size="22">ℓ₁,v₀</text>
+<text x="380" y="2095" font-size="22">…</text>
+<text x="500" y="2095" font-size="22">ℓ₁,A</text>
+<text x="625" y="2095" font-size="22">…</text>
+<text x="750" y="2095" font-size="22">ℓ₁,B</text>
+<text x="880" y="2095" font-size="22">…</text>
+<text x="1030" y="2095" font-size="22">ℓ₁,末</text>
+<text x="160" y="2145" font-size="21">问题 2</text>
+<text x="280" y="2145" font-size="22">ℓ₂,v₀</text>
+<text x="380" y="2145" font-size="22">…</text>
+<text x="500" y="2145" font-size="22">ℓ₂,A</text>
+<text x="625" y="2145" font-size="22">…</text>
+<text x="750" y="2145" font-size="22">ℓ₂,B</text>
+<text x="880" y="2145" font-size="22">…</text>
+<text x="1030" y="2145" font-size="22">ℓ₂,末</text>
+<path d="M 500 2175 V 2260" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 750 2175 V 2260" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="940" y="2220" font-size="23">2 × 2</text>
+<rect x="350" y="2260" width="550" height="60" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="625.0" y="2290.0" font-size="25">Softmax</text>
+<path d="M 625 2320 V 2370" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="310" y="2370" width="630" height="160" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="625" y="2395" font-size="25">P：2 × 2</text>
+<text x="500" y="2435" font-size="24">A</text>
+<text x="750" y="2435" font-size="24">B</text>
+<text x="500" y="2470" font-size="26">0.8</text>
+<text x="750" y="2470" font-size="26">0.2</text>
+<text x="500" y="2510" font-size="26">0.3</text>
+<text x="750" y="2510" font-size="26">0.7</text>
+</svg>

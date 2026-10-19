@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1730" viewBox="0 0 1100 1730" role="img" aria-labelledby="title description">
+<title id="title">Nimble 的候选词表行投影</title>
+<desc id="description">LoRA 微调的 Qwen3.5 语言骨干产生最后输入位置的隐藏向量。选项标签对应词表 token ID，从原生 LM head 权重矩阵选出对应行，组成候选权重矩阵，与隐藏向量相乘得到候选 logits，再 softmax。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker>
+  <style>
+    text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; text-anchor: middle; dominant-baseline: middle; }
+    .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="1100" height="1730" fill="#ffffff"/>
+<rect x="300" y="30" width="700" height="65" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="650.0" y="62.5" font-size="24">上下文 + Schema + 当前字段的回答提示</text>
+<path class="flow" d="M 650 95 V 150"/>
+<rect x="440" y="150" width="420" height="58" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="650.0" y="179.0" font-size="24">Token embedding</text>
+<path class="flow" d="M 650 208 V 260"/>
+<rect x="325" y="260" width="650" height="90" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="650.0" y="305.0" font-size="26">Qwen3.5 语言骨干（LoRA 微调）</text>
+<path class="flow" d="M 650 350 V 410"/>
+<rect x="350" y="410" width="600" height="255" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="650" y="445" font-size="26">H ∈ ℝᴸˣᵈ</text>
+<text x="397" y="490" font-size="21">0</text>
+<rect x="540" y="478" width="30" height="23" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="583" y="478" width="30" height="23" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="626" y="478" width="30" height="23" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="669" y="478" width="30" height="23" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="712" y="478" width="30" height="23" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<rect x="755" y="478" width="30" height="23" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="650" y="530" font-size="25">⋮</text>
+<rect x="375" y="565" width="550" height="65" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="530" y="584" font-size="22">h = H[L−1, :] ∈ ℝᵈ</text>
+<rect x="540" y="600" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="583" y="600" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="626" y="600" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="669" y="600" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="712" y="600" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="755" y="600" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<path d="M 300 62 H 145 V 410" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="410" width="210" height="90" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="145" y="435" font-size="22">选项标签 A、B</text>
+<text x="145" y="473" font-size="20">token ID：v_A、v_B</text>
+<path d="M 145 500 V 730 H 880 V 860" fill="none" stroke="#4b596b" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="45" y="800" width="600" height="410" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="345" y="832" font-size="26">原生 LM head 权重 W_LM</text>
+<text x="345" y="870" font-size="24">|V| × d</text>
+<text x="102" y="914" font-size="21">v₀</text>
+<rect x="265" y="902" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="308" y="902" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="351" y="902" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="394" y="902" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="437" y="902" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="480" y="902" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="345" y="948" font-size="26">⋮</text>
+<rect x="65" y="977" width="560" height="50" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="125" y="1000" font-size="22">v_A</text>
+<rect x="265" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="308" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="351" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="394" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="437" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="480" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="65" y="1047" width="560" height="50" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="125" y="1070" font-size="22">v_B</text>
+<rect x="265" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="308" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="351" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="394" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="437" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="480" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="345" y="1120" font-size="26">⋮</text>
+<text x="125" y="1170" font-size="20">v_|V|−1</text>
+<rect x="265" y="1158" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="308" y="1158" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="351" y="1158" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="394" y="1158" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="437" y="1158" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="480" y="1158" width="30" height="23" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<rect x="710" y="860" width="340" height="285" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="880" y="894" font-size="25">W_cand ∈ ℝ²ˣᵈ</text>
+<path d="M 625 1000 H 730" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="730" y="977" width="300" height="50" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="758" y="1000" font-size="21">A</text>
+<rect x="775" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="818" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="861" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="904" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="947" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="990" y="988" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<path d="M 625 1070 H 730" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="730" y="1047" width="300" height="50" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="758" y="1070" font-size="21">B</text>
+<rect x="775" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="818" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="861" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="904" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="947" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="990" y="1058" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<path class="flow" d="M 880 1145 V 1260 H 625 V 1320"/>
+<path d="M 925 597 H 1080 V 1357 H 800" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="450" y="1320" width="350" height="75" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="625.0" y="1357.5" font-size="25">ℓ = W_cand h ∈ ℝ²</text>
+<path class="flow" d="M 625 1395 V 1450"/>
+<rect x="435" y="1450" width="380" height="58" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="625.0" y="1479.0" font-size="26">Softmax</text>
+<path class="flow" d="M 625 1508 V 1570"/>
+<rect x="385" y="1570" width="480" height="75" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="625.0" y="1607.5" font-size="27">p = (p_A, p_B)</text>
+</svg>

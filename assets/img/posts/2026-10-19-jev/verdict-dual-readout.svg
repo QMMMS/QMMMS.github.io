@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="2630" viewBox="0 0 1000 2630" role="img" aria-labelledby="title description">
+<title id="title">Verdict 2.0 的选项分布与正确性估计</title>
+<desc id="description">ModernBERT 输出经类型嵌入和标记位置共享评分器得到候选 logits。温度缩放后得到选项分布，一路取 argmax，另一路提取七维分布与任务特征，经正确性 MLP 和 sigmoid 估计所选答案匹配参考标签的概率。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker>
+  <style>
+    text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; text-anchor: middle; dominant-baseline: middle; }
+    .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="1000" height="2630" fill="#ffffff"/>
+<rect x="30" y="30" width="210" height="55" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="135.0" y="57.5" font-size="21">问题类型：Choice</text>
+<rect x="600" y="30" width="340" height="55" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="770.0" y="57.5" font-size="23">问题、候选、状态</text>
+<path class="flow" d="M 135 85 V 145 H 300"/>
+<rect x="300" y="120" width="270" height="50" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="435.0" y="145.0" font-size="22">类型文本：choice</text>
+<path class="flow" d="M 435 170 V 195 H 500 V 230"/>
+<path class="flow" d="M 770 85 V 195 H 700 V 230"/>
+<rect x="285" y="230" width="650" height="70" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="610" y="250" font-size="22">choice question: … [SEP]</text>
+<text x="610" y="279" font-size="21">[MASK] A [MASK] B [SEP] 状态 [SEP]</text>
+<path class="flow" d="M 500 300 V 360"/>
+<g transform="translate(0,220)">
+<rect x="290" y="140" width="420" height="55" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="500.0" y="167.5" font-size="24">Token embedding</text>
+<path class="flow" d="M 500 195 V 240"/>
+<rect x="275" y="240" width="450" height="80" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="500.0" y="280.0" font-size="22">ModernBERT-base Transformer × N</text>
+<path class="flow" d="M 135 -135 V 145"/>
+<rect x="30" y="145" width="210" height="50" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="135.0" y="170.0" font-size="22">类型编号：0</text>
+<path class="flow" d="M 135 195 V 230"/>
+<rect x="30" y="230" width="210" height="110" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="135" y="253" font-size="21">Embedding(3, d)</text>
+<text x="135" y="287" font-size="18">Choice / Noul / Score</text>
+<text x="135" y="318" font-size="20">三行可训练向量</text>
+<path class="flow" d="M 135 340 V 375"/>
+<rect x="30" y="375" width="210" height="48" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="135.0" y="399.0" font-size="23">e_type ∈ ℝᵈ</text>
+<path class="flow" d="M 240 399 H 479"/>
+<path class="flow" d="M 500 320 V 378"/>
+<circle cx="500" cy="399" r="21" fill="#ffffff" stroke="#c4ccd7" stroke-width="2"/>
+<text x="500" y="399" font-size="30">+</text>
+<path class="flow" d="M 500 420 V 470"/>
+<rect x="200" y="470" width="600" height="255" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="500" y="500" font-size="24">H = H_encoder + e_type   ∈ ℝᴸˣᵈ</text>
+<text x="500" y="534" font-size="25">⋮</text>
+<rect x="225" y="551" width="550" height="54" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="365" y="575" font-size="22">h₁ = H[m₁, :]</text>
+<rect x="515" y="564" width="33" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="564" y="564" width="33" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="613" y="564" width="33" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="662" y="564" width="33" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="225" y="626" width="550" height="54" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="365" y="650" font-size="22">h₂ = H[m₂, :]</text>
+<rect x="515" y="639" width="33" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="564" y="639" width="33" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="613" y="639" width="33" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="662" y="639" width="33" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="500" y="706" font-size="24">⋮</text>
+<rect x="200" y="810" width="600" height="380" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="500" y="840" font-size="26">共享选项评分器</text>
+<path d="M 225 575 H 150 V 765 H 350 V 1240" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 775 650 H 850 V 765 H 650 V 1240" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="270" y="885" width="460" height="42" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="500.0" y="906.0" font-size="23">LayerNorm  d</text>
+<rect x="270" y="943" width="460" height="42" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="500.0" y="964.0" font-size="23">Dropout</text>
+<rect x="270" y="1001" width="460" height="42" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="500.0" y="1022.0" font-size="23">Linear  d → d</text>
+<rect x="270" y="1059" width="460" height="42" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="500.0" y="1080.0" font-size="23">GELU</text>
+<rect x="270" y="1117" width="460" height="42" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="500.0" y="1138.0" font-size="23">Linear  d → 1</text>
+<rect x="300" y="1240" width="400" height="50" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="500.0" y="1265.0" font-size="25">ℓ = (ℓ₁, ℓ₂)  ∈ ℝ²</text>
+<path class="flow" d="M 500 1290 V 1330"/>
+<g transform="translate(0,-90)">
+<rect x="300" y="1420" width="400" height="50" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="500.0" y="1445.0" font-size="25">Softmax</text>
+<path class="flow" d="M 500 1470 V 1510"/>
+<rect x="280" y="1510" width="440" height="65" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="500.0" y="1542.5" font-size="26">p = (p₁, p₂)</text>
+<path class="flow" d="M 280 1542 H 150 V 1630"/>
+<rect x="55" y="1630" width="190" height="55" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="150.0" y="1657.5" font-size="25">argmax</text>
+<path class="flow" d="M 150 1685 V 1730"/>
+<rect x="55" y="1730" width="190" height="60" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="150.0" y="1760.0" font-size="24">所选候选  â</text>
+<path class="flow" d="M 720 1542 H 800 V 1578 H 680 V 1600"/>
+<rect x="430" y="1600" width="500" height="245" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="680" y="1630" font-size="24">特征提取  φ(p, K, type) ∈ ℝ⁷</text>
+<text x="680" y="1675" font-size="21">最大概率  p₍₁₎</text>
+<text x="680" y="1710" font-size="21">前两名概率差  p₍₁₎ − p₍₂₎</text>
+<text x="680" y="1745" font-size="21">归一化熵  −Σ pᵢ log pᵢ / log K</text>
+<text x="680" y="1780" font-size="21">候选数倒数  1/K</text>
+<text x="680" y="1815" font-size="21">问题类型  one-hot(type) ∈ ℝ³</text>
+<path class="flow" d="M 680 1845 V 1890"/>
+<rect x="430" y="1890" width="500" height="340" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="680" y="1920" font-size="26">正确性头</text>
+<path class="flow" d="M 680 1942 V 2275"/>
+<rect x="490" y="1960" width="380" height="38" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="680.0" y="1979.0" font-size="23">Linear  7 → 64</text>
+<rect x="490" y="2012" width="380" height="38" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="680.0" y="2031.0" font-size="23">GELU</text>
+<rect x="490" y="2064" width="380" height="38" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="680.0" y="2083.0" font-size="23">Linear  64 → 64</text>
+<rect x="490" y="2116" width="380" height="38" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="680.0" y="2135.0" font-size="23">GELU</text>
+<rect x="490" y="2168" width="380" height="38" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="680.0" y="2187.0" font-size="23">Linear  64 → 1</text>
+<rect x="490" y="2275" width="380" height="50" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="680.0" y="2300.0" font-size="25">Sigmoid</text>
+<path class="flow" d="M 680 2325 V 2370"/>
+<rect x="430" y="2370" width="500" height="75" rx="10" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.6"/>
+<text x="680.0" y="2407.5" font-size="24">c：所选答案正确的估计概率</text>
+</g>
+</g>
+</svg>

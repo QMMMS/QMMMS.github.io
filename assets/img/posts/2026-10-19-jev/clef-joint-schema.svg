@@ -1,0 +1,397 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="5180" viewBox="0 0 3000 5180" role="img" aria-labelledby="title description">
+<title id="title">Clef 联合决策头架构</title>
+<desc id="description">保留全部数据依赖、残差连接与评分支路。组件、张量输出和共享参数分开表示。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker><style>text {font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif; fill:#283448; text-anchor:middle; dominant-baseline:middle;}</style></defs>
+<rect width="3000" height="5180" fill="#ffffff"/>
+<rect id="head" x="20" y="350" width="2960" height="4440" rx="12" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.8"/>
+<rect id="query_group" x="1000" y="1020" width="1450" height="180" rx="12" fill="#ffffff" stroke="#8798b1" stroke-width="3.6"/>
+<rect id="router" x="1000" y="1320" width="1450" height="550" rx="12" fill="#ffffff" stroke="#8798b1" stroke-width="3.6"/>
+<rect id="summary" x="1030" y="2035" width="1390" height="160" rx="12" fill="#ffffff" stroke="#8798b1" stroke-width="3.6"/>
+<rect id="decoder" x="1000" y="2570" width="1450" height="740" rx="12" fill="#ffffff" stroke="#8798b1" stroke-width="3.6"/>
+<rect id="scorer" x="140" y="3610" width="2760" height="1155" rx="12" fill="#ffffff" stroke="#8798b1" stroke-width="3.6"/>
+<rect id="score_mlp" x="1990" y="3970" width="720" height="355" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<path d="M 1500,90 L 1500,140" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1500,90 L 1500,140" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1500,195 L 1500,245" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1500,195 L 1500,245" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1500,325 L 1500,365" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1500,325 L 1500,365" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1500,420 L 1500,465" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1500,420 L 1500,465" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2000,55 L 2640,55 L 2640,140" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2000,55 L 2640,55 L 2640,140" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2890,167 L 2930,167 L 2930,402 L 2890,402" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2890,167 L 2930,167 L 2930,402 L 2890,402" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2640,325 L 2640,375" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2640,325 L 2640,375" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2640,430 L 2640,730" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2640,430 L 2640,730" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2640,785 L 2640,850" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2640,785 L 2640,850" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 900,490 L 325,490 L 325,730" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 900,490 L 325,490 L 325,730" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 325,830 L 325,900" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 325,830 L 325,900" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 930,540 L 850,540 L 850,705 L 1190,705 L 1190,730" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 930,540 L 850,540 L 850,705 L 1190,705 L 1190,730" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2070,600 L 2150,600 L 2150,705 L 1760,705 L 1760,730" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2070,600 L 2150,600 L 2150,705 L 1760,705 L 1760,730" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1190,785 L 1190,850" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1190,785 L 1190,850" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1760,785 L 1760,850" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1760,785 L 1760,850" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1760,915 L 1760,960 L 970,960 L 970,1112 L 1050,1112" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1760,915 L 1760,960 L 970,960 L 970,1112 L 1050,1112" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1190,915 L 1190,985 L 1460,985 L 1460,1112 L 1525,1112" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1190,915 L 1190,985 L 1460,985 L 1460,1112 L 1525,1112" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2640,915 L 2640,960 L 2420,960 L 2420,1112 L 2350,1112" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2640,915 L 2640,960 L 2420,960 L 2420,1112 L 2350,1112" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1225,1145 L 1225,1170 L 1680,1170" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1225,1145 L 1225,1170 L 1680,1170" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1145 L 1700,1150" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1145 L 1700,1150" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round"/>
+<path d="M 2175,1145 L 2175,1170 L 1720,1170" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2175,1145 L 2175,1170 L 1720,1170" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1190 L 1700,1220" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1190 L 1700,1220" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 990,882 L 800,882 L 800,1070" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 990,882 L 800,882 L 800,1070" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 800,1160 L 800,1220" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 800,1160 L 800,1220" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1275 L 1700,1395" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1275 L 1700,1395" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1445 L 1700,1500" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1445 L 1700,1500" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 325,975 L 570,975 L 570,1420 L 1050,1420" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 325,975 L 570,975 L 570,1420 L 1050,1420" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1225,1445 L 1225,1530 L 1430,1530" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1225,1445 L 1225,1530 L 1430,1530" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1560 L 1700,1580" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1560 L 1700,1580" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1300 L 2390,1300 L 2390,1600 L 1720,1600" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1300 L 2390,1300 L 2390,1600 L 1720,1600" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="1700" cy="1300" r="4.5" fill="#4b596b"/>
+<path d="M 1700,1620 L 1700,1645" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1620 L 1700,1645" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1690 L 1700,1730" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1690 L 1700,1730" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1785 L 1700,1810" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1785 L 1700,1810" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1630 L 2390,1630 L 2390,1830 L 1720,1830" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1630 L 2390,1630 L 2390,1830 L 1720,1830" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="1700" cy="1630" r="4.5" fill="#4b596b"/>
+<path d="M 1700,1850 L 1700,1910" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1850 L 1700,1910" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 800,1275 L 800,2125 L 1090,2125" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 800,1275 L 800,2125 L 1090,2125" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1390,1942 L 1265,1942 L 1265,2100" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1390,1942 L 1265,1942 L 1265,2100" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1440,2125 L 1510,2125" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1440,2125 L 1510,2125" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1850,2125 L 1920,2125" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1850,2125 L 1920,2125" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,1975 L 1700,2000 L 2130,2000 L 2130,2100" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,1975 L 1700,2000 L 2130,2000 L 2130,2100" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2130,2150 L 2130,2220 L 1790,2220 L 1790,2250" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2130,2150 L 2130,2220 L 1790,2220 L 1790,2250" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 930,657 L 70,657 L 70,1997 L 100,1997" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 930,657 L 70,657 L 70,1997 L 100,1997" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 325,2045 L 325,2110" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 325,2045 L 325,2110" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2000,55 L 2960,55 L 2960,1127 L 2900,1127" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2000,55 L 2960,55 L 2960,1127 L 2900,1127" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2735,1155 L 2735,1220" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2735,1155 L 2735,1220" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2735,1280 L 2735,1340" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2735,1280 L 2735,1340" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1790,2300 L 1790,2340 L 1700,2340 L 1700,2380" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1790,2300 L 1790,2340 L 1700,2340 L 1700,2380" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 800,1990 L 900,1990 L 900,2400 L 1680,2400" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 800,1990 L 900,1990 L 900,2400 L 1680,2400" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="800" cy="1990" r="4.5" fill="#4b596b"/>
+<path d="M 325,2170 L 325,2440 L 1620,2440 L 1686,2414" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 325,2170 L 325,2440 L 1620,2440 L 1686,2414" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2735,1395 L 2735,2400 L 1720,2400" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2735,1395 L 2735,2400 L 1720,2400" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2420 L 1700,2460" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2420 L 1700,2460" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2515 L 1700,2650" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2515 L 1700,2650" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2695 L 1700,2730" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2695 L 1700,2730" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2780 L 1700,2800" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2780 L 1700,2800" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2840 L 1700,2865" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2840 L 1700,2865" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2910 L 1700,2940" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2910 L 1700,2940" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2990 L 1700,3015" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2990 L 1700,3015" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,3055 L 1700,3080" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3055 L 1700,3080" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,3125 L 1700,3165" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3125 L 1700,3165" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,3220 L 1700,3250" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3220 L 1700,3250" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,2545 L 2390,2545 L 2390,2820 L 1720,2820" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2545 L 2390,2545 L 2390,2820 L 1720,2820" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="1700" cy="2545" r="4.5" fill="#4b596b"/>
+<path d="M 1700,2850 L 2390,2850 L 2390,3035 L 1720,3035" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,2850 L 2390,2850 L 2390,3035 L 1720,3035" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="1700" cy="2850" r="4.5" fill="#4b596b"/>
+<path d="M 1700,3060 L 2390,3060 L 2390,3270 L 1720,3270" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3060 L 2390,3060 L 2390,3270 L 1720,3270" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="1700" cy="3060" r="4.5" fill="#4b596b"/>
+<path d="M 570,1420 L 570,2965 L 1370,2965" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 570,1420 L 570,2965 L 1370,2965" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="570" cy="1420" r="4.5" fill="#4b596b"/>
+<path d="M 1700,3290 L 1700,3350" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3290 L 1700,3350" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,3400 L 1700,3450" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3400 L 1700,3450" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2010,1942 L 2510,1942 L 2510,3135 L 2695,3135 L 2695,3180" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2010,1942 L 2510,1942 L 2510,3135 L 2695,3135 L 2695,3180" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2695,3230 L 2695,3290" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2695,3230 L 2695,3290" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 990,882 L 620,882 L 620,3680 L 610,3680 L 610,3720 L 640,3720" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 990,882 L 620,882 L 620,3680 L 610,3680 L 610,3720 L 640,3720" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="800" cy="882" r="4.5" fill="#397f84"/>
+<path d="M 930,657 L 40,657 L 40,3670 L 610,3670 L 646,3706" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 930,657 L 40,657 L 40,3670 L 610,3670 L 646,3706" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 660,3740 L 660,3790" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 660,3740 L 660,3790" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 660,3845 L 660,3900" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 660,3845 L 660,3900" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2890,882 L 2920,882 L 2920,3570 L 920,3570 L 920,3927 L 840,3927" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2890,882 L 2920,882 L 2920,3570 L 920,3570 L 920,3927 L 840,3927" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 660,3955 L 660,4010" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 660,3955 L 660,4010" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 660,4065 L 660,4120" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 660,4065 L 660,4120" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,3510 L 1700,3550 L 1250,3550 L 1250,3720" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3510 L 1700,3550 L 1250,3550 L 1250,3720" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2490,3320 L 2320,3320 L 2320,3590 L 1430,3590 L 1430,3720" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2490,3320 L 2320,3320 L 2320,3590 L 1430,3590 L 1430,3720" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1335,3775 L 1335,3830" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1335,3775 L 1335,3830" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1335,3885 L 1335,3940" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1335,3885 L 1335,3940" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1700,3550 L 2060,3550 L 2060,3720" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1700,3550 L 2060,3550 L 2060,3720" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="1700" cy="3550" r="4.5" fill="#397f84"/>
+<path d="M 2695,3350 L 2695,3720" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2695,3350 L 2695,3720" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2350,3815 L 2350,3865" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2350,3815 L 2350,3865" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2350,3920 L 2350,4380" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2350,3920 L 2350,4380" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1335,3995 L 1335,4380 L 1690,4380" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1335,3995 L 1335,4380 L 1690,4380" fill="none" stroke="#397f84" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 2150,4407 L 1850,4407 L 1850,4380 L 1730,4380" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 2150,4407 L 1850,4407 L 1850,4380 L 1730,4380" fill="none" stroke="#8064ae" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1710,4400 L 1710,4440" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1710,4400 L 1710,4440" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1710,4495 L 1710,4540" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1710,4495 L 1710,4540" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1710,4595 L 1710,4630 L 1220,4630" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1710,4595 L 1710,4630 L 1220,4630" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 660,4175 L 660,4630 L 1180,4630" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 660,4175 L 660,4630 L 1180,4630" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1200,4650 L 1200,4690" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1200,4650 L 1200,4690" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1200,4745 L 1200,4820" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1200,4745 L 1200,4820" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1200,4875 L 1200,4915" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1200,4875 L 1200,4915" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1200,4965 L 1200,5005" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1200,4965 L 1200,5005" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1200,5060 L 1200,5100" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M 1200,5060 L 1200,5100" fill="none" stroke="#4b596b" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect id="input" x="1000" y="20" width="1000" height="70" rx="12" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.8"/>
+<rect id="tokembed" x="1200" y="140" width="600" height="55" rx="12" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.8"/>
+<rect id="backbone" x="1100" y="245" width="800" height="80" rx="12" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.8"/>
+<rect id="backnorm" x="1250" y="365" width="500" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="h" x="900" y="465" width="1200" height="220" rx="12" fill="#ffffff" stroke="#8798b1" stroke-width="3.6"/>
+<rect id="h_q" x="930" y="520" width="1140" height="40" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="h_o" x="930" y="580" width="1140" height="40" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<rect id="g" x="930" y="640" width="1140" height="35" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="ids" x="2390" y="140" width="500" height="55" rx="12" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.8"/>
+<rect id="vocab" x="2390" y="245" width="500" height="80" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="index" x="2390" y="375" width="500" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="lexmean" x="2390" y="730" width="500" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="e" x="2390" y="850" width="500" height="65" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<rect id="memory_proj" x="100" y="730" width="450" height="100" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="memory" x="100" y="900" width="450" height="75" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="qmean" x="990" y="730" width="400" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="omean" x="1560" y="730" width="400" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="q" x="990" y="850" width="400" height="65" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="o" x="1560" y="850" width="400" height="65" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<rect id="opt_proj" x="1050" y="1080" width="350" height="65" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="optq_proj" x="1525" y="1080" width="350" height="65" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="opte_proj" x="2000" y="1080" width="350" height="65" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<circle id="query_sum" cx="1700" cy="1170" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="u" x="1510" y="1220" width="380" height="55" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="fieldq_proj" x="650" y="1070" width="300" height="90" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="bq" x="650" y="1220" width="300" height="55" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="router_qnorm" x="1510" y="1395" width="380" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="router_mnorm" x="1050" y="1395" width="350" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="router_attn" x="1430" y="1500" width="540" height="60" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<circle id="router_add1" cx="1700" cy="1600" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="router_norm2" x="1510" y="1645" width="380" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="router_ffn" x="1150" y="1730" width="1120" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<circle id="router_add2" cx="1700" cy="1830" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="r" x="1390" y="1910" width="620" height="65" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<rect id="summary_dot" x="1090" y="2100" width="350" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="summary_softmax" x="1510" y="2100" width="340" height="50" rx="12" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.8"/>
+<rect id="summary_weighted" x="1920" y="2100" width="420" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="summary_norm" x="1530" y="2250" width="520" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="global_proj" x="100" y="1950" width="450" height="95" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="bg" x="100" y="2110" width="450" height="60" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="type_id" x="2570" y="1100" width="330" height="55" rx="12" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.8"/>
+<rect id="type_emb" x="2570" y="1220" width="330" height="60" rx="12" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.8"/>
+<rect id="etype" x="2570" y="1340" width="330" height="55" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<circle id="field_sum" cx="1700" cy="2400" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="f0" x="1390" y="2460" width="620" height="55" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="dec_norm1" x="1510" y="2650" width="380" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="dec_self" x="1370" y="2730" width="660" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<circle id="dec_add1" cx="1700" cy="2820" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="dec_norm2" x="1510" y="2865" width="380" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="dec_cross" x="1370" y="2940" width="660" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<circle id="dec_add2" cx="1700" cy="3035" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="dec_norm3" x="1510" y="3080" width="380" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="dec_ffn" x="1150" y="3165" width="1120" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<circle id="dec_add3" cx="1700" cy="3270" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="final_field_norm" x="1410" y="3350" width="580" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="f" x="1410" y="3450" width="580" height="60" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="final_r_norm" x="2490" y="3180" width="410" height="50" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="rt" x="2490" y="3290" width="410" height="60" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<circle id="prior_add" cx="660" cy="3720" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="a_prior" x="480" y="3790" width="360" height="55" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="prior_cos" x="480" y="3900" width="360" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="prior_scale" x="480" y="4010" width="360" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="s_prior" x="480" y="4120" width="360" height="55" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="match_cos" x="1100" y="3720" width="470" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="match_scale" x="1100" y="3830" width="470" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="s_match" x="1100" y="3940" width="470" height="55" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="features" x="1920" y="3720" width="860" height="95" rx="12" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.8"/>
+<rect id="x_features" x="2150" y="3865" width="400" height="55" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<rect id="mlp0" x="2100" y="4040" width="500" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="mlp1" x="2100" y="4110" width="500" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="mlp2" x="2100" y="4180" width="500" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="mlp3" x="2100" y="4250" width="500" height="45" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="s_mlp" x="2150" y="4380" width="400" height="55" rx="12" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.8"/>
+<circle id="score_add" cx="1710" cy="4380" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="gate" x="1440" y="4440" width="540" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="s_gated" x="1440" y="4540" width="540" height="55" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<circle id="score_final" cx="1200" cy="4630" r="20" fill="white" stroke="#aeb9c8" stroke-width="2"/>
+<rect id="logit" x="960" y="4690" width="480" height="55" rx="12" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.8"/>
+<rect id="gather" x="870" y="4820" width="660" height="55" rx="12" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.8"/>
+<rect id="logits" x="960" y="4915" width="480" height="50" rx="12" fill="#ccebed" stroke="#79b9bc" stroke-width="1.8"/>
+<rect id="softmax" x="900" y="5005" width="600" height="55" rx="12" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.8"/>
+<rect id="prob" x="820" y="5100" width="760" height="60" rx="12" fill="#dff2ee" stroke="#73b4ae" stroke-width="1.8"/>
+<text x="230" y="385" font-size="28">Joint Schema Head</text>
+<text x="1500.0" y="55.0" font-size="29">状态 + Schema（问题、候选、类型）</text>
+<text x="1500.0" y="167.5" font-size="28">Token embedding</text>
+<text x="1500.0" y="285.0" font-size="30">Qwen3.8-27B 语言骨干</text>
+<text x="1500.0" y="392.5" font-size="25">LayerNorm</text>
+<text font-weight="600" x="1500" y="495" font-size="28">归一化隐藏矩阵 H̄ ∈ ℝᴸˣᵈ</text>
+<text x="1500.0" y="540.0" font-size="25">问题片段 H̄[Qⱼ, :]：|Qⱼ| × d</text>
+<text x="1500.0" y="600.0" font-size="25">候选片段 H̄[Oⱼᵢ, :]：|Oⱼᵢ| × d</text>
+<text x="1500.0" y="657.5" font-size="25">g ∈ ℝᵈ    H̄ 的最后一行</text>
+<text x="2640.0" y="167.5" font-size="26">候选项 token ID</text>
+<text x="2640.0" y="268.0" font-size="26">原生词表权重</text>
+<text x="2640.0" y="302.0" font-size="26">W_LM：|V| × d</text>
+<text x="2640.0" y="402.5" font-size="24">按候选项 token ID 取行</text>
+<text x="2640.0" y="757.5" font-size="23">所取词表行沿 token 维取均值</text>
+<text x="2640.0" y="882.5" font-size="28">eⱼᵢ ∈ ℝᵈ</text>
+<text x="325.0" y="763.0" font-size="26">共享证据投影</text>
+<text x="325.0" y="797.0" font-size="26">Linear d → w</text>
+<text x="325.0" y="937.5" font-size="29">𝓜 ∈ ℝᴸˣʷ</text>
+<text x="325" y="1005" font-size="23">共享证据表示</text>
+<text x="1190.0" y="757.5" font-size="23">问题片段沿 token 维取均值</text>
+<text x="1760.0" y="757.5" font-size="23">候选片段沿 token 维取均值</text>
+<text x="1190.0" y="882.5" font-size="28">qⱼ ∈ ℝᵈ</text>
+<text x="1760.0" y="882.5" font-size="28">oⱼᵢ ∈ ℝᵈ</text>
+<text font-weight="600" x="1230" y="1045" font-size="29">构造候选 query</text>
+<text x="1225.0" y="1095.5" font-size="24">候选投影</text>
+<text x="1225.0" y="1129.5" font-size="24">Linear d → w</text>
+<text x="1700.0" y="1095.5" font-size="24">候选查询的问题投影</text>
+<text x="1700.0" y="1129.5" font-size="24">Linear d → w</text>
+<text x="2175.0" y="1095.5" font-size="24">词义投影</text>
+<text x="2175.0" y="1129.5" font-size="24">Linear d → w</text>
+<text x="1700" y="1170" font-size="30">+</text>
+<text x="1700.0" y="1247.5" font-size="28">uⱼᵢ ∈ ℝʷ</text>
+<text x="800.0" y="1098.0" font-size="24">字段问题投影 P_q</text>
+<text x="800.0" y="1132.0" font-size="24">Linear d → w</text>
+<text x="800.0" y="1247.5" font-size="27">bⱼ ∈ ℝʷ</text>
+<text font-weight="600" x="1220" y="1350" font-size="28">候选证据路由 × 2</text>
+<text x="1700.0" y="1420.0" font-size="24">LayerNorm（query）</text>
+<text x="1225.0" y="1420.0" font-size="24">LayerNorm（𝓜）</text>
+<text x="1700.0" y="1530.0" font-size="27">多头交叉注意力</text>
+<text x="1735" y="1470" font-size="23">Q</text>
+<text x="1360" y="1500" font-size="23">K/V</text>
+<text x="1700" y="1600" font-size="30">+</text>
+<text x="1700.0" y="1667.5" font-size="24">LayerNorm</text>
+<text x="1710.0" y="1757.5" font-size="25">FFN：Linear w → 4096 → GELU → Linear 4096 → w</text>
+<text x="1700" y="1830" font-size="30">+</text>
+<text x="1700.0" y="1942.5" font-size="27">rⱼᵢ ∈ ℝʷ（所有候选并行）</text>
+<text font-weight="600" x="1680" y="2060" font-size="28">按问题分组汇总候选证据</text>
+<text x="1265.0" y="2125.0" font-size="25">缩放点积</text>
+<text x="1680.0" y="2125.0" font-size="25">Softmax</text>
+<text x="2130.0" y="2125.0" font-size="25">候选证据加权和</text>
+<text x="1790.0" y="2275.0" font-size="25">LayerNorm（候选汇总）</text>
+<text x="325.0" y="1980.5" font-size="25">全局表示投影 P_g</text>
+<text x="325.0" y="2014.5" font-size="25">Linear d → w</text>
+<text x="325.0" y="2140.0" font-size="28">b_g ∈ ℝʷ</text>
+<text x="2735.0" y="1127.5" font-size="25">问题类型编号</text>
+<text x="2735.0" y="1250.0" font-size="26">Embedding(3, w)</text>
+<text x="2735.0" y="1367.5" font-size="25">e_type,j ∈ ℝʷ</text>
+<text x="1700" y="2400" font-size="30">+</text>
+<text x="1700.0" y="2487.5" font-size="28">fⱼ⁰ ∈ ℝʷ</text>
+<text font-weight="600" x="1260" y="2600" font-size="29">Transformer Decoder × 4</text>
+<text x="1700.0" y="2672.5" font-size="24">LayerNorm</text>
+<text x="1700.0" y="2755.0" font-size="26">字段间多头自注意力</text>
+<text x="1700" y="2820" font-size="30">+</text>
+<text x="1700.0" y="2887.5" font-size="24">LayerNorm</text>
+<text x="1700.0" y="2965.0" font-size="26">多头交叉注意力</text>
+<text x="1700" y="3035" font-size="30">+</text>
+<text x="1700.0" y="3102.5" font-size="24">LayerNorm</text>
+<text x="1710.0" y="3192.5" font-size="25">FFN：Linear w → 4096 → GELU → Linear 4096 → w</text>
+<text x="1700" y="3270" font-size="30">+</text>
+<text x="1300" y="2935" font-size="23">K/V</text>
+<text x="1735" y="2920" font-size="23">Q</text>
+<text x="1700.0" y="3375.0" font-size="25">LayerNorm</text>
+<text x="1700.0" y="3480.0" font-size="28">fⱼ ∈ ℝʷ</text>
+<text x="2695.0" y="3205.0" font-size="24">LayerNorm（候选证据）</text>
+<text x="2695.0" y="3320.0" font-size="28">r̃ⱼᵢ ∈ ℝʷ</text>
+<text font-weight="600" x="490" y="3645" font-size="28">候选评分（各候选共享参数）</text>
+<text x="660" y="3720" font-size="30">+</text>
+<text x="660.0" y="3817.5" font-size="27">aⱼ ∈ ℝᵈ</text>
+<text x="660.0" y="3927.5" font-size="26">余弦相似度</text>
+<text x="890" y="3870" font-size="25">eⱼᵢ</text>
+<text x="660.0" y="4037.5" font-size="25">可训练缩放 β</text>
+<text x="660.0" y="4147.5" font-size="26">s_prior ∈ ℝ</text>
+<text x="1335.0" y="3747.5" font-size="26">余弦相似度</text>
+<text x="1230" y="3680" font-size="25">fⱼ</text>
+<text x="1450" y="3680" font-size="25">r̃ⱼᵢ</text>
+<text x="1335.0" y="3857.5" font-size="25">可训练缩放 γ</text>
+<text x="1335.0" y="3967.5" font-size="26">s_match ∈ ℝ</text>
+<text x="2350.0" y="3750.5" font-size="25">逐元素乘积、差的绝对值与拼接</text>
+<text x="2350.0" y="3784.5" font-size="25">[fⱼ ; r̃ⱼᵢ ; fⱼ ⊙ r̃ⱼᵢ ; |fⱼ − r̃ⱼᵢ|]</text>
+<text x="2350.0" y="3892.5" font-size="27">xⱼᵢ ∈ ℝ⁴ʷ</text>
+<text x="2130" y="4000" font-size="27">共享 MLP</text>
+<text x="2350.0" y="4062.5" font-size="25">Linear 4w → w</text>
+<text x="2350.0" y="4132.5" font-size="25">GELU</text>
+<text x="2350.0" y="4202.5" font-size="25">Dropout</text>
+<text x="2350.0" y="4272.5" font-size="25">Linear w → 1</text>
+<text x="2350.0" y="4407.5" font-size="26">s_mlp ∈ ℝ</text>
+<text x="1710" y="4380" font-size="30">+</text>
+<text x="1710.0" y="4467.5" font-size="26">门控缩放 σ(η)</text>
+<text x="1710.0" y="4567.5" font-size="26">s_gated ∈ ℝ</text>
+<text x="1200" y="4630" font-size="30">+</text>
+<text x="1200.0" y="4717.5" font-size="28">ℓⱼᵢ ∈ ℝ</text>
+<text x="1200.0" y="4847.5" font-size="26">按问题汇集候选 logits</text>
+<text x="1200.0" y="4940.0" font-size="28">ℓⱼ ∈ ℝᴷʲ</text>
+<text x="1200.0" y="5032.5" font-size="28">Softmax</text>
+<text x="1200.0" y="5130.0" font-size="29">pⱼ ∈ ℝᴷʲ</text>
+</svg>

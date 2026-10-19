@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1930" viewBox="0 0 1200 1930" role="img" aria-labelledby="title description">
+<title id="title">razorback16/openjev 的扩散画布读出</title>
+<desc id="description">提示词给出状态、问题及选项。固定答案模板在两个答案槽位放入随机 token。DiffusionGemma 在提示词条件下同时评价画布位置。两个槽位的隐藏向量经过同一个原生词表头，从各自的允许标签读取概率。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4b596b"/></marker>
+  <style>
+    text { font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; fill: #283448; text-anchor: middle; dominant-baseline: middle; }
+    .flow { fill: none; stroke: #4b596b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="1200" height="1930" fill="#ffffff"/>
+<rect x="50" y="30" width="470" height="70" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="285.0" y="65.0" font-size="25">状态 + 问题 + 选项说明</text>
+<path class="flow" d="M 285 100 V 160"/>
+<rect x="50" y="160" width="470" height="220" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="285" y="194" font-size="27">提示词 C</text>
+<text x="285" y="243" font-size="24">q1：选择 A 或 B</text>
+<text x="285" y="292" font-size="24">q2：选择 yes 或 no</text>
+<text x="285" y="341" font-size="24">状态：……</text>
+<rect x="650" y="30" width="500" height="70" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="900.0" y="65.0" font-size="25">固定答案模板 + 随机 token</text>
+<path class="flow" d="M 900 100 V 160"/>
+<rect x="650" y="160" width="500" height="220" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="900" y="194" font-size="27">答案画布 X</text>
+<rect x="700" y="230" width="115" height="50" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="757.5" y="255.0" font-size="25">q1:</text>
+<rect x="830" y="230" width="150" height="50" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="905.0" y="255.0" font-size="23">随机 token</text>
+<text x="1055" y="255" font-size="25">m₁</text>
+<rect x="700" y="300" width="115" height="50" rx="10" fill="#f3dfb9" stroke="#ddcda9" stroke-width="1.6"/>
+<text x="757.5" y="325.0" font-size="25">q2:</text>
+<rect x="830" y="300" width="150" height="50" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="905.0" y="325.0" font-size="23">随机 token</text>
+<text x="1055" y="325" font-size="25">m₂</text>
+<path class="flow" d="M 285 380 V 425 H 600 V 470"/>
+<path class="flow" d="M 900 380 V 425 H 600 V 470"/>
+<rect x="350" y="470" width="500" height="60" rx="10" fill="#ead5f3" stroke="#d5b9e1" stroke-width="1.6"/>
+<text x="600.0" y="500.0" font-size="26">Token embedding</text>
+<path class="flow" d="M 600 530 V 585"/>
+<rect x="190" y="585" width="820" height="150" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="600" y="625" font-size="27">DiffusionGemma：共享 Gemma4 Transformer × N</text>
+<text x="600" y="683" font-size="25">提示词因果编码 / 画布双向去噪</text>
+<path class="flow" d="M 600 735 V 790"/>
+<rect x="220" y="790" width="760" height="285" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="600" y="825" font-size="27">画布隐藏矩阵 H ∈ ℝᴹˣᵈ</text>
+<text x="600" y="867" font-size="27">⋮</text>
+<rect x="245" y="899" width="710" height="60" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="435" y="925" font-size="23">h₁ = H[m₁, :] ∈ ℝᵈ</text>
+<rect x="650" y="913" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="693" y="913" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="736" y="913" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="779" y="913" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="822" y="913" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="865" y="913" width="30" height="23" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="245" y="979" width="710" height="60" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="435" y="1005" font-size="23">h₂ = H[m₂, :] ∈ ℝᵈ</text>
+<rect x="650" y="993" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="693" y="993" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="736" y="993" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="779" y="993" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="822" y="993" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="865" y="993" width="30" height="23" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<rect x="220" y="1140" width="760" height="110" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="600" y="1170" font-size="26">原生 LM head</text>
+<path d="M 245 925 H 155 V 1105 H 400 V 1320" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 955 1005 H 1045 V 1105 H 800 V 1320" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="290" y="1195" width="620" height="40" rx="10" fill="#d6e1f7" stroke="#bbcce9" stroke-width="1.6"/>
+<text x="600.0" y="1215.0" font-size="25">Linear  d → |V|</text>
+<rect x="130" y="1320" width="940" height="215" rx="10" fill="#f0f2f6" stroke="#c4ccd7" stroke-width="1.6"/>
+<text x="600" y="1352" font-size="27">槽位词表 logits Z ∈ ℝ²ˣ|V|</text>
+<text x="390" y="1397" font-size="23">…</text>
+<text x="490" y="1397" font-size="23">A</text>
+<text x="610" y="1397" font-size="23">B</text>
+<text x="730" y="1397" font-size="23">…</text>
+<text x="840" y="1397" font-size="23">yes</text>
+<text x="965" y="1397" font-size="23">no</text>
+<rect x="435" y="1420" width="230" height="42" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<rect x="785" y="1478" width="235" height="42" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="235" y="1441" font-size="22">q1 / m₁</text>
+<text x="390" y="1441" font-size="23">…</text>
+<text x="490" y="1441" font-size="23">ℓ_A</text>
+<text x="610" y="1441" font-size="23">ℓ_B</text>
+<text x="730" y="1441" font-size="23">…</text>
+<text x="840" y="1441" font-size="23">ℓ_yes</text>
+<text x="965" y="1441" font-size="23">ℓ_no</text>
+<text x="235" y="1499" font-size="22">q2 / m₂</text>
+<text x="390" y="1499" font-size="23">…</text>
+<text x="490" y="1499" font-size="23">ℓ_A</text>
+<text x="610" y="1499" font-size="23">ℓ_B</text>
+<text x="730" y="1499" font-size="23">…</text>
+<text x="840" y="1499" font-size="23">ℓ_yes</text>
+<text x="965" y="1499" font-size="23">ℓ_no</text>
+<path d="M 550 1462 V 1570 H 400 V 1610" fill="none" stroke="#397f84" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 900 1520 V 1570 H 800 V 1610" fill="none" stroke="#8064ae" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="220" y="1610" width="760" height="65" rx="10" fill="#d4efda" stroke="#b9ddc1" stroke-width="1.6"/>
+<text x="600.0" y="1642.5" font-size="26">Softmax</text>
+<path class="flow" d="M 400 1675 V 1740"/>
+<rect x="225" y="1740" width="350" height="85" rx="10" fill="#ccebed" stroke="#79b9bc" stroke-width="1.6"/>
+<text x="400.0" y="1782.5" font-size="25">q1：p(A), p(B)</text>
+<path class="flow" d="M 800 1675 V 1740"/>
+<rect x="625" y="1740" width="350" height="85" rx="10" fill="#e2daf3" stroke="#b5a1d6" stroke-width="1.6"/>
+<text x="800.0" y="1782.5" font-size="25">q2：p(yes), p(no)</text>
+</svg>
