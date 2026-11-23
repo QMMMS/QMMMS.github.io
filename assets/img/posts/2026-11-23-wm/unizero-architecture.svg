@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1250" viewBox="0 0 1000 1250" role="img" aria-labelledby="title description">
+  <title id="title">UniZero 架构</title>
+  <desc id="description">局部文本和候选命令经冻结 BGE 与可训练投影得到观察向量。观察与动作向量交替排列。独立的位置嵌入表提供位置向量，两路向量按位置相加后进入共享 Transformer。观察位置读出策略和价值，动作位置预测奖励和下一观察向量。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4b596b"/></marker>
+    <style>
+      text{font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;fill:#283448;text-anchor:middle;dominant-baseline:middle}
+      .title{font-size:32px;font-weight:700}.heading{font-size:23px;font-weight:650}.body{font-size:19px}.small{font-size:17px}.count{font-size:19px;font-weight:650}
+      .box{stroke-width:1.5}.input{fill:#f7e9cc;stroke:#dac495}.model{fill:#edf0f5;stroke:#c4ccd7}.emb{fill:#f1e5f6;stroke:#d3b8df}
+      .decision{fill:#e2eefb;stroke:#b6cae4}.dynamics{fill:#f1e9fb;stroke:#cfbee4}.output{fill:#e2f2e9;stroke:#b8d9c5}
+      .line,.arrow{fill:none;stroke:#4b596b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.arrow{marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1000" height="1250" fill="#fff"/>
+  <text x="500" y="43" class="title">UniZero 架构</text>
+
+  <rect x="40" y="113" width="510" height="84" rx="12" class="box input"/>
+  <text x="295" y="138" class="heading">当前观察文本</text>
+  <text x="295" y="165" class="body">局部观察＋当步候选命令</text>
+  <text x="295" y="185" class="small">任务目标随 reset 首条观察进入历史</text>
+  <rect x="580" y="113" width="380" height="84" rx="12" class="box input"/>
+  <text x="770" y="143" class="heading">动作索引 0–19</text>
+  <text x="770" y="172" class="body">历史实际动作／搜索中的假设动作</text>
+  <path d="M295 197V225" class="arrow"/>
+  <path d="M770 197V225" class="arrow"/>
+
+  <rect x="40" y="225" width="510" height="82" rx="12" class="box model"/>
+  <text x="295" y="251" class="heading">BGE-base-en-v1.5 文本编码器</text>
+  <text x="295" y="278" class="body">最多 512 文本 token → 768 维 [CLS] 向量</text>
+  <text x="295" y="298" class="small">109,482,240 参数 · 冻结</text>
+  <rect x="580" y="225" width="380" height="82" rx="12" class="box emb"/>
+  <text x="770" y="252" class="heading">动作嵌入表</text>
+  <text x="770" y="282" class="body">20 × 768 · 15,360 参数</text>
+  <path d="M295 307V331" class="arrow"/>
+  <path d="M770 307V428H470V445" class="arrow"/>
+  <rect x="40" y="331" width="510" height="83" rx="12" class="box model"/>
+  <text x="295" y="356" class="heading">观察投影与归一化</text>
+  <text x="295" y="383" class="body">Linear 768 → 768 ＋ LayerNorm</text>
+  <text x="295" y="404" class="small">592,128 参数 · 得到观察向量 zₜ</text>
+  <path d="M195 414V445" class="arrow"/>
+
+  <rect x="40" y="445" width="510" height="77" rx="12" class="box input"/>
+  <text x="295" y="469" class="heading">按时间交替排列观察与动作向量</text>
+  <text x="295" y="499" class="body">… zₜ₋₁, aₜ₋₁, zₜ, aₜ …</text>
+  <rect x="580" y="445" width="380" height="77" rx="12" class="box emb"/>
+  <text x="770" y="469" class="heading">可学习的位置嵌入表</text>
+  <text x="770" y="499" class="body">20 × 768 · 15,360 参数</text>
+  <path d="M295 522V572H325" class="arrow"/>
+  <path d="M770 522V572H675" class="arrow"/>
+  <rect x="325" y="545" width="350" height="54" rx="11" class="box model"/>
+  <text x="500" y="565" class="heading">逐位置相加</text>
+  <text x="500" y="587" class="small">序列向量 ＋ 对应的位置向量</text>
+  <path d="M500 599V620" class="arrow"/>
+  <g transform="translate(0 74)">
+  <rect x="40" y="546" width="920" height="83" rx="12" class="box model"/>
+  <text x="500" y="569" class="heading">共享因果 Transformer</text>
+  <text x="500" y="596" class="body">2 层 · 24 个注意力头 · 隐藏维度 768</text>
+  <text x="500" y="618" class="count">14,177,280 参数</text>
+  <path d="M500 629V649" class="line"/>
+  <path d="M500 649H260V672" class="arrow"/>
+  <path d="M500 649H740V672" class="arrow"/>
+
+  <rect x="40" y="672" width="440" height="55" rx="11" class="box decision"/>
+  <text x="260" y="699" class="heading">观察位置 zₜ · 动作执行前</text>
+  <rect x="520" y="672" width="440" height="55" rx="11" class="box dynamics"/>
+  <text x="740" y="699" class="heading">动作位置 aₜ · 已指定动作</text>
+  <path d="M260 727V744 M740 727V744" class="line"/>
+  <path d="M260 744H145V763" class="arrow"/>
+  <path d="M260 744H375V763" class="arrow"/>
+  <path d="M740 744H625V763" class="arrow"/>
+  <path d="M740 744H855V763" class="arrow"/>
+
+  <rect x="40" y="763" width="210" height="129" rx="11" class="box decision"/>
+  <text x="145" y="788" class="heading">策略头</text>
+  <text x="145" y="815" class="small">MLP 768 → 3072 → 20</text>
+  <text x="145" y="841" class="count">2,431,508 参数</text>
+  <text x="145" y="870" class="body">20 个候选索引分数</text>
+  <rect x="270" y="763" width="210" height="129" rx="11" class="box decision"/>
+  <text x="375" y="788" class="heading">价值头</text>
+  <text x="375" y="815" class="small">MLP 768 → 3072 → 101</text>
+  <text x="375" y="841" class="count">2,680,421 参数</text>
+  <text x="375" y="870" class="body">101 档后续回报</text>
+  <rect x="520" y="763" width="210" height="129" rx="11" class="box dynamics"/>
+  <text x="625" y="788" class="heading">奖励头</text>
+  <text x="625" y="815" class="small">MLP 768 → 3072 → 101</text>
+  <text x="625" y="841" class="count">2,680,421 参数</text>
+  <text x="625" y="870" class="body">101 档即时奖励</text>
+  <rect x="750" y="763" width="210" height="129" rx="11" class="box dynamics"/>
+  <text x="855" y="788" class="heading">下一观察头</text>
+  <text x="855" y="815" class="small">MLP 768 → 3072 → 768</text>
+  <text x="855" y="841" class="count">4,731,648 参数</text>
+  <text x="855" y="870" class="body">768 维预测向量 ẑₜ₊₁</text>
+
+  <path d="M190 892V916H855V892 M375 892V916 M625 892V916" class="line"/>
+  <path d="M740 916V954" class="arrow"/>
+  <path d="M100 892V938H260V954" class="arrow"/>
+  <rect x="40" y="954" width="440" height="90" rx="12" class="box output"/>
+  <text x="260" y="980" class="heading">直接策略</text>
+  <text x="260" y="1007" class="body">用真实候选掩码过滤索引</text>
+  <text x="260" y="1028" class="small">在有效索引中选最高分</text>
+  <rect x="520" y="954" width="440" height="90" rx="12" class="box output"/>
+  <text x="740" y="980" class="heading">MCTS · 在潜空间反复展开</text>
+  <text x="740" y="1007" class="body">策略作先验，奖励与价值用于回传</text>
+  <text x="740" y="1028" class="small">预测观察向量接入树中历史，得到根访问分布</text>
+  <path d="M260 1044V1067H500 M740 1044V1067H500" class="line"/>
+  <path d="M500 1067V1089" class="arrow"/>
+  <rect x="40" y="1089" width="920" height="63" rx="12" class="box output"/>
+  <text x="500" y="1111" class="heading">输出一个候选索引</text>
+  <text x="500" y="1136" class="body">客户端查当步真实候选列表 → 执行对应命令 → 收到下一条真实观察</text>
+  </g>
+</svg>
